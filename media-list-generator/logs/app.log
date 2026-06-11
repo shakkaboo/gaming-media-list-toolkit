@@ -1,0 +1,131 @@
+2026-06-11 02:25:35,845 - src.traffic_checker - INFO - Loaded manual traffic data from data/manual_traffic_input.csv
+2026-06-11 02:25:35,845 - src.media_list_builder - INFO - Starting Media List Generator with seeds from data/seed_sites.csv
+2026-06-11 02:25:35,847 - src.media_list_builder - INFO - Processing (1/18): Game8 - https://game8.jp/
+2026-06-11 02:25:35,847 - src.scraper - INFO - Fetching HTML for: https://game8.jp/
+2026-06-11 02:25:36,469 - src.media_list_builder - INFO - Processing (2/18): GameWith - https://gamewith.jp/
+2026-06-11 02:25:36,469 - src.scraper - INFO - Fetching HTML for: https://gamewith.jp/
+2026-06-11 02:25:37,984 - src.media_list_builder - INFO - Processing (3/18): Famitsu - https://www.famitsu.com/
+2026-06-11 02:25:37,985 - src.scraper - INFO - Fetching HTML for: https://www.famitsu.com/
+2026-06-11 02:25:38,749 - src.media_list_builder - INFO - Processing (4/18): 4Gamer - https://www.4gamer.net/
+2026-06-11 02:25:38,749 - src.scraper - INFO - Fetching HTML for: https://www.4gamer.net/
+2026-06-11 02:25:40,140 - src.media_list_builder - INFO - Processing (5/18): AppMedia - https://appmedia.jp/
+2026-06-11 02:25:40,141 - src.scraper - INFO - Fetching HTML for: https://appmedia.jp/
+2026-06-11 02:25:41,959 - src.media_list_builder - INFO - Processing (6/18): Kamigame - https://kamigame.jp/
+2026-06-11 02:25:41,960 - src.scraper - INFO - Fetching HTML for: https://kamigame.jp/
+2026-06-11 02:25:42,462 - src.media_list_builder - INFO - Processing (7/18): Altema - https://altema.jp/
+2026-06-11 02:25:42,463 - src.scraper - INFO - Fetching HTML for: https://altema.jp/
+2026-06-11 02:25:42,849 - src.media_list_builder - INFO - Processing (8/18): Dengeki Online - https://dengekionline.com/
+2026-06-11 02:25:42,849 - src.scraper - INFO - Fetching HTML for: https://dengekionline.com/
+2026-06-11 02:25:43,142 - src.media_list_builder - INFO - Processing (9/18): Automaton - https://automaton-media.com/
+2026-06-11 02:25:43,142 - src.scraper - INFO - Fetching HTML for: https://automaton-media.com/
+2026-06-11 02:25:45,482 - src.media_list_builder - INFO - Processing (10/18): MobileSyrup - https://mobilesyrup.com/
+2026-06-11 02:25:45,482 - src.scraper - INFO - Fetching HTML for: https://mobilesyrup.com/
+2026-06-11 02:25:45,818 - src.media_list_builder - INFO - Processing (11/18): TheGamer - https://www.thegamer.com/
+2026-06-11 02:25:45,818 - src.scraper - INFO - Fetching HTML for: https://www.thegamer.com/
+2026-06-11 02:25:47,305 - src.media_list_builder - INFO - Processing (12/18): Game Rant - https://gamerant.com/
+2026-06-11 02:25:47,305 - src.scraper - INFO - Fetching HTML for: https://gamerant.com/
+2026-06-11 02:25:48,756 - src.media_list_builder - INFO - Processing (13/18): IGN - https://www.ign.com/
+2026-06-11 02:25:48,756 - src.scraper - INFO - Fetching HTML for: https://www.ign.com/
+2026-06-11 02:25:49,038 - src.media_list_builder - INFO - Processing (14/18): GameSpot - https://www.gamespot.com/
+2026-06-11 02:25:49,038 - src.scraper - INFO - Fetching HTML for: https://www.gamespot.com/
+2026-06-11 02:25:49,133 - src.scraper - WARNING - Failed to fetch https://www.gamespot.com/: 403 Client Error: Forbidden for url: https://www.gamespot.com/
+2026-06-11 02:25:49,134 - src.media_list_builder - INFO - Processing (15/18): Polygon - https://www.polygon.com/
+2026-06-11 02:25:49,134 - src.scraper - INFO - Fetching HTML for: https://www.polygon.com/
+2026-06-11 02:25:50,578 - src.media_list_builder - INFO - Processing (16/18): Kotaku - https://kotaku.com/
+2026-06-11 02:25:50,578 - src.scraper - INFO - Fetching HTML for: https://kotaku.com/
+2026-06-11 02:25:52,168 - src.media_list_builder - INFO - Processing (17/18): PC Gamer - https://www.pcgamer.com/
+2026-06-11 02:25:52,168 - src.scraper - INFO - Fetching HTML for: https://www.pcgamer.com/
+2026-06-11 02:25:53,487 - src.media_list_builder - INFO - Processing (18/18): GamesRadar+ - https://www.gamesradar.com/
+2026-06-11 02:25:53,487 - src.scraper - INFO - Fetching HTML for: https://www.gamesradar.com/
+2026-06-11 02:25:55,307 - src.media_list_builder - INFO - Saved raw results to data/raw_results.csv
+2026-06-11 02:25:55,310 - src.media_list_builder - INFO - Saved qualified CSV to data/qualified_media_list.csv
+2026-06-11 02:25:55,537 - src.media_list_builder - INFO - Saved qualified Excel to data/qualified_media_list.xlsx
+2026-06-11 02:25:55,537 - src.media_list_builder - INFO - Media list generation complete!
+2026-06-11 02:51:35,569 - src.traffic_checker - INFO - Loaded manual traffic data from data/manual_traffic_input.csv
+2026-06-11 02:51:35,569 - src.media_list_builder - INFO - Starting Media List Generator with seeds from data/seed_sites.csv
+2026-06-11 02:51:35,570 - src.media_list_builder - INFO - Processing (1/18): Game8 - https://game8.jp/
+2026-06-11 02:51:35,570 - src.scraper - INFO - Fetching HTML for: https://game8.jp/
+2026-06-11 02:51:36,304 - src.media_list_builder - INFO - Processing (2/18): GameWith - https://gamewith.jp/
+2026-06-11 02:51:36,305 - src.scraper - INFO - Fetching HTML for: https://gamewith.jp/
+2026-06-11 02:51:37,797 - src.media_list_builder - INFO - Processing (3/18): Famitsu - https://www.famitsu.com/
+2026-06-11 02:51:37,797 - src.scraper - INFO - Fetching HTML for: https://www.famitsu.com/
+2026-06-11 02:51:38,646 - src.media_list_builder - INFO - Processing (4/18): 4Gamer - https://www.4gamer.net/
+2026-06-11 02:51:38,646 - src.scraper - INFO - Fetching HTML for: https://www.4gamer.net/
+2026-06-11 02:51:39,666 - src.media_list_builder - INFO - Processing (5/18): AppMedia - https://appmedia.jp/
+2026-06-11 02:51:39,666 - src.scraper - INFO - Fetching HTML for: https://appmedia.jp/
+2026-06-11 02:51:41,706 - src.media_list_builder - INFO - Processing (6/18): Kamigame - https://kamigame.jp/
+2026-06-11 02:51:41,707 - src.scraper - INFO - Fetching HTML for: https://kamigame.jp/
+2026-06-11 02:51:42,087 - src.media_list_builder - INFO - Processing (7/18): Altema - https://altema.jp/
+2026-06-11 02:51:42,088 - src.scraper - INFO - Fetching HTML for: https://altema.jp/
+2026-06-11 02:51:42,454 - src.media_list_builder - INFO - Processing (8/18): Dengeki Online - https://dengekionline.com/
+2026-06-11 02:51:42,454 - src.scraper - INFO - Fetching HTML for: https://dengekionline.com/
+2026-06-11 02:51:43,276 - src.media_list_builder - INFO - Processing (9/18): Automaton - https://automaton-media.com/
+2026-06-11 02:51:43,276 - src.scraper - INFO - Fetching HTML for: https://automaton-media.com/
+2026-06-11 02:51:43,778 - src.media_list_builder - INFO - Processing (10/18): MobileSyrup - https://mobilesyrup.com/
+2026-06-11 02:51:43,778 - src.scraper - INFO - Fetching HTML for: https://mobilesyrup.com/
+2026-06-11 02:51:44,267 - src.media_list_builder - INFO - Processing (11/18): TheGamer - https://www.thegamer.com/
+2026-06-11 02:51:44,267 - src.scraper - INFO - Fetching HTML for: https://www.thegamer.com/
+2026-06-11 02:51:45,666 - src.media_list_builder - INFO - Processing (12/18): Game Rant - https://gamerant.com/
+2026-06-11 02:51:45,666 - src.scraper - INFO - Fetching HTML for: https://gamerant.com/
+2026-06-11 02:51:47,092 - src.media_list_builder - INFO - Processing (13/18): IGN - https://www.ign.com/
+2026-06-11 02:51:47,093 - src.scraper - INFO - Fetching HTML for: https://www.ign.com/
+2026-06-11 02:51:47,492 - src.media_list_builder - INFO - Processing (14/18): GameSpot - https://www.gamespot.com/
+2026-06-11 02:51:47,493 - src.scraper - INFO - Fetching HTML for: https://www.gamespot.com/
+2026-06-11 02:51:47,577 - src.scraper - WARNING - Failed to fetch https://www.gamespot.com/: 403 Client Error: Forbidden for url: https://www.gamespot.com/
+2026-06-11 02:51:47,578 - src.media_list_builder - INFO - Processing (15/18): Polygon - https://www.polygon.com/
+2026-06-11 02:51:47,578 - src.scraper - INFO - Fetching HTML for: https://www.polygon.com/
+2026-06-11 02:51:49,058 - src.media_list_builder - INFO - Processing (16/18): Kotaku - https://kotaku.com/
+2026-06-11 02:51:49,058 - src.scraper - INFO - Fetching HTML for: https://kotaku.com/
+2026-06-11 02:51:50,122 - src.media_list_builder - INFO - Processing (17/18): PC Gamer - https://www.pcgamer.com/
+2026-06-11 02:51:50,122 - src.scraper - INFO - Fetching HTML for: https://www.pcgamer.com/
+2026-06-11 02:51:50,586 - src.media_list_builder - INFO - Processing (18/18): GamesRadar+ - https://www.gamesradar.com/
+2026-06-11 02:51:50,586 - src.scraper - INFO - Fetching HTML for: https://www.gamesradar.com/
+2026-06-11 02:51:52,401 - src.media_list_builder - INFO - Saved raw results to data/raw_results.csv
+2026-06-11 02:51:52,414 - src.media_list_builder - INFO - Saved dashboard data to data/dashboard_data.csv
+2026-06-11 02:51:52,415 - src.media_list_builder - INFO - Saved qualified CSV to data/qualified_media_list.csv
+2026-06-11 02:51:52,635 - src.media_list_builder - INFO - Saved qualified Excel to data/qualified_media_list.xlsx
+2026-06-11 02:51:52,635 - src.media_list_builder - INFO - Media list generation complete!
+2026-06-11 04:33:51,404 - src.traffic_checker - INFO - Loaded manual traffic data from data/manual_traffic_input.csv
+2026-06-11 04:33:51,404 - src.media_list_builder - INFO - Starting Media List Generator with seeds from data/seed_sites.csv
+2026-06-11 04:33:51,405 - src.media_list_builder - INFO - Processing (1/18): Game8 - https://game8.jp/
+2026-06-11 04:33:51,405 - src.scraper - INFO - Fetching HTML for: https://game8.jp/
+2026-06-11 04:33:52,341 - src.media_list_builder - INFO - Processing (2/18): GameWith - https://gamewith.jp/
+2026-06-11 04:33:52,341 - src.scraper - INFO - Fetching HTML for: https://gamewith.jp/
+2026-06-11 04:33:53,808 - src.media_list_builder - INFO - Processing (3/18): Famitsu - https://www.famitsu.com/
+2026-06-11 04:33:53,808 - src.scraper - INFO - Fetching HTML for: https://www.famitsu.com/
+2026-06-11 04:33:54,001 - src.media_list_builder - INFO - Processing (4/18): 4Gamer - https://www.4gamer.net/
+2026-06-11 04:33:54,001 - src.scraper - INFO - Fetching HTML for: https://www.4gamer.net/
+2026-06-11 04:33:55,392 - src.media_list_builder - INFO - Processing (5/18): AppMedia - https://appmedia.jp/
+2026-06-11 04:33:55,393 - src.scraper - INFO - Fetching HTML for: https://appmedia.jp/
+2026-06-11 04:33:57,070 - src.media_list_builder - INFO - Processing (6/18): Kamigame - https://kamigame.jp/
+2026-06-11 04:33:57,070 - src.scraper - INFO - Fetching HTML for: https://kamigame.jp/
+2026-06-11 04:33:57,406 - src.media_list_builder - INFO - Processing (7/18): Altema - https://altema.jp/
+2026-06-11 04:33:57,406 - src.scraper - INFO - Fetching HTML for: https://altema.jp/
+2026-06-11 04:33:57,733 - src.media_list_builder - INFO - Processing (8/18): Dengeki Online - https://dengekionline.com/
+2026-06-11 04:33:57,734 - src.scraper - INFO - Fetching HTML for: https://dengekionline.com/
+2026-06-11 04:33:58,533 - src.media_list_builder - INFO - Processing (9/18): Automaton - https://automaton-media.com/
+2026-06-11 04:33:58,534 - src.scraper - INFO - Fetching HTML for: https://automaton-media.com/
+2026-06-11 04:33:58,935 - src.media_list_builder - INFO - Processing (10/18): MobileSyrup - https://mobilesyrup.com/
+2026-06-11 04:33:58,935 - src.scraper - INFO - Fetching HTML for: https://mobilesyrup.com/
+2026-06-11 04:33:59,291 - src.media_list_builder - INFO - Processing (11/18): TheGamer - https://www.thegamer.com/
+2026-06-11 04:33:59,291 - src.scraper - INFO - Fetching HTML for: https://www.thegamer.com/
+2026-06-11 04:34:00,755 - src.media_list_builder - INFO - Processing (12/18): Game Rant - https://gamerant.com/
+2026-06-11 04:34:00,755 - src.scraper - INFO - Fetching HTML for: https://gamerant.com/
+2026-06-11 04:34:02,366 - src.media_list_builder - INFO - Processing (13/18): IGN - https://www.ign.com/
+2026-06-11 04:34:02,366 - src.scraper - INFO - Fetching HTML for: https://www.ign.com/
+2026-06-11 04:34:02,723 - src.media_list_builder - INFO - Processing (14/18): GameSpot - https://www.gamespot.com/
+2026-06-11 04:34:02,723 - src.scraper - INFO - Fetching HTML for: https://www.gamespot.com/
+2026-06-11 04:34:02,812 - src.scraper - WARNING - Failed to fetch https://www.gamespot.com/: 403 Client Error: Forbidden for url: https://www.gamespot.com/
+2026-06-11 04:34:02,813 - src.media_list_builder - INFO - Processing (15/18): Polygon - https://www.polygon.com/
+2026-06-11 04:34:02,813 - src.scraper - INFO - Fetching HTML for: https://www.polygon.com/
+2026-06-11 04:34:04,191 - src.media_list_builder - INFO - Processing (16/18): Kotaku - https://kotaku.com/
+2026-06-11 04:34:04,191 - src.scraper - INFO - Fetching HTML for: https://kotaku.com/
+2026-06-11 04:34:05,229 - src.media_list_builder - INFO - Processing (17/18): PC Gamer - https://www.pcgamer.com/
+2026-06-11 04:34:05,229 - src.scraper - INFO - Fetching HTML for: https://www.pcgamer.com/
+2026-06-11 04:34:06,345 - src.media_list_builder - INFO - Processing (18/18): GamesRadar+ - https://www.gamesradar.com/
+2026-06-11 04:34:06,345 - src.scraper - INFO - Fetching HTML for: https://www.gamesradar.com/
+2026-06-11 04:34:10,103 - src.media_list_builder - INFO - Saved raw results to data/raw_results.csv
+2026-06-11 04:34:10,104 - src.media_list_builder - INFO - Saved dashboard data to data/dashboard_data.csv
+2026-06-11 04:34:10,106 - src.media_list_builder - INFO - Saved qualified CSV to data/qualified_media_list.csv
+2026-06-11 04:34:10,353 - src.media_list_builder - INFO - Saved qualified Excel to data/qualified_media_list.xlsx
+2026-06-11 04:34:10,353 - src.media_list_builder - INFO - Media list generation complete!
