@@ -23,7 +23,34 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+from app.api import health, discovery_jobs, websites
+
 app.include_router(health.router, prefix=settings.API_PREFIX)
+app.include_router(discovery_jobs.router, prefix=settings.API_PREFIX)
+app.include_router(websites.router, prefix=settings.API_PREFIX)
+
+from app.exceptions import ResourceNotFoundError, DuplicateResourceError, InvalidOperationError
+
+@app.exception_handler(ResourceNotFoundError)
+async def resource_not_found_handler(request: Request, exc: ResourceNotFoundError):
+    return JSONResponse(
+        status_code=404,
+        content={"error": "resource_not_found", "message": exc.message, "details": exc.details}
+    )
+
+@app.exception_handler(DuplicateResourceError)
+async def duplicate_resource_handler(request: Request, exc: DuplicateResourceError):
+    return JSONResponse(
+        status_code=409,
+        content={"error": "duplicate_resource", "message": exc.message, "details": exc.details}
+    )
+
+@app.exception_handler(InvalidOperationError)
+async def invalid_operation_handler(request: Request, exc: InvalidOperationError):
+    return JSONResponse(
+        status_code=400,
+        content={"error": "invalid_operation", "message": exc.message, "details": exc.details}
+    )
 
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):

@@ -11,9 +11,46 @@ This is the backend foundation for the Automated Gaming Media Discovery and Qual
 ## Phase 2A Scope
 - Modular SQLAlchemy 2.x declarative models.
 - PostgreSQL constraints, enums, indexes, and portable UUID handling.
-- Alembic migration environment setup and initial core schema script.
-- **Notice:** CRUD endpoints are **not yet implemented**. Discovery logic, actual search providers, and scraping are **absent**.
-- **Important:** Do NOT use `Base.metadata.create_all()`. Use Alembic exclusively for schema management.
+- Alembic migration setup.
+
+## Phase 2B Scope
+- Application Exceptions mapped to standard HTTP status codes (400, 404, 409).
+- Pydantic v2 schemas validating payload boundaries and formatting relationships.
+- Service layer handling business logic and strict PostgreSQL transactions.
+- REST API Routers exposing data access without actual scraping logic.
+- **Important:** Internet discovery, query generation, automated traffic fetching, and Brave search logic remain **unimplemented**.
+
+### Endpoints
+#### Discovery Jobs
+- `POST /api/discovery/jobs`: Generates a pending job
+- `GET /api/discovery/jobs`: Lists paginated jobs
+- `GET /api/discovery/jobs/{job_id}`: Job detail
+
+#### Websites
+- `GET /api/websites`: Lists paginated websites with search and extensive filters
+- `GET /api/websites/{website_id}`: Full website detail including traffic history, contact logs, and errors
+- `PATCH /api/websites/{website_id}/review`: Change manual review status safely
+- `POST /api/websites/{website_id}/traffic`: Submit manual metrics
+
+### Features & Behaviors
+- **Pagination**: Consistent generic `PaginationMeta` returned across listing endpoints.
+- **Filters**: Extensive text searching and categorical listing available on Websites.
+- **Example Job Creation Request**:
+  ```json
+  {
+    "target_market": "US",
+    "language": "en",
+    "categories": ["RPG", "Action"],
+    "minimum_pageviews": 1000000,
+    "maximum_queries": 10,
+    "results_per_query": 10
+  }
+  ```
+- **Decimal Pageview Calculation**: Traffic values are multiplied accurately as fixed-point Decimals ensuring precise rounding.
+- **Qualification Strict `>` Rule**: Estimated pageviews precisely matching the threshold map to `upcoming`, whilst those strictly greater map to `qualified`.
+- **Computed Effective Review Decision**: A calculated string merges manual overrides and automated validation outputs natively inside the WebsiteSummary payload without inflating the database layer.
+- **Real PostgreSQL requirement**: To accurately evaluate transaction commits, JSON storage, and relationship ordering, a real PostgreSQL environment is mandatory. SQLite is not an accurate emulator. 
+- **Offline Unit-Test Limitations**: Tests mock service boundaries ensuring endpoint logic works cleanly offline but they do not execute physical SQL queries on real database records.
 
 ## Setup Instructions (Windows)
 
