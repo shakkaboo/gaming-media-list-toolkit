@@ -13,8 +13,17 @@ class Settings(BaseSettings):
     
     SEARCH_PROVIDER: str = "mock"
     BRAVE_SEARCH_API_KEY: Optional[str] = None
+    SEARCH_RESULTS_PER_QUERY: int = Field(10, ge=1, le=20)
+    MAX_SEARCH_QUERIES: int = Field(20, ge=1, le=100)
+    SEARCH_REQUEST_TIMEOUT_SECONDS: int = Field(10, gt=0)
+    BRAVE_SEARCH_BASE_URL: str = "https://api.search.brave.com/res/v1/web/search"
+    BRAVE_SEARCH_SAFESEARCH: str = "moderate"
+    BRAVE_SEARCH_FRESHNESS: Optional[str] = None
+    BRAVE_SEARCH_MAX_RETRIES: int = Field(2, ge=0, le=5)
+    MAX_SEARCH_CONCURRENCY: int = Field(3, ge=1, le=10)
+
     TRAFFIC_PROVIDER: str = "mock"
-    
+
     REQUEST_TIMEOUT_SECONDS: int = 10
     MAX_FETCH_CONCURRENCY: int = 5
     MAX_RESPONSE_BYTES: int = 5242880
@@ -54,6 +63,13 @@ class Settings(BaseSettings):
         if provider == "brave" and not v:
             raise ValueError("BRAVE_SEARCH_API_KEY is required when SEARCH_PROVIDER is brave")
         return v
+
+    @field_validator("BRAVE_SEARCH_FRESHNESS")
+    @classmethod
+    def clean_freshness(cls, v: Optional[str]) -> Optional[str]:
+        if not v or not v.strip():
+            return None
+        return v.strip()
 
 @lru_cache()
 def get_settings() -> Settings:

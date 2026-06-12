@@ -23,13 +23,20 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-from app.api import health, discovery_jobs, websites
+from app.api import health, discovery_jobs, websites, search
 
 app.include_router(health.router, prefix=settings.API_PREFIX)
 app.include_router(discovery_jobs.router, prefix=settings.API_PREFIX)
 app.include_router(websites.router, prefix=settings.API_PREFIX)
+app.include_router(search.router, prefix=settings.API_PREFIX)
 
 from app.exceptions import ResourceNotFoundError, DuplicateResourceError, InvalidOperationError
+from app.providers.search.exceptions import (
+    SearchProviderConfigurationError,
+    SearchProviderRateLimitError,
+    SearchProviderTimeoutError,
+    SearchProviderResponseError
+)
 
 @app.exception_handler(ResourceNotFoundError)
 async def resource_not_found_handler(request: Request, exc: ResourceNotFoundError):
@@ -50,6 +57,34 @@ async def invalid_operation_handler(request: Request, exc: InvalidOperationError
     return JSONResponse(
         status_code=400,
         content={"error": "invalid_operation", "message": exc.message, "details": exc.details}
+    )
+
+@app.exception_handler(SearchProviderConfigurationError)
+async def search_config_error_handler(request: Request, exc: SearchProviderConfigurationError):
+    return JSONResponse(
+        status_code=400,
+        content={"error": "provider_configuration_error", "message": str(exc)}
+    )
+
+@app.exception_handler(SearchProviderRateLimitError)
+async def search_rate_limit_handler(request: Request, exc: SearchProviderRateLimitError):
+    return JSONResponse(
+        status_code=429,
+        content={"error": "provider_rate_limit_error", "message": str(exc)}
+    )
+
+@app.exception_handler(SearchProviderTimeoutError)
+async def search_timeout_handler(request: Request, exc: SearchProviderTimeoutError):
+    return JSONResponse(
+        status_code=504,
+        content={"error": "provider_timeout_error", "message": str(exc)}
+    )
+
+@app.exception_handler(SearchProviderResponseError)
+async def search_response_error_handler(request: Request, exc: SearchProviderResponseError):
+    return JSONResponse(
+        status_code=502,
+        content={"error": "provider_response_error", "message": str(exc)}
     )
 
 @app.exception_handler(Exception)

@@ -52,6 +52,36 @@ This is the backend foundation for the Automated Gaming Media Discovery and Qual
 - **Real PostgreSQL requirement**: To accurately evaluate transaction commits, JSON storage, and relationship ordering, a real PostgreSQL environment is mandatory. SQLite is not an accurate emulator. 
 - **Offline Unit-Test Limitations**: Tests mock service boundaries ensuring endpoint logic works cleanly offline but they do not execute physical SQL queries on real database records.
 
+## Phase 3A Scope
+- Search Query Generation combining languages, markets, categories, and keyword overrides safely.
+- Abstract search provider interface supporting deterministic offline Mock implementations and live Brave Search wrappers via `httpx`.
+- Environment-configured safety rails: `MAX_SEARCH_CONCURRENCY`, `SEARCH_REQUEST_TIMEOUT_SECONDS`, and `SEARCH_RESULTS_PER_QUERY`.
+- Explicit API Previews mapping error statuses cleanly (e.g. Rate Limits -> 429, Config Issues -> 400).
+- **Explicit Limitation**: Returned sites are merely JSON schemas representing URLs. They are **not** normalized, deduplicated, fetched, classified, or stored inside the PostgreSQL database yet. Automatic discovery jobs are not yet working.
+
+### Preview Endpoints
+#### POST `/api/search/queries/preview`
+Returns generated search queries natively without launching HTTP search fetches.
+
+Example payload:
+```json
+{
+  "market": "UK",
+  "language": "en",
+  "categories": ["esports"],
+  "keywords": ["dota 2 tournament"],
+  "maximum_queries": 5
+}
+```
+
+#### POST `/api/search/results/preview`
+Generates queries and actively retrieves bounded result structures through the selected provider (`mock` or `brave`).
+
+### Testing & Validation
+- Testing executes Mock and Brave Search validations securely via `respx` mocked boundaries avoiding arbitrary network overhead and eliminating the need for paid API credits.
+- Errors emitted dynamically return safe JSON dictionaries reflecting the failure context without dumping credentials or stack-traces.
+- Rate-limiting (HTTP 429) actively extracts `Retry-After` metrics, gracefully awaiting cooldowns natively inside Python via `asyncio.sleep`, shielding upstream engines.
+
 ## Setup Instructions (Windows)
 
 1. **Create and activate a virtual environment:**
