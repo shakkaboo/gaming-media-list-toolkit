@@ -1,8 +1,11 @@
+from typing import Optional
+
 class FetchError(Exception):
-    def __init__(self, message: str, error_code: str, is_retryable: bool = False):
+    def __init__(self, message: str, error_code: str, is_retryable: bool = False, status_code: Optional[int] = None):
         super().__init__(message)
         self.error_code = error_code
         self.is_retryable = is_retryable
+        self.status_code = status_code
 
 class UnsafeURLError(FetchError):
     def __init__(self, message: str, error_code: str):

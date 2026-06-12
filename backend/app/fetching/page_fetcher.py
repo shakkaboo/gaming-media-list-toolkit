@@ -19,7 +19,10 @@ async def _fetch_attempt(
     url: str,
     client: httpx.AsyncClient,
     dns_resolver: DNSResolver,
-    settings
+    settings,
+    allowed_content_types: Optional[Tuple[str, ...]] = None,
+    max_response_bytes: Optional[int] = None,
+    timeout_seconds: Optional[int] = None
 ) -> FetchedPage:
     """
     Executes a single fetch attempt (including redirect following).
@@ -32,6 +35,9 @@ async def _fetch_attempt(
     redirect_count = 0
     final_reg_domain = ""
     
+    if allowed_content_types is None:
+        allowed_content_types = ("text/html", "application/xhtml+xml")
+
     try:
         while True:
             try:
@@ -105,20 +111,20 @@ async def _fetch_attempt(
             raise FetchError("Rate limited", "rate_limited", is_retryable=False)
         elif status_code in (400, 401, 403, 404, 410, 451):
             await response.aclose()
-            raise FetchError(f"HTTP {status_code}", "http_client_error", is_retryable=False)
+            raise FetchError(f"HTTP {status_code}", "http_client_error", is_retryable=False, status_code=status_code)
         elif status_code in (500, 502, 503, 504):
             await response.aclose()
-            raise FetchError(f"HTTP {status_code}", "http_server_error", is_retryable=True)
+            raise FetchError(f"HTTP {status_code}", "http_server_error", is_retryable=True, status_code=status_code)
         elif status_code >= 400:
             await response.aclose()
-            raise FetchError(f"HTTP {status_code}", "unexpected_fetch_error", is_retryable=False)
+            raise FetchError(f"HTTP {status_code}", "unexpected_fetch_error", is_retryable=False, status_code=status_code)
             
         if not content_type_header:
             await response.aclose()
             raise UnsupportedContentTypeError("Missing Content-Type", "missing_content_type")
             
         media_type = content_type_header.split(";")[0].strip().lower()
-        if media_type not in ("text/html", "application/xhtml+xml"):
+        if allowed_content_types and media_type not in allowed_content_types:
             await response.aclose()
             raise UnsupportedContentTypeError(f"Unsupported content type: {media_type}")
             
@@ -182,7 +188,10 @@ async def fetch_page_with_retries(
     url: str,
     client: httpx.AsyncClient,
     dns_resolver: DNSResolver,
-    settings
+    settings,
+    allowed_content_types: Optional[Tuple[str, ...]] = None,
+    max_response_bytes: Optional[int] = None,
+    timeout_seconds: Optional[int] = None
 ) -> FetchedPage:
     
     start_time = time.monotonic()
@@ -192,14 +201,16 @@ async def fetch_page_with_retries(
     
     last_error_code = "unexpected_fetch_error"
     last_error_msg = "Unknown error"
+    last_status_code = 0
     
     while attempts < max_attempts:
         attempts += 1
         try:
-            return await _fetch_attempt(url, client, dns_resolver, settings)
+            return await _fetch_attempt(url, client, dns_resolver, settings, allowed_content_types, max_response_bytes, timeout_seconds)
         except FetchError as e:
             last_error_code = e.error_code
             last_error_msg = str(e)
+            last_status_code = e.status_code or 0
             
             if not e.is_retryable:
                 break
@@ -221,7 +232,7 @@ async def fetch_page_with_retries(
         requested_url=url,
         final_url=norm_url,
         registered_domain=reg_domain,
-        status_code=0,
+        status_code=last_status_code,
         content_type=None,
         content_length=None,
         html=None,

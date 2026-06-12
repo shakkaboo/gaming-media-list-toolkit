@@ -42,6 +42,8 @@ class FetchRequest(BaseModel):
     maximum_candidates: Optional[int] = None
     use_homepage_url: bool = True
     include_html_preview: bool = False
+    allowed_content_types: Optional[List[str]] = None
+    max_response_bytes: Optional[int] = None
 
 class FetchPreviewResponse(BaseModel):
     results: List[PageFetchPreview]

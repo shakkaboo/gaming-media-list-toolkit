@@ -67,6 +67,25 @@ class Settings(BaseSettings):
     GAMING_MEDIA_UNCERTAIN_THRESHOLD: int = Field(40, ge=0, le=100)
     DEFAULT_MINIMUM_PAGEVIEWS: int = 1000000
 
+    # Phase 3E: Contact Discovery & Extraction Limits
+    MAX_CONTACT_CANDIDATES: int = Field(50, gt=0)
+    MAX_CONTACT_PAGES_PER_SITE: int = Field(5, gt=0)
+    MAX_CONTACT_LINKS_ANALYZED: int = Field(300, gt=0)
+    MAX_CONTACT_CONCURRENCY: int = Field(4, gt=0)
+    MAX_CONTACT_FETCHES_PER_HOST: int = Field(1, gt=0)
+    MAX_CONTACT_HTML_RESPONSE_BYTES: int = Field(1048576, gt=0)
+    MAX_ROBOTS_RESPONSE_BYTES: int = Field(131072, gt=0)
+    CONTACT_DISCOVERY_TIMEOUT_SECONDS: int = Field(30, gt=0)
+    CONTACT_PAGE_FETCH_TIMEOUT_SECONDS: int = Field(15, gt=0)
+    MAX_CONTACT_REDIRECTS: int = Field(3, ge=0)
+    MAX_EMAILS_PER_PAGE: int = Field(20, gt=0)
+    MAX_CONTACT_FORMS_PER_PAGE: int = Field(5, gt=0)
+    MAX_CONTACT_EVIDENCE_CHARS: int = Field(300, gt=0)
+    MAX_CONTACT_REASONS: int = Field(10, gt=0)
+    MAX_CONTACT_JSONLD_BLOCKS: int = Field(10, gt=0)
+    MAX_CONTACT_JSONLD_DEPTH: int = Field(8, gt=0)
+    ROBOTS_FAILURE_POLICY: str = Field("deny", pattern="^(allow|deny)$")
+
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
     @field_validator("MAX_FETCHES_PER_HOST")

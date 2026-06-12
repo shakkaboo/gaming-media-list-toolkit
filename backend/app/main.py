@@ -27,7 +27,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-from app.api import health, discovery_jobs, websites, search, fetch, verification
+from app.api import health, discovery_jobs, websites, search, fetch, verification, contacts
 
 app.include_router(health.router, prefix=settings.API_PREFIX)
 app.include_router(discovery_jobs.router, prefix=settings.API_PREFIX)
@@ -35,6 +35,7 @@ app.include_router(websites.router, prefix=settings.API_PREFIX)
 app.include_router(search.router, prefix=settings.API_PREFIX)
 app.include_router(fetch.router, prefix=settings.API_PREFIX)
 app.include_router(verification.router, prefix=settings.API_PREFIX)
+app.include_router(contacts.router, prefix=settings.API_PREFIX)
 
 from app.exceptions import ResourceNotFoundError, DuplicateResourceError, InvalidOperationError
 from app.providers.search.exceptions import (

@@ -102,7 +102,13 @@ class FetchService:
                 async def _inner():
                     async with self.global_semaphore:
                         async with host_sem:
-                            return await fetch_page_with_retries(url, client, dns_resolver, settings)
+                            act = tuple(request.allowed_content_types) if request.allowed_content_types else None
+                            mrb = request.max_response_bytes
+                            return await fetch_page_with_retries(
+                                url, client, dns_resolver, settings,
+                                allowed_content_types=act,
+                                max_response_bytes=mrb
+                            )
                             
                 try:
                     page = await asyncio.wait_for(_inner(), timeout=settings.FETCH_TOTAL_TIMEOUT_SECONDS)
