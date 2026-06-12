@@ -253,12 +253,12 @@ def upgrade() -> None:
     op.create_index(op.f('ix_processing_errors_stage'), 'processing_errors', ['stage'], unique=False)
     op.create_index(op.f('ix_processing_errors_website_id'), 'processing_errors', ['website_id'], unique=False)
 
-    op.execute("DROP TYPE IF EXISTS discoveryjobstatus CASCADE")
-    op.execute("DROP TYPE IF EXISTS verificationstatus CASCADE")
-    op.execute("DROP TYPE IF EXISTS qualificationstatus CASCADE")
-    op.execute("DROP TYPE IF EXISTS manualreviewstatus CASCADE")
-    op.execute("DROP TYPE IF EXISTS contacttype CASCADE")
-    op.execute("DROP TYPE IF EXISTS processingstage CASCADE")
+    op.execute("DROP TYPE IF EXISTS discoveryjobstatus")
+    op.execute("DROP TYPE IF EXISTS verificationstatus")
+    op.execute("DROP TYPE IF EXISTS qualificationstatus")
+    op.execute("DROP TYPE IF EXISTS manualreviewstatus")
+    op.execute("DROP TYPE IF EXISTS contacttype")
+    op.execute("DROP TYPE IF EXISTS processingstage")
 
     # ### end Alembic commands ###
 
