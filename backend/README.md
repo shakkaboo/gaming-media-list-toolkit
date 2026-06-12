@@ -123,6 +123,14 @@ Example payload:
 - **Explicit Security Limitations**: Contains a known Time-of-Check to Time-of-Use (TOCTOU) DNS-rebinding gap since `httpx` internally re-resolves the IP after initial validation. Perfect protection requires customized low-level transport.
 - **Explicit Feature Limitations**: Performs **no** gaming media classification, contact extraction, traffic metric lookups, recursive crawling, or PostgreSQL database writes.
 
+## Phase 3D Scope
+- **Offline HTML Verification**: Analyzes fetched homepage HTML completely offline using `beautifulsoup4` and deterministic rule-based algorithms. Does NOT execute JavaScript, invoke headless browsers, or make subsequent outbound network requests.
+- **Bounded Safety Limits**: Implements strict analysis caps (`MAX_VERIFICATION_HTML_CHARS`, `MAX_ANALYZED_ANCHORS`, `MAX_ANALYZED_HEADINGS`, `MAX_JSONLD_BLOCK_CHARS`) protecting against memory exhaustion from pathological payloads.
+- **Combined Orchestration**: Exposes `POST /api/verification/preview` accepting normalized search candidates. This endpoint safely orchestrates the `FetchService` to grab homepage HTML and immediately passes successful fetches to the `VerificationService`. Raw HTML is retained strictly server-side and never returned in the API response.
+- **Multi-dimensional Scoring Model**: Computes independent sub-scores for gaming relevance, editorial structure, publication identity, and recent activity alongside applying massive penalties for e-commerce, developer studios, and casinos. Produces a clamped 0-100 aggregate score.
+- **Confidence & Transparency**: Calculates a synthetic confidence metric (0.0 to 1.0) and emits explicitly structured `VerificationReason` objects supporting transparent debugging of automated decisions.
+- **Explicit Limitations**: Does NOT write verification results to PostgreSQL. Does NOT perform secondary contact page crawling. Relies entirely on basic static rule sets rather than machine learning models.
+
 ## Setup Instructions (Windows)
 
 1. **Create and activate a virtual environment:**

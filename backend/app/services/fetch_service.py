@@ -1,5 +1,5 @@
 import asyncio
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Tuple
 from collections import defaultdict
 import httpx
 from datetime import datetime, timezone
@@ -53,7 +53,7 @@ class FetchService:
         async with self.host_semaphores_lock:
             return self.host_semaphores[host]
 
-    async def fetch_preview(self, request: FetchRequest) -> FetchPreviewResponse:
+    async def fetch_pages(self, request: FetchRequest) -> Tuple[List[FetchedPage], int]:
         settings = self.settings
         
         candidates = request.candidates
@@ -81,7 +81,7 @@ class FetchService:
             pool=settings.FETCH_POOL_TIMEOUT_SECONDS
         )
         
-        results: List[PageFetchPreview] = []
+        results: List[FetchedPage] = []
         
         async with httpx.AsyncClient(
             transport=transport,
@@ -92,7 +92,7 @@ class FetchService:
             headers={"User-Agent": settings.FETCH_USER_AGENT, "Accept": "text/html, application/xhtml+xml"}
         ) as client:
             
-            async def fetch_single(candidate: NormalizedCandidate) -> PageFetchPreview:
+            async def fetch_single(candidate: NormalizedCandidate) -> FetchedPage:
                 url = candidate.homepage_url if request.use_homepage_url else candidate.normalized_url
                 reg_domain = candidate.registered_domain
                 
@@ -164,7 +164,7 @@ class FetchService:
                         safe_error=f"Unexpected failure: {e}"
                     )
                     
-                return _convert_to_preview(page, request.include_html_preview, settings.FETCH_PREVIEW_MAX_CHARS)
+                return page
                 
             tasks = [fetch_single(c) for c in candidates]
             fetched = await asyncio.gather(*tasks, return_exceptions=True)
@@ -175,6 +175,16 @@ class FetchService:
                 else:
                     results.append(item)
                     
+        return results, skipped_count
+
+    async def fetch_preview(self, request: FetchRequest) -> FetchPreviewResponse:
+        pages, skipped_count = await self.fetch_pages(request)
+        
+        results = [
+            _convert_to_preview(p, request.include_html_preview, self.settings.FETCH_PREVIEW_MAX_CHARS)
+            for p in pages
+        ]
+        
         success_count = sum(1 for r in results if r.success)
         failure_count = len(results) - success_count
         
