@@ -9,7 +9,9 @@ from app.models.enums import VerificationStatus, QualificationStatus, ManualRevi
 class Website(Base, UUIDMixin, TimestampMixin):
     __tablename__ = "websites"
 
-    domain: Mapped[str] = mapped_column(String, unique=True, nullable=False, index=True)
+    domain: Mapped[str] = mapped_column(String, index=True, nullable=False)
+    canonical_key: Mapped[str] = mapped_column(String, unique=True, index=True, nullable=False)
+    is_multitenant: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False, server_default="false")
     homepage_url: Mapped[str] = mapped_column(Text, nullable=False)
     
     name: Mapped[Optional[str]] = mapped_column(String, nullable=True)

@@ -36,13 +36,13 @@ def test_all_expected_tables_registered():
     for table in expected_tables:
         assert table in registered_tables, f"Missing table: {table}"
 
-def test_websites_domain_is_unique():
+def test_websites_canonical_key_is_unique():
     table = Website.__table__
-    domain_col = table.columns["domain"]
-    assert domain_col.unique or any(
-        idx.unique and [c.name for c in idx.columns] == ["domain"]
+    col = table.columns["canonical_key"]
+    assert col.unique or any(
+        idx.unique and [c.name for c in idx.columns] == ["canonical_key"]
         for idx in table.indexes
-    ), "Domain must be unique"
+    ), "canonical_key must be unique"
 
 def test_required_foreign_keys_exist():
     # Check a few critical FKs

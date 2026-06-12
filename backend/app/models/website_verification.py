@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime
 from typing import Optional, List, Any
-from sqlalchemy import String, Integer, Text, DateTime, JSON, Enum, Numeric, ForeignKey, CheckConstraint, Index
+from sqlalchemy import String, Integer, Text, DateTime, JSON, Enum, Numeric, ForeignKey, CheckConstraint, Index, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.models.base import Base, UUIDMixin, get_utc_now
@@ -27,6 +27,7 @@ class WebsiteVerification(Base, UUIDMixin):
     
     activity_status: Mapped[Optional[str]] = mapped_column(String, nullable=True)
     classifier_version: Mapped[str] = mapped_column(String, nullable=False)
+    attempt_number: Mapped[int] = mapped_column(Integer, default=1, nullable=False, server_default="1")
     
     homepage_title: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
     homepage_description: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
@@ -39,4 +40,5 @@ class WebsiteVerification(Base, UUIDMixin):
         CheckConstraint("score >= 0 AND score <= 100", name="chk_wv_score"),
         CheckConstraint("confidence >= 0 AND confidence <= 1", name="chk_wv_conf"),
         CheckConstraint("length(classifier_version) > 0", name="chk_wv_ver"),
+        UniqueConstraint("website_id", "discovery_job_id", "attempt_number", "classifier_version", name="uq_wv_job_site_attempt_version"),
     )

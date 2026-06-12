@@ -43,11 +43,16 @@ class Contact(Base, UUIDMixin):
             "email IS NOT NULL OR contact_form_url IS NOT NULL OR social_url IS NOT NULL",
             name="chk_cnt_method_exists"
         ),
-        # Partial unique index to prevent duplicate emails from the same source for the same website
         Index(
-            "uix_contact_email_source",
-            "website_id", "email", "source_url",
+            "ix_contacts_unique_email",
+            "website_id", text("lower(email)"),
             unique=True,
             postgresql_where=text("email IS NOT NULL")
+        ),
+        Index(
+            "ix_contacts_unique_form",
+            "website_id", "contact_form_url",
+            unique=True,
+            postgresql_where=text("contact_form_url IS NOT NULL")
         )
     )

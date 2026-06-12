@@ -14,18 +14,18 @@ class DiscoveryJob(Base, UUIDMixin, TimestampMixin):
         default=DiscoveryJobStatus.pending,
         nullable=False
     )
-    
+
     target_market: Mapped[str] = mapped_column(String, nullable=False)
     language: Mapped[str] = mapped_column(String, nullable=False)
     categories: Mapped[List[Any]] = mapped_column(JSON, nullable=False)
-    
+
     minimum_pageviews: Mapped[int] = mapped_column(BigInteger, nullable=False)
     maximum_queries: Mapped[int] = mapped_column(Integer, nullable=False)
     results_per_query: Mapped[int] = mapped_column(Integer, nullable=False)
-    
+
     search_provider: Mapped[str] = mapped_column(String, nullable=False)
     traffic_provider: Mapped[str] = mapped_column(String, nullable=False)
-    
+
     # Counters
     queries_generated: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     queries_completed: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
@@ -39,19 +39,23 @@ class DiscoveryJob(Base, UUIDMixin, TimestampMixin):
     sites_upcoming: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     sites_traffic_missing: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     errors_count: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
-    
+
+    attempt_number: Mapped[int] = mapped_column(Integer, default=0, nullable=False, server_default="0")
+    websites_uncertain: Mapped[int] = mapped_column(Integer, default=0, nullable=False, server_default="0")
+    contacts_found: Mapped[int] = mapped_column(Integer, default=0, nullable=False, server_default="0")
+
     # Timestamps
     started_at: Mapped[Optional[datetime]] = mapped_column(DateTime(timezone=True), nullable=True)
     completed_at: Mapped[Optional[datetime]] = mapped_column(DateTime(timezone=True), nullable=True)
-    
+
     # Optional
     failure_message: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
-    
+
     # Relationships
     search_queries: Mapped[List["SearchQuery"]] = relationship("SearchQuery", back_populates="discovery_job", cascade="all, delete-orphan")
     discovery_sources: Mapped[List["DiscoverySource"]] = relationship("DiscoverySource", back_populates="discovery_job", cascade="all, delete-orphan")
     processing_errors: Mapped[List["ProcessingError"]] = relationship("ProcessingError", back_populates="discovery_job")
-    
+
     __table_args__ = (
         CheckConstraint("minimum_pageviews >= 0", name="chk_dj_min_pv"),
         CheckConstraint("maximum_queries > 0", name="chk_dj_max_queries"),
