@@ -13,7 +13,11 @@ settings = get_settings()
 configure_logging()
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title=settings.APP_NAME)
+app = FastAPI(
+    title=settings.APP_NAME,
+    description="Gaming Media Discovery & Qualification API",
+    version="0.1.0",
+)
 
 app.add_middleware(
     CORSMiddleware,
@@ -23,12 +27,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-from app.api import health, discovery_jobs, websites, search
+from app.api import health, discovery_jobs, websites, search, fetch
 
 app.include_router(health.router, prefix=settings.API_PREFIX)
 app.include_router(discovery_jobs.router, prefix=settings.API_PREFIX)
 app.include_router(websites.router, prefix=settings.API_PREFIX)
 app.include_router(search.router, prefix=settings.API_PREFIX)
+app.include_router(fetch.router, prefix=settings.API_PREFIX)
 
 from app.exceptions import ResourceNotFoundError, DuplicateResourceError, InvalidOperationError
 from app.providers.search.exceptions import (

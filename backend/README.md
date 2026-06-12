@@ -110,6 +110,19 @@ Example payload:
 }
 ```
 
+## Phase 3C Scope
+- **Safe Asynchronous Fetching**: Safely fetches bounded homepage HTML content for normalized candidates.
+- **Separate Fetch-Preview Endpoint**: Exposed via `POST /api/fetch/preview` accepting normalized candidates directly, decoupled from search execution.
+- **Internal vs Public Scope**: Retains full, bounded HTML internally up to `MAX_HTML_RESPONSE_BYTES` (2MB). Exposes only truncated `html_preview` to public clients.
+- **SSRF Protections & DNS Validation**: Pre-validates hostnames to prevent metadata scraping. Re-resolves hostnames safely with `socket.getaddrinfo`, blocking loopback, private ranges, link-local IPs, etc., before establishing connections.
+- **Redirect Validation**: Follows up to 5 redirects manually to prevent redirect-based SSRF. Blocks HTTPS downgrades.
+- **Streaming & Content Limits**: Streams responses via `httpx` checking declared and decompressed size. Blocks fetching anything other than `text/html` and `application/xhtml+xml`.
+- **TLS Enforcement**: Mandates strict TLS validation (`verify=True`).
+- **Retry Behavior**: Bounded exponential backoff with capped delays, explicitly handling 500, 502, 503, 504 and transient timeouts. Does NOT retry on 4xx, oversized payloads, or decoding errors.
+- **Robots Policy Deferral**: Defers `robots.txt` enforcement to a later contact crawling phase (Phase 4), treating this bounded homepage lookup similar to a user navigation.
+- **Explicit Security Limitations**: Contains a known Time-of-Check to Time-of-Use (TOCTOU) DNS-rebinding gap since `httpx` internally re-resolves the IP after initial validation. Perfect protection requires customized low-level transport.
+- **Explicit Feature Limitations**: Performs **no** gaming media classification, contact extraction, traffic metric lookups, recursive crawling, or PostgreSQL database writes.
+
 ## Setup Instructions (Windows)
 
 1. **Create and activate a virtual environment:**

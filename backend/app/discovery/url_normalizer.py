@@ -34,8 +34,9 @@ def validate_and_normalize_url(raw_url: str) -> Tuple[str, str, str, Optional[st
         raise NormalizationError("invalid_url", "URL contains control characters or null bytes")
         
     url_to_parse = raw_url.strip()
+    url_lower = url_to_parse.lower()
     
-    if not url_to_parse.startswith("http://") and not url_to_parse.startswith("https://"):
+    if not url_lower.startswith("http://") and not url_lower.startswith("https://"):
         if url_to_parse.startswith("//"):
             raise NormalizationError("invalid_url", "Protocol-relative URLs are not supported")
         if "://" in url_to_parse:
@@ -46,6 +47,7 @@ def validate_and_normalize_url(raw_url: str) -> Tuple[str, str, str, Optional[st
 
     try:
         parsed = urllib.parse.urlsplit(url_to_parse)
+        _ = parsed.port
     except ValueError:
         raise NormalizationError("invalid_url", "Failed to parse URL")
         

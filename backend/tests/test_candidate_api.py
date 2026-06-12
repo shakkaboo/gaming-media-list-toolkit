@@ -27,9 +27,9 @@ def test_candidate_preview_api_with_mock_provider():
     
     # Since we use mock provider, the results are deterministic
     # The mock provider generates things like example.com, youtube.com, etc.
-    # We expect youtube.com to be rejected.
+    # We expect twitter.com to be rejected.
     rejected = [r["original_url"] for r in data.get("rejected_candidates", [])]
-    assert any("youtube.com" in r for r in rejected)
+    assert any("twitter.com" in r for r in rejected)
     
     assert data["accepted_count"] > 0
     assert data["provider"] == "mock"

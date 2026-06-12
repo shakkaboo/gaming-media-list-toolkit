@@ -29,9 +29,22 @@ class Settings(BaseSettings):
 
     TRAFFIC_PROVIDER: str = "mock"
 
-    REQUEST_TIMEOUT_SECONDS: int = 10
-    MAX_FETCH_CONCURRENCY: int = 5
-    MAX_RESPONSE_BYTES: int = 5242880
+    MAX_FETCH_CONCURRENCY: int = Field(5, gt=0)
+    MAX_FETCHES_PER_HOST: int = Field(2, gt=0)
+    FETCH_DNS_TIMEOUT_SECONDS: int = Field(3, gt=0)
+    FETCH_CONNECT_TIMEOUT_SECONDS: int = Field(5, gt=0)
+    FETCH_READ_TIMEOUT_SECONDS: int = Field(10, gt=0)
+    FETCH_WRITE_TIMEOUT_SECONDS: int = Field(5, gt=0)
+    FETCH_POOL_TIMEOUT_SECONDS: int = Field(5, gt=0)
+    FETCH_TOTAL_TIMEOUT_SECONDS: int = Field(20, gt=0)
+    MAX_FETCH_REDIRECTS: int = Field(5, ge=0, le=10)
+    MAX_HTML_RESPONSE_BYTES: int = Field(2097152, gt=0)
+    FETCH_PREVIEW_MAX_CHARS: int = Field(5000, gt=0)
+    MAX_FETCH_CANDIDATES: int = Field(50, gt=0)
+    FETCH_MAX_RETRIES: int = Field(2, ge=0, le=5)
+    FETCH_RETRY_BASE_DELAY_SECONDS: float = Field(0.5, ge=0.0)
+    FETCH_MAX_RETRY_DELAY_SECONDS: float = Field(3.0, ge=0.0)
+    FETCH_USER_AGENT: str = Field("GamingMediaDiscoveryBot/0.1 (+local research tool)", min_length=1, max_length=200)
     
     GAMING_MEDIA_VERIFIED_THRESHOLD: int = 70
     GAMING_MEDIA_UNCERTAIN_THRESHOLD: int = 40
@@ -39,19 +52,36 @@ class Settings(BaseSettings):
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
+    @field_validator("MAX_FETCHES_PER_HOST")
+    @classmethod
+    def validate_host_concurrency(cls, v: int, info) -> int:
+        max_c = info.data.get("MAX_FETCH_CONCURRENCY", 5)
+        if v > max_c:
+            raise ValueError("MAX_FETCHES_PER_HOST must not exceed MAX_FETCH_CONCURRENCY")
+        return v
+        
+    @field_validator("FETCH_PREVIEW_MAX_CHARS")
+    @classmethod
+    def validate_preview_chars(cls, v: int, info) -> int:
+        max_b = info.data.get("MAX_HTML_RESPONSE_BYTES", 2097152)
+        if v >= max_b:
+            raise ValueError("FETCH_PREVIEW_MAX_CHARS must be less than MAX_HTML_RESPONSE_BYTES")
+        return v
+        
+    @field_validator("FETCH_MAX_RETRY_DELAY_SECONDS")
+    @classmethod
+    def validate_retry_delay(cls, v: float, info) -> float:
+        base = info.data.get("FETCH_RETRY_BASE_DELAY_SECONDS", 0.5)
+        if v < base:
+            raise ValueError("FETCH_MAX_RETRY_DELAY_SECONDS must be >= FETCH_RETRY_BASE_DELAY_SECONDS")
+        return v
+
     @field_validator("GAMING_MEDIA_VERIFIED_THRESHOLD")
     @classmethod
     def validate_thresholds(cls, v: int, info) -> int:
         uncertain = info.data.get("GAMING_MEDIA_UNCERTAIN_THRESHOLD", 40)
         if v <= uncertain:
             raise ValueError("VERIFIED_THRESHOLD must be greater than UNCERTAIN_THRESHOLD")
-        return v
-
-    @field_validator("REQUEST_TIMEOUT_SECONDS", "MAX_FETCH_CONCURRENCY", "MAX_RESPONSE_BYTES")
-    @classmethod
-    def validate_positive(cls, v: int) -> int:
-        if v <= 0:
-            raise ValueError("Numeric limits must be positive")
         return v
 
     @field_validator("DEFAULT_MINIMUM_PAGEVIEWS")
