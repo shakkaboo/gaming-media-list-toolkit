@@ -79,3 +79,61 @@ class SearchPreviewResponse(BaseModel):
     result_count: int
     provider: str
     errors: List[SearchPreviewError]
+
+class NormalizedCandidate(BaseModel):
+    original_url: str
+    normalized_url: str
+    homepage_url: str
+    registered_domain: str
+    subdomain: Optional[str] = None
+    title: str
+    snippet: Optional[str] = None
+    query_text: str
+    provider: str
+    result_position: int
+    market: Optional[str] = None
+    language: Optional[str] = None
+
+class RejectedCandidate(BaseModel):
+    original_url: str
+    query_text: str
+    provider: str
+    result_position: int
+    reason_code: str
+    safe_reason: str
+
+class DuplicateCandidate(BaseModel):
+    duplicate_url: str
+    kept_url: str
+    deduplication_key: str
+    query_text: str
+    result_position: int
+
+class CandidateProcessingRequest(BaseModel):
+    results: List[SearchResult]
+    additional_blocked_domains: Optional[List[str]] = None
+
+class CandidateProcessingResponse(BaseModel):
+    accepted: List[NormalizedCandidate]
+    rejected: List[RejectedCandidate]
+    duplicates: List[DuplicateCandidate]
+    accepted_count: int
+    rejected_count: int
+    duplicate_count: int
+
+class CandidatePreviewRequest(SearchPreviewRequest):
+    additional_blocked_domains: Optional[List[str]] = None
+    include_rejected: bool = False
+    include_duplicates: bool = False
+
+class CandidatePreviewResponse(BaseModel):
+    generated_queries: List[GeneratedSearchQuery]
+    raw_result_count: int
+    accepted_candidates: List[NormalizedCandidate]
+    rejected_candidates: Optional[List[RejectedCandidate]] = None
+    duplicates: Optional[List[DuplicateCandidate]] = None
+    accepted_count: int
+    rejected_count: int
+    duplicate_count: int
+    provider: str
+    errors: List[SearchPreviewError]

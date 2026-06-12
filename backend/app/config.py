@@ -22,6 +22,11 @@ class Settings(BaseSettings):
     BRAVE_SEARCH_MAX_RETRIES: int = Field(2, ge=0, le=5)
     MAX_SEARCH_CONCURRENCY: int = Field(3, ge=1, le=10)
 
+    MAX_URL_LENGTH: int = 2000
+    MAX_HOST_LENGTH: int = 253
+    ALLOW_NON_STANDARD_PORTS: bool = False
+    MULTITENANT_HOSTING_DOMAINS: set[str] = {"substack.com", "wordpress.com", "blogspot.com"}
+
     TRAFFIC_PROVIDER: str = "mock"
 
     REQUEST_TIMEOUT_SECONDS: int = 10

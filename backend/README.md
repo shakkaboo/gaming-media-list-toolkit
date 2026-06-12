@@ -82,6 +82,34 @@ Generates queries and actively retrieves bounded result structures through the s
 - Errors emitted dynamically return safe JSON dictionaries reflecting the failure context without dumping credentials or stack-traces.
 - Rate-limiting (HTTP 429) actively extracts `Retry-After` metrics, gracefully awaiting cooldowns natively inside Python via `asyncio.sleep`, shielding upstream engines.
 
+## Phase 3B Scope
+- **URL Normalization**: Normalizes schemes and hosts, removes fragments and known tracking parameters (`utm_*`, `gclid`, etc.), while securely extracting registered domains and subdomains using `tldextract`.
+  - Example: `https://WWW.ExampleGaming.COM/news?id=5#top` -> `https://examplegaming.com/news?id=5`
+- **Domain Filtering**: Configurable static blocklists reject infrastructure hosts, social media, streaming platforms, forums, marketplaces, URL shorteners, and search engines.
+- **Multi-tenant Handling**: Multi-tenant platforms (like `substack.com`, `wordpress.com`, `blogspot.com`) use full subdomains for deduplication, while standard sites deduplicate on the registered domain.
+  - *Limitation*: `medium.com` is strictly blocked by default in Phase 3B because its internal publisher identity requires path-based differentiation, which is beyond current domain-level normalization.
+- **Candidate Deduplication**: Winners are chosen by earliest generated query, lowest result position, and HTTPS preference. Duplicates are tracked via counters and optional provenance lists rather than rejected.
+- **Explicit Limitation**: Returned candidates are completely ephemeral API previews. They are **not** fetched for HTML scraping, DNS-resolved, classified via AI, checked for traffic, nor persisted into PostgreSQL storage yet.
+
+### Preview Endpoints
+#### POST `/api/search/candidates/preview`
+Generates search queries, fetches raw URLs (Mock or Brave), normalizes the results, applies blocklist filtering, and executes deduplication.
+
+Example payload:
+```json
+{
+  "market": "UK",
+  "language": "en",
+  "categories": ["esports"],
+  "keywords": ["dota 2 tournament"],
+  "maximum_queries": 5,
+  "results_per_query": 10,
+  "provider": "mock",
+  "include_rejected": true,
+  "include_duplicates": false
+}
+```
+
 ## Setup Instructions (Windows)
 
 1. **Create and activate a virtual environment:**

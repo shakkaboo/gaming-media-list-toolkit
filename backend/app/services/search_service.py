@@ -6,8 +6,11 @@ from app.schemas.search import (
     SearchResult,
     SearchPreviewError,
     QueryGenerationRequest,
-    QueryGenerationResponse
+    QueryGenerationResponse,
+    CandidatePreviewRequest,
+    CandidatePreviewResponse
 )
+from app.services.candidate_processor import process_search_results
 from app.discovery.query_generator import generate_search_queries
 from app.providers.search.factory import get_search_provider
 from app.providers.search.exceptions import SearchProviderError
@@ -74,4 +77,30 @@ async def preview_search(request: SearchPreviewRequest) -> SearchPreviewResponse
         result_count=len(results),
         provider=provider.provider_name,
         errors=errors
+    )
+
+async def preview_candidates(request: CandidatePreviewRequest) -> CandidatePreviewResponse:
+    search_preview_resp = await preview_search(request)
+
+    processing_resp = process_search_results(
+        results=search_preview_resp.results,
+        additional_blocked_domains=request.additional_blocked_domains,
+        market=request.market,
+        language=request.language
+    )
+
+    rejected_out = processing_resp.rejected if request.include_rejected else None
+    duplicates_out = processing_resp.duplicates if request.include_duplicates else None
+
+    return CandidatePreviewResponse(
+        generated_queries=search_preview_resp.generated_queries,
+        raw_result_count=search_preview_resp.result_count,
+        accepted_candidates=processing_resp.accepted,
+        rejected_candidates=rejected_out,
+        duplicates=duplicates_out,
+        accepted_count=processing_resp.accepted_count,
+        rejected_count=processing_resp.rejected_count,
+        duplicate_count=processing_resp.duplicate_count,
+        provider=search_preview_resp.provider,
+        errors=search_preview_resp.errors
     )
