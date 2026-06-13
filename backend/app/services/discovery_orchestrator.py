@@ -134,10 +134,10 @@ class DiscoveryOrchestrator:
             db_queries = persistence.persist_generated_queries(job_id, generated)
             query_tuples = [
                 (
-                    q.id, 
-                    q.query_text, 
-                    getattr(q.status, 'value', str(q.status)), 
-                    q.provider, 
+                    q.id,
+                    q.query_text,
+                    getattr(q.status, 'value', str(q.status)),
+                    q.provider,
                     q.requested_limit,
                     q.category or "unknown"
                 ) for q in db_queries
@@ -163,20 +163,20 @@ class DiscoveryOrchestrator:
                     market=market,
                     language=language
                 )
-                
+
                 with self.session_factory() as session:
                     persistence = DiscoveryPersistenceService(session)
                     for candidate in processing_resp.accepted:
                         upsert_res = persistence.upsert_website(candidate)
-                        
+
                         from app.models.discovery_job import DiscoveryJob
                         from app.models.search_query import SearchQuery
                         job = session.get(DiscoveryJob, job_id)
                         query = session.get(SearchQuery, q_id)
-                        
+
                         persistence.persist_discovery_source(
-                            job=job, 
-                            query=query, 
+                            job=job,
+                            query=query,
                             website=upsert_res.website,
                             candidate=candidate
                         )
@@ -216,12 +216,55 @@ class DiscoveryOrchestrator:
                 use_homepage_url=True,
                 include_html_preview=False
             )
-            fetched_pages, _ = await self.fetch_service.fetch_pages(fetch_req)
-            if not fetched_pages:
-                continue
-            
-            page = fetched_pages[0]
-            if not page.success:
+
+            page = None
+            verif_result = None
+
+            try:
+                fetched_pages, _ = await self.fetch_service.fetch_pages(fetch_req)
+                if fetched_pages:
+                    page = fetched_pages[0]
+            except Exception as e:
+                error_code = "fetch_crash"
+                safe_msg = str(e)[:200]
+                with self.session_factory() as session:
+                    persistence = DiscoveryPersistenceService(session)
+                    persistence.record_processing_error(
+                        job_id=job_id,
+                        attempt_number=attempt_number,
+                        stage=ProcessingStage.fetching,
+                        error_code=error_code,
+                        safe_message=safe_msg,
+                        retryable=True,
+                        website_id=website_id
+                    )
+                    session.commit()
+
+                from app.schemas.verification import VerificationReason
+                verif_result = VerificationResult(
+                    requested_url=candidate.homepage_url or f"https://{candidate.registered_domain}",
+                    final_url=candidate.homepage_url or f"https://{candidate.registered_domain}",
+                    registered_domain=candidate.registered_domain,
+                    score=0,
+                    verification_status="uncertain",
+                    confidence=0.0,
+                    gaming_relevance_score=0,
+                    editorial_structure_score=0,
+                    activity_score=0,
+                    publication_identity_score=0,
+                    negative_penalty=0,
+                    negative_reasons=[
+                        VerificationReason(code=error_code, message=safe_msg, weight=100, evidence=[])
+                    ],
+                    activity_status="inactive",
+                    article_count_estimate=0,
+                    classifier_version="fallback_v1",
+                    analysed_at=datetime.now(timezone.utc),
+                    fetch_success=False
+                )
+
+            if page and not page.success and not verif_result:
+                # Handle explicit fetch failure
                 with self.session_factory() as session:
                     persistence = DiscoveryPersistenceService(session)
                     persistence.record_processing_error(
@@ -230,27 +273,95 @@ class DiscoveryOrchestrator:
                         stage=ProcessingStage.fetching,
                         error_code=page.error_code or "fetch_failed",
                         safe_message=page.safe_error or "Fetch failed",
-                        retryable=False,
+                        retryable="timeout" in (page.error_code or "").lower() or "timeout" in (page.safe_error or "").lower(),
                         website_id=website_id
                     )
                     session.commit()
-                continue
-                
-            verif_request = VerificationRequest(candidates=[candidate])
-            verif_result = await asyncio.to_thread(
-                self.verification_service._verify_page_sync,
-                page,
-                datetime.now(timezone.utc),
-                verif_request
-            )
-            
+
+                from app.schemas.verification import VerificationReason
+                verif_result = VerificationResult(
+                    requested_url=page.requested_url,
+                    final_url=page.final_url or page.requested_url,
+                    registered_domain=page.registered_domain or candidate.registered_domain,
+                    score=0,
+                    verification_status="uncertain",
+                    confidence=0.0,
+                    gaming_relevance_score=0,
+                    editorial_structure_score=0,
+                    activity_score=0,
+                    publication_identity_score=0,
+                    negative_penalty=0,
+                    negative_reasons=[
+                        VerificationReason(
+                            code="fetch_failed",
+                            message=page.safe_error or "Fetch failed",
+                            weight=100,
+                            evidence=[page.error_code or "unknown"]
+                        )
+                    ],
+                    activity_status="inactive",
+                    article_count_estimate=0,
+                    classifier_version="fallback_v1",
+                    analysed_at=datetime.now(timezone.utc),
+                    fetch_success=False,
+                    fetch_error_code=page.error_code
+                )
+
+            if page and page.success and not verif_result:
+                try:
+                    verif_request = VerificationRequest(candidates=[candidate])
+                    verif_result = await asyncio.to_thread(
+                        self.verification_service._verify_page_sync,
+                        page,
+                        datetime.now(timezone.utc),
+                        verif_request
+                    )
+                except Exception as e:
+                    error_code = "verification_crash"
+                    safe_msg = str(e)[:200]
+                    with self.session_factory() as session:
+                        persistence = DiscoveryPersistenceService(session)
+                        persistence.record_processing_error(
+                            job_id=job_id,
+                            attempt_number=attempt_number,
+                            stage=ProcessingStage.verification,
+                            error_code=error_code,
+                            safe_message=safe_msg,
+                            retryable=False,
+                            website_id=website_id
+                        )
+                        session.commit()
+
+                    from app.schemas.verification import VerificationReason
+                    verif_result = VerificationResult(
+                        requested_url=page.requested_url,
+                        final_url=page.final_url,
+                        registered_domain=page.registered_domain,
+                        score=0,
+                        verification_status="uncertain",
+                        confidence=0.0,
+                        gaming_relevance_score=0,
+                        editorial_structure_score=0,
+                        activity_score=0,
+                        publication_identity_score=0,
+                        negative_penalty=0,
+                        negative_reasons=[
+                            VerificationReason(code=error_code, message=safe_msg, weight=100, evidence=[])
+                        ],
+                        activity_status="inactive",
+                        article_count_estimate=0,
+                        classifier_version="fallback_v1",
+                        analysed_at=datetime.now(timezone.utc),
+                        fetch_success=True
+                    )
+
             with self.session_factory() as session:
                 persistence = DiscoveryPersistenceService(session)
                 from app.models.website import Website
                 from app.models.discovery_job import DiscoveryJob
                 website = session.get(Website, website_id)
                 job = session.get(DiscoveryJob, job_id)
-                
+
                 class VerificationResultAdapter:
                     def __init__(self, vr):
                         self.status = vr.verification_status
@@ -265,9 +376,9 @@ class DiscoveryOrchestrator:
                             title = None
                             description = None
                         self.metadata = Meta()
-                
+
                 adapter = VerificationResultAdapter(verif_result)
-                
+
                 persistence.persist_verification(
                     job=job,
                     website=website,
@@ -296,31 +407,31 @@ class DiscoveryOrchestrator:
             from app.models.search_query import SearchQuery
             from app.models.processing_error import ProcessingError
             from sqlalchemy import select, func
-            
+
             job = session.get(DiscoveryJob, job_id)
-            
+
             queries_total = session.execute(
                 select(func.count()).select_from(SearchQuery).where(SearchQuery.discovery_job_id == job_id)
             ).scalar() or 0
-            
+
             queries_executed = session.execute(
                 select(func.count()).select_from(SearchQuery).where(
                     SearchQuery.discovery_job_id == job_id,
                     SearchQuery.status.in_(["completed", "failed"])
                 )
             ).scalar() or 0
-            
+
             queries_skipped = session.execute(
                 select(func.count()).select_from(SearchQuery).where(
                     SearchQuery.discovery_job_id == job_id,
                     SearchQuery.status == "pending"
                 )
             ).scalar() or 0
-            
+
             errors_count = session.execute(
                 select(func.count()).select_from(ProcessingError).where(ProcessingError.discovery_job_id == job_id)
             ).scalar() or 0
-            
+
             return DiscoveryRunSummary(
                 job_id=job_id,
                 attempt_number=attempt_number,

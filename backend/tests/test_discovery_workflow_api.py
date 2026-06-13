@@ -272,3 +272,52 @@ def test_minimal_workflow_integration(mock_verify, mock_fetch, mock_process, moc
     detail_data = detail_resp.json()
     assert detail_data["candidates_found"] == 1
     assert detail_data["sites_verified"] == 1
+
+@patch("app.services.discovery_orchestrator.get_search_provider")
+@patch("app.services.discovery_orchestrator.process_search_results")
+@patch("app.services.fetch_service.FetchService.fetch_pages")
+def test_workflow_integration_fetch_failure(mock_fetch, mock_process, mock_search_prov):
+    # Setup mocks
+    mock_provider = AsyncMock()
+    mock_provider.search.return_value = [SearchResult(url="https://example.com/indie", title="Example", snippet="...", domain="example.com", query_text="indie games", provider="mock", position=1)]
+    mock_search_prov.return_value = mock_provider
+
+    candidate = NormalizedCandidate(
+        normalized_url="example.com", registered_domain="example.com", homepage_url="https://example.com",
+        original_url="https://example.com/indie", title="Example", query_text="indie games", provider="mock", result_position=1
+    )
+    mock_process.return_value = CandidateProcessingResponse(
+        accepted=[candidate], rejected=[], duplicates=[], accepted_count=1, rejected_count=0, duplicate_count=0
+    )
+
+    # Fetch fails
+    fetched_page = FetchedPage(
+        requested_url="https://example.com", final_url="https://example.com", registered_domain="example.com",
+        status_code=500, content_type=None, content_length=None, html=None, title=None,
+        fetched_at=datetime.now(timezone.utc), redirect_chain=[], redirect_count=0, elapsed_ms=100, success=False,
+        error_code="http_500", safe_error="Server error"
+    )
+    mock_fetch.return_value = ([fetched_page], 0)
+
+    # 1. Create job
+    create_resp = client.post("/api/discovery/jobs", json={
+        "target_market": "US", "language": "en", "categories": ["indie"],
+        "minimum_pageviews": 0, "maximum_queries": 1, "results_per_query": 10
+    })
+    job_id = create_resp.json()["id"]
+
+    # 2. Run endpoint
+    run_resp = client.post(f"/api/discovery/jobs/{job_id}/run")
+    assert run_resp.status_code == 200
+    assert run_resp.json()["final_status"] == "completed_with_errors"
+
+    # 3. Results endpoint
+    results_resp = client.get(f"/api/discovery/jobs/{job_id}/results")
+    assert results_resp.status_code == 200
+    res_data = results_resp.json()
+    assert res_data["total"] == 1
+
+    # Assert verification status is NOT null, it's the fallback "uncertain"
+    item = res_data["items"][0]
+    assert item["verification_status"] == "uncertain"
+    assert item["classifier_version"] == "fallback_v1"

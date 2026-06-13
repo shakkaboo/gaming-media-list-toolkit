@@ -171,10 +171,81 @@ async def test_fetch_failure_records_error(mock_process, mock_get_provider, orch
 
     assert summary.final_status == "completed_with_errors"
     assert summary.errors_count == 1
-    
+
     error = db_session.query(ProcessingError).filter_by(discovery_job_id=pending_job.id).first()
     assert error.stage == ProcessingStage.fetching
     assert error.error_type == "http_500"
+
+    from app.models.website_verification import WebsiteVerification
+    verif = db_session.query(WebsiteVerification).filter_by(discovery_job_id=pending_job.id).first()
+    assert verif is not None
+    assert getattr(verif.status, "value", str(verif.status)) == "uncertain"
+    assert verif.classifier_version == "fallback_v1"
+
+@patch("app.services.discovery_orchestrator.get_search_provider")
+@patch("app.services.discovery_orchestrator.process_search_results")
+@pytest.mark.asyncio
+async def test_fetch_timeout_and_isolation(mock_process, mock_get_provider, orchestrator, pending_job, db_session, mock_fetch_service, mock_verification_service):
+    # Mock search
+    mock_provider = AsyncMock()
+    mock_provider.search.return_value = []
+    mock_get_provider.return_value = mock_provider
+
+    cand1 = NormalizedCandidate(normalized_url="timeout.com", registered_domain="timeout.com", homepage_url="https://timeout.com", original_url="https://timeout.com/1", title="T", query_text="Q", provider="mock", result_position=1)
+    cand2 = NormalizedCandidate(normalized_url="crash.com", registered_domain="crash.com", homepage_url="https://crash.com", original_url="https://crash.com/1", title="C", query_text="Q", provider="mock", result_position=2)
+    cand3 = NormalizedCandidate(normalized_url="good.com", registered_domain="good.com", homepage_url="https://good.com", original_url="https://good.com/1", title="G", query_text="Q", provider="mock", result_position=3)
+
+    mock_process.return_value = CandidateProcessingResponse(
+        accepted=[cand1, cand2, cand3], rejected=[], duplicates=[], accepted_count=3, rejected_count=0, duplicate_count=0
+    )
+
+    # Fetcher behavior
+    async def fetch_pages_side_effect(req):
+        domain = req.candidates[0].registered_domain
+        if domain == "timeout.com":
+            return [FetchedPage(requested_url="https://timeout.com", final_url="https://timeout.com", registered_domain="timeout.com", status_code=0, content_type="", content_length=0, html="", title="", success=False, error_code="timeout", safe_error="Timeout", elapsed_ms=5000, fetched_at=datetime.now(timezone.utc), redirect_chain=[], redirect_count=0)], 0
+        elif domain == "crash.com":
+            raise Exception("Unexpected fetcher crash")
+        else:
+            return [FetchedPage(requested_url="https://good.com", final_url="https://good.com", registered_domain="good.com", status_code=200, content_type="text/html", content_length=10, html="...", title="Good", success=True, error_code=None, safe_error=None, elapsed_ms=100, fetched_at=datetime.now(timezone.utc), redirect_chain=[], redirect_count=0)], 0
+
+    mock_fetch_service.fetch_pages.side_effect = fetch_pages_side_effect
+
+    # Verifier behavior
+    def verify_side_effect(page, dt, req):
+        if page.registered_domain == "good.com":
+            raise Exception("Unexpected verifier crash")
+
+    mock_verification_service._verify_page_sync.side_effect = verify_side_effect
+
+    summary = await orchestrator.run_job(pending_job.id)
+
+    assert summary.final_status == "completed_with_errors"
+    assert summary.websites_processed == 3
+    assert summary.websites_uncertain == 3
+
+    errors = db_session.query(ProcessingError).filter_by(discovery_job_id=pending_job.id).all()
+    assert len(errors) == 3
+
+    print([e.error_type for e in errors])
+    print([e.error_type for e in errors])
+    print([e.error_type for e in errors])
+    print([e.error_type for e in errors])
+    timeout_err = next(e for e in errors if e.error_type == "timeout")
+    assert timeout_err.is_retryable == True
+
+    crash_err = next(e for e in errors if e.error_type == "fetch_crash")
+    assert crash_err.is_retryable == True
+
+    verif_err = next(e for e in errors if e.error_type == "verification_crash")
+    assert verif_err.is_retryable == False
+
+    from app.models.website_verification import WebsiteVerification
+    verifs = db_session.query(WebsiteVerification).filter_by(discovery_job_id=pending_job.id).all()
+    assert len(verifs) == 3
+    for v in verifs:
+        assert getattr(v.status, "value", str(v.status)) == "uncertain"
+        assert v.classifier_version == "fallback_v1"
 
 @patch("app.services.discovery_orchestrator.get_search_provider")
 @patch("app.services.discovery_orchestrator.process_search_results")
@@ -224,20 +295,20 @@ async def test_orchestrator_passes_generated_search_query(mock_get_provider, orc
     mock_provider = AsyncMock()
     mock_provider.search.return_value = []
     mock_get_provider.return_value = mock_provider
-    
+
     await orchestrator.run_job(pending_job.id)
-    
+
     # Verify the provider received a GeneratedSearchQuery, not a string
     assert mock_provider.search.call_count == 5
     first_call_args = mock_provider.search.call_args_list[0][0]
     provider_query = first_call_args[0]
-    
+
     from app.schemas.search import GeneratedSearchQuery
     assert isinstance(provider_query, GeneratedSearchQuery)
     assert provider_query.market == "US"
     assert provider_query.language == "en"
     assert provider_query.query_text != ""
-    
+
     limit = first_call_args[1]
     assert limit == 10
 
@@ -248,28 +319,28 @@ async def test_failed_query_is_retried(mock_get_provider, orchestrator, pending_
     # First attempt: search fails
     mock_provider.search.side_effect = Exception("Provider timeout")
     mock_get_provider.return_value = mock_provider
-    
+
     summary_1 = await orchestrator.run_job(pending_job.id)
     assert summary_1.final_status == "completed_with_errors"
     assert summary_1.queries_executed == 5 # Failed counts as executed in attempt
-    
+
     queries = db_session.query(SearchQuery).filter_by(discovery_job_id=pending_job.id).all()
     assert all(q.status == "failed" for q in queries)
     assert all(q.attempt_count == 1 for q in queries)
-    
+
     # Second attempt: search succeeds
     mock_provider.search.side_effect = None
     mock_provider.search.return_value = []
-    
+
     # We must mark the job back to pending or failed so we can start it again
     from sqlalchemy import update
     db_session.execute(update(DiscoveryJob).where(DiscoveryJob.id == pending_job.id).values(status=DiscoveryJobStatus.failed))
     db_session.commit()
-    
+
     summary_2 = await orchestrator.run_job(pending_job.id)
     # The job had errors on attempt 1, so the final status of the job will be "completed_with_errors"
     assert summary_2.final_status == "completed_with_errors"
-    
+
     queries_after = db_session.query(SearchQuery).filter_by(discovery_job_id=pending_job.id).all()
     assert all(q.status == "completed" for q in queries_after)
     assert all(q.attempt_count == 2 for q in queries_after)
