@@ -290,7 +290,7 @@ async def test_duplicate_results_single_website(mock_process, mock_get_provider,
 
     assert summary.websites_discovered == 1  # Deduped to 1
     assert db_session.query(Website).count() == 1
-    assert db_session.query(DiscoverySource).count() == 10  # 5 queries * 2 candidates
+    assert db_session.query(DiscoverySource).count() == 1  # With new_websites_only=True, it's skipped after query 1
 
 @patch("app.services.discovery_orchestrator.get_search_provider")
 @pytest.mark.asyncio

@@ -17,3 +17,5 @@ class DiscoveryRunSummary(BaseModel):
     sites_upcoming: int = 0
     sites_traffic_missing: int = 0
     errors_count: int
+    known_domains_skipped: int = 0
+    duplicate_candidates_skipped: int = 0

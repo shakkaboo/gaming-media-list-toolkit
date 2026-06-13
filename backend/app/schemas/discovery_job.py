@@ -12,6 +12,7 @@ class DiscoveryJobCreate(BaseModel):
     minimum_pageviews: int = Field(0, ge=0)
     maximum_queries: int = Field(10, ge=1, le=100)
     results_per_query: int = Field(10, ge=1, le=50)
+    new_websites_only: bool = Field(True)
 
     @field_validator('target_market', 'language')
     def trim_and_check_blank(cls, v: str) -> str:
@@ -54,6 +55,9 @@ class DiscoveryJobSummary(BaseModel):
     sites_traffic_missing: int
     contacts_found: int
     errors_count: int
+    known_domains_skipped: int
+    duplicate_candidates_skipped: int
+    new_websites_only: bool
     created_at: datetime
     started_at: Optional[datetime] = None
     completed_at: Optional[datetime] = None

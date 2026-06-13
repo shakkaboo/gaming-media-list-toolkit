@@ -1,6 +1,6 @@
 from typing import List, Optional, Any
 from datetime import datetime
-from sqlalchemy import String, Integer, BigInteger, Text, DateTime, JSON, Enum, CheckConstraint
+from sqlalchemy import String, Integer, BigInteger, Text, DateTime, JSON, Enum, CheckConstraint, Boolean
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.models.base import Base, UUIDMixin, TimestampMixin
@@ -26,6 +26,8 @@ class DiscoveryJob(Base, UUIDMixin, TimestampMixin):
     search_provider: Mapped[str] = mapped_column(String, nullable=False)
     traffic_provider: Mapped[str] = mapped_column(String, nullable=False)
 
+    new_websites_only: Mapped[bool] = mapped_column(Boolean, default=True, server_default="true", nullable=False)
+
     # Counters
     queries_generated: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     queries_completed: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
@@ -43,6 +45,8 @@ class DiscoveryJob(Base, UUIDMixin, TimestampMixin):
     attempt_number: Mapped[int] = mapped_column(Integer, default=0, nullable=False, server_default="0")
     websites_uncertain: Mapped[int] = mapped_column(Integer, default=0, nullable=False, server_default="0")
     contacts_found: Mapped[int] = mapped_column(Integer, default=0, nullable=False, server_default="0")
+    known_domains_skipped: Mapped[int] = mapped_column(Integer, default=0, nullable=False, server_default="0")
+    duplicate_candidates_skipped: Mapped[int] = mapped_column(Integer, default=0, nullable=False, server_default="0")
 
     # Timestamps
     started_at: Mapped[Optional[datetime]] = mapped_column(DateTime(timezone=True), nullable=True)
@@ -72,4 +76,6 @@ class DiscoveryJob(Base, UUIDMixin, TimestampMixin):
         CheckConstraint("sites_upcoming >= 0", name="chk_dj_su"),
         CheckConstraint("sites_traffic_missing >= 0", name="chk_dj_stm"),
         CheckConstraint("errors_count >= 0", name="chk_dj_ec"),
+        CheckConstraint("known_domains_skipped >= 0", name="chk_dj_kds"),
+        CheckConstraint("duplicate_candidates_skipped >= 0", name="chk_dj_dcs"),
     )

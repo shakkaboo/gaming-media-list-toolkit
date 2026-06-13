@@ -30,7 +30,7 @@ async def test_mock_provider(sample_query):
     assert len(results) == 3
     assert results[0].provider == "mock"
     assert results[0].query_text == "RPG news"
-    
+
     all_results = await provider.search(sample_query, limit=10)
     urls = [r.url for r in all_results]
     assert any("duplicate/article" in u for u in urls)
@@ -46,7 +46,7 @@ async def test_brave_provider_success(mock_get_settings, sample_query):
     mock_get_settings.return_value.BRAVE_SEARCH_SAFESEARCH = "moderate"
     mock_get_settings.return_value.BRAVE_SEARCH_FRESHNESS = None
     mock_get_settings.return_value.BRAVE_SEARCH_MAX_RETRIES = 2
-    
+
     respx.get("https://api.search.brave.com/res/v1/web/search").mock(return_value=httpx.Response(200, json={
         "web": {
             "results": [
@@ -59,10 +59,10 @@ async def test_brave_provider_success(mock_get_settings, sample_query):
             ]
         }
     }))
-    
+
     provider = BraveSearchProvider()
     results = await provider.search(sample_query, limit=1)
-    
+
     assert len(results) == 1
     assert results[0].url == "https://example.com/1"
     assert results[0].published_at is not None
@@ -77,9 +77,9 @@ async def test_brave_provider_401(mock_get_settings, sample_query):
     mock_get_settings.return_value.BRAVE_SEARCH_SAFESEARCH = "moderate"
     mock_get_settings.return_value.BRAVE_SEARCH_FRESHNESS = None
     mock_get_settings.return_value.BRAVE_SEARCH_MAX_RETRIES = 2
-    
+
     respx.get("https://api.search.brave.com/res/v1/web/search").mock(return_value=httpx.Response(401))
-    
+
     provider = BraveSearchProvider()
     with pytest.raises(SearchProviderConfigurationError):
         await provider.search(sample_query, limit=1)
@@ -94,10 +94,10 @@ async def test_brave_provider_429(mock_get_settings, sample_query):
     mock_get_settings.return_value.BRAVE_SEARCH_SAFESEARCH = "moderate"
     mock_get_settings.return_value.BRAVE_SEARCH_FRESHNESS = None
     mock_get_settings.return_value.BRAVE_SEARCH_MAX_RETRIES = 2
-    
+
     # Retry-After is > 5s, so it should raise immediately
     respx.get("https://api.search.brave.com/res/v1/web/search").mock(return_value=httpx.Response(429, headers={"Retry-After": "10"}))
-    
+
     provider = BraveSearchProvider()
     with pytest.raises(SearchProviderRateLimitError):
         await provider.search(sample_query, limit=1)
@@ -112,14 +112,48 @@ async def test_brave_provider_500_retry(mock_get_settings, sample_query):
     mock_get_settings.return_value.BRAVE_SEARCH_SAFESEARCH = "moderate"
     mock_get_settings.return_value.BRAVE_SEARCH_FRESHNESS = None
     mock_get_settings.return_value.BRAVE_SEARCH_MAX_RETRIES = 1
-    
+
     route = respx.get("https://api.search.brave.com/res/v1/web/search")
     route.side_effect = [
         httpx.Response(500),
         httpx.Response(200, json={"web": {"results": []}})
     ]
-    
+
     provider = BraveSearchProvider()
     results = await provider.search(sample_query, limit=1)
     assert len(results) == 0
     assert route.call_count == 2
+
+from app.providers.search.serper import SerperProvider
+
+@pytest.mark.asyncio
+@respx.mock
+@patch("app.providers.search.serper.get_settings")
+async def test_serper_provider_page(mock_get_settings, sample_query):
+    mock_get_settings.return_value.SERPER_API_KEY = "test_key"
+    mock_get_settings.return_value.SERPER_BASE_URL = "https://google.serper.dev"
+    mock_get_settings.return_value.SERPER_TIMEOUT_SECONDS = 10
+
+    sample_query.page = 2
+
+    route = respx.post("https://google.serper.dev/search").mock(return_value=httpx.Response(200, json={
+        "organic": [
+            {
+                "link": "https://example.com/serper1",
+                "title": "Example Serper",
+                "snippet": "Desc Serper"
+            }
+        ]
+    }))
+
+    provider = SerperProvider()
+    results = await provider.search(sample_query, limit=1)
+
+    assert len(results) == 1
+    assert route.called
+
+    # Assert page was sent
+    request = route.calls.last.request
+    import json
+    payload = json.loads(request.content)
+    assert payload.get("page") == 2

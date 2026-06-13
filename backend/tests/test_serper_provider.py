@@ -72,7 +72,7 @@ async def test_serper_success(serper_provider, sample_query):
         args, kwargs = mock_client.post.call_args
         
         assert args[0] == "https://google.serper.dev/search"
-        assert kwargs["json"] == {"q": "gaming sites", "gl": "us", "hl": "en", "num": 10}
+        assert kwargs["json"] == {"q": "gaming sites", "gl": "us", "hl": "en", "num": 10, "page": 1}
         assert kwargs["headers"]["X-API-KEY"] == "test-serper-key"
         
         assert len(results) == 2

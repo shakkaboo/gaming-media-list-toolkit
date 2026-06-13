@@ -1,6 +1,6 @@
 import uuid
 import logging
-from typing import List, Optional, Tuple, Dict, Any
+from typing import List, Optional, Tuple, Dict, Any, Set
 from datetime import datetime, timezone
 from dataclasses import dataclass
 from sqlalchemy.orm import Session
@@ -226,6 +226,12 @@ class DiscoveryPersistenceService:
             if not website.homepage_url:
                 website.homepage_url = candidate.homepage_url
             return WebsiteUpsertResult(website=website, created=False)
+
+    def get_existing_canonical_keys(self, keys: List[str]) -> Set[str]:
+        if not keys:
+            return set()
+        stmt = select(Website.canonical_key).where(Website.canonical_key.in_(keys))
+        return set(self.session.execute(stmt).scalars().all())
 
     def persist_discovery_source(self, job: DiscoveryJob, query: SearchQuery, website: Website, candidate: NormalizedCandidate) -> DiscoverySource:
         try:

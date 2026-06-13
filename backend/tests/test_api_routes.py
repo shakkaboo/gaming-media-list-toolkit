@@ -50,6 +50,9 @@ def test_create_job_201(mock_create_job):
         contacts_found=0,
         errors_count=0,
         attempt_number=0,
+        known_domains_skipped=0,
+        duplicate_candidates_skipped=0,
+        new_websites_only=True,
         created_at=datetime.now(),
         updated_at=datetime.now()
     )

@@ -22,6 +22,7 @@ def create_job(db: Session, payload: DiscoveryJobCreate) -> DiscoveryJob:
         minimum_pageviews=payload.minimum_pageviews,
         maximum_queries=payload.maximum_queries,
         results_per_query=payload.results_per_query,
+        new_websites_only=payload.new_websites_only,
         search_provider=settings.SEARCH_PROVIDER,
         traffic_provider=settings.TRAFFIC_PROVIDER,
         queries_generated=0,

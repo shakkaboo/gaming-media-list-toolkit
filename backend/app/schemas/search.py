@@ -8,6 +8,7 @@ class GeneratedSearchQuery(BaseModel):
     market: str
     language: str
     template_name: str
+    page: int = Field(default=1, ge=1)
 
 class SearchResult(BaseModel):
     url: str

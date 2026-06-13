@@ -57,6 +57,7 @@ class DiscoveryOrchestrator:
                 job_market = job.target_market
                 job_language = job.language
                 max_queries = job.maximum_queries
+                new_websites_only = job.new_websites_only
         except InvalidJobTransition as e:
             logger.warning(f"Invalid job transition for {job_id}: {e}")
             return DiscoveryRunSummary(
@@ -74,7 +75,9 @@ class DiscoveryOrchestrator:
                 websites_uncertain=0, websites_rejected=0, errors_count=0
             )
         except Exception as e:
-            logger.exception(f"Failed to start job {job_id}")
+            import traceback
+            traceback.print_exc()
+            logger.exception(f"Error executing job {job_id}: {e}")
             raise
 
         try:
@@ -84,9 +87,12 @@ class DiscoveryOrchestrator:
                 categories=job_categories,
                 market=job_market,
                 language=job_language,
-                max_queries=max_queries
+                max_queries=max_queries,
+                new_websites_only=new_websites_only
             )
         except Exception as e:
+            import traceback
+            traceback.print_exc()
             logger.exception(f"Fatal error in orchestrator for job {job_id}: {e}")
             with self.session_factory() as session:
                 from sqlalchemy import update
@@ -99,7 +105,7 @@ class DiscoveryOrchestrator:
                 session.commit()
             raise
 
-    async def _run_job_internal(self, job_id: UUID, attempt_number: int, categories: List[str], market: str, language: str, max_queries: int) -> DiscoveryRunSummary:
+    async def _run_job_internal(self, job_id: UUID, attempt_number: int, categories: List[str], market: str, language: str, max_queries: int, new_websites_only: bool) -> DiscoveryRunSummary:
         try:
             generated = generate_search_queries(
                 market=market,
@@ -144,6 +150,7 @@ class DiscoveryOrchestrator:
             ]
 
         websites_to_process = []
+        seen_canonical_keys_in_run = set()
         for q_id, q_text, q_status, q_provider, q_limit, q_category in query_tuples:
             if q_status == "completed":
                 continue
@@ -166,13 +173,29 @@ class DiscoveryOrchestrator:
 
                 with self.session_factory() as session:
                     persistence = DiscoveryPersistenceService(session)
-                    for candidate in processing_resp.accepted:
-                        upsert_res = persistence.upsert_website(candidate)
 
-                        from app.models.discovery_job import DiscoveryJob
-                        from app.models.search_query import SearchQuery
-                        job = session.get(DiscoveryJob, job_id)
-                        query = session.get(SearchQuery, q_id)
+                    candidate_keys = [persistence._determine_canonical_key(c) for c in processing_resp.accepted]
+                    existing_keys = persistence.get_existing_canonical_keys(candidate_keys) if new_websites_only else set()
+
+                    from app.models.discovery_job import DiscoveryJob
+                    from app.models.search_query import SearchQuery
+                    job = session.get(DiscoveryJob, job_id)
+                    query = session.get(SearchQuery, q_id)
+
+                    for candidate in processing_resp.accepted:
+                        can_key = persistence._determine_canonical_key(candidate)
+
+                        if can_key in seen_canonical_keys_in_run:
+                            job.duplicate_candidates_skipped += 1
+                            continue
+
+                        seen_canonical_keys_in_run.add(can_key)
+
+                        if new_websites_only and can_key in existing_keys:
+                            job.known_domains_skipped += 1
+                            continue
+
+                        upsert_res = persistence.upsert_website(candidate)
 
                         persistence.persist_discovery_source(
                             job=job,
@@ -477,5 +500,7 @@ class DiscoveryOrchestrator:
                 sites_qualified=job.sites_qualified,
                 sites_upcoming=job.sites_upcoming,
                 sites_traffic_missing=job.sites_traffic_missing,
-                errors_count=errors_count
+                errors_count=errors_count,
+                known_domains_skipped=job.known_domains_skipped,
+                duplicate_candidates_skipped=job.duplicate_candidates_skipped
             )

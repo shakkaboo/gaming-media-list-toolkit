@@ -16,6 +16,7 @@ export const CreateJobForm: React.FC<Props> = ({ onJobCreated }) => {
     minimum_pageviews: 1000000,
     maximum_queries: 1,
     results_per_query: 10,
+    new_websites_only: true,
   });
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,10 +41,10 @@ export const CreateJobForm: React.FC<Props> = ({ onJobCreated }) => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: type === 'number' ? Number(value) : value,
+      [name]: type === 'checkbox' ? checked : type === 'number' ? Number(value) : value,
     }));
   };
 
@@ -76,7 +77,16 @@ export const CreateJobForm: React.FC<Props> = ({ onJobCreated }) => {
           <label>Results Per Query</label>
           <input name="results_per_query" type="number" value={formData.results_per_query} onChange={handleChange} required />
         </div>
-        <div className="form-actions full-width">
+        <div className="form-group full-width" style={{ gridColumn: '1 / -1' }}>
+          <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+            <input type="checkbox" name="new_websites_only" checked={formData.new_websites_only} onChange={handleChange} />
+            Only show newly discovered websites
+          </label>
+          <small style={{ color: '#666', display: 'block', marginTop: '4px' }}>
+            Skip domains that were already discovered in earlier jobs.
+          </small>
+        </div>
+        <div className="form-actions full-width" style={{ gridColumn: '1 / -1' }}>
           <button type="submit" disabled={isSubmitting} className="primary-btn">Create Discovery Job</button>
         </div>
       </form>

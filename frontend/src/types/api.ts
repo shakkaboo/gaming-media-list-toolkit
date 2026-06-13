@@ -5,6 +5,7 @@ export interface DiscoveryJobCreate {
   minimum_pageviews: number;
   maximum_queries: number;
   results_per_query: number;
+  new_websites_only: boolean;
 }
 
 export interface DiscoveryJobSummary {
@@ -26,6 +27,9 @@ export interface DiscoveryJobSummary {
   sites_traffic_missing: number;
   contacts_found: number;
   errors_count: number;
+  known_domains_skipped: number;
+  duplicate_candidates_skipped: number;
+  new_websites_only: boolean;
   created_at: string;
   started_at?: string;
   completed_at?: string;
@@ -59,6 +63,9 @@ export interface DiscoveryRunSummary {
   sites_upcoming: number;
   sites_traffic_missing: number;
   errors_count: number;
+  known_domains_skipped: number;
+  duplicate_candidates_skipped: number;
+  new_websites_only: boolean;
 }
 
 export interface DiscoveryWebsiteResult {

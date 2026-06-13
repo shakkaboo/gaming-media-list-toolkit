@@ -76,6 +76,9 @@ export const JobStatus: React.FC<Props> = ({ jobId, onRunFinished, triggerRefres
         <div className="stat-box"><strong>Upcoming:</strong> {job.sites_upcoming}</div>
         <div className="stat-box"><strong>Traffic Missing:</strong> {job.sites_traffic_missing}</div>
         <div className="stat-box"><strong>Errors:</strong> {job.errors_count}</div>
+        <div className="stat-box"><strong>Known domains skipped:</strong> {job.known_domains_skipped ?? 0}</div>
+        <div className="stat-box"><strong>Duplicate candidates skipped:</strong> {job.duplicate_candidates_skipped ?? 0}</div>
+        <div className="stat-box"><strong>New websites only:</strong> {job.new_websites_only ? 'Yes' : 'No'}</div>
       </div>
 
       {runSummary && (
@@ -83,6 +86,8 @@ export const JobStatus: React.FC<Props> = ({ jobId, onRunFinished, triggerRefres
           <h3>Last Run Summary</h3>
           <p>Status: {runSummary.final_status}</p>
           <p>Discovered: {runSummary.websites_discovered} | Processed: {runSummary.websites_processed}</p>
+          <p>known_domains_skipped: {runSummary.known_domains_skipped ?? 0}</p>
+          <p>duplicate_candidates_skipped: {runSummary.duplicate_candidates_skipped ?? 0}</p>
         </div>
       )}
     </div>

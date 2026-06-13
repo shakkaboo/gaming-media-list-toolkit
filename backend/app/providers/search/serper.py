@@ -47,7 +47,8 @@ class SerperProvider(SearchProvider):
             "q": query.query_text,
             "gl": gl,
             "hl": hl,
-            "num": num
+            "num": num,
+            "page": query.page
         }
         
         headers = {
