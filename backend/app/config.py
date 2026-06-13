@@ -135,12 +135,24 @@ class Settings(BaseSettings):
             raise ValueError("Minimum pageviews must be non-negative")
         return v
         
+    SERPER_API_KEY: Optional[str] = None
+    SERPER_BASE_URL: str = "https://google.serper.dev"
+    SERPER_TIMEOUT_SECONDS: int = Field(20, gt=0)
+
     @field_validator("BRAVE_SEARCH_API_KEY")
     @classmethod
     def validate_brave_key(cls, v: Optional[str], info) -> Optional[str]:
         provider = info.data.get("SEARCH_PROVIDER", "mock")
         if provider == "brave" and not v:
             raise ValueError("BRAVE_SEARCH_API_KEY is required when SEARCH_PROVIDER is brave")
+        return v
+
+    @field_validator("SERPER_API_KEY")
+    @classmethod
+    def validate_serper_key(cls, v: Optional[str], info) -> Optional[str]:
+        provider = info.data.get("SEARCH_PROVIDER", "mock")
+        if provider == "serper" and not v:
+            raise ValueError("SERPER_API_KEY is required when SEARCH_PROVIDER is serper")
         return v
 
     @field_validator("BRAVE_SEARCH_FRESHNESS")

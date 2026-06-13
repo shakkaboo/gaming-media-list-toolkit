@@ -12,5 +12,8 @@ def get_search_provider(provider_name: str | None = None) -> SearchProvider:
         return MockSearchProvider()
     elif effective_name == "brave":
         return BraveSearchProvider()
+    elif effective_name == "serper":
+        from app.providers.search.serper import SerperProvider
+        return SerperProvider()
     else:
         raise SearchProviderConfigurationError(f"Unknown search provider: {effective_name}")

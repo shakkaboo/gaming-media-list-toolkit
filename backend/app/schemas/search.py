@@ -71,7 +71,7 @@ class QueryGenerationResponse(BaseModel):
 
 class SearchPreviewRequest(QueryGenerationRequest):
     results_per_query: int = Field(..., ge=1, le=20)
-    provider: Optional[str] = Field(None, pattern="^(?i)(mock|brave)$")
+    provider: Optional[str] = Field(None, pattern="^(?i)(mock|brave|serper)$")
 
 class SearchPreviewResponse(BaseModel):
     generated_queries: List[GeneratedSearchQuery]
