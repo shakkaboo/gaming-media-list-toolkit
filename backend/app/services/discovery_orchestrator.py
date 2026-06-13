@@ -386,6 +386,36 @@ class DiscoveryOrchestrator:
                 )
                 session.commit()
 
+            from app.models.enums import VerificationStatus
+            from app.services.traffic_service import check_website_traffic
+
+            with self.session_factory() as session:
+                from app.models.website import Website
+                from app.models.discovery_job import DiscoveryJob
+                website = session.get(Website, website_id)
+                job = session.get(DiscoveryJob, job_id)
+                # Traffic lookup and final qualification assignment
+                try:
+                    await check_website_traffic(
+                        db=session,
+                        website_id=website.id,
+                        job_id=job.id,
+                        provider_name=job.traffic_provider,
+                        minimum_pageviews=job.minimum_pageviews
+                    )
+                except Exception as e:
+                    logger.error(f"Traffic check failed for {job.id}: {e}")
+                    persistence = DiscoveryPersistenceService(session)
+                    persistence.record_processing_error(
+                        job_id=job.id,
+                        stage=ProcessingStage.traffic,
+                        error_type="traffic_exception",
+                        message=str(e),
+                        website_id=website.id,
+                        attempt_number=job.attempt_number
+                    )
+                session.commit()
+
         with self.session_factory() as session:
             persistence = DiscoveryPersistenceService(session)
             persistence.recalculate_job_counters(job_id)
@@ -444,5 +474,8 @@ class DiscoveryOrchestrator:
                 websites_verified=job.sites_verified,
                 websites_uncertain=job.websites_uncertain,
                 websites_rejected=job.sites_rejected,
+                sites_qualified=job.sites_qualified,
+                sites_upcoming=job.sites_upcoming,
+                sites_traffic_missing=job.sites_traffic_missing,
                 errors_count=errors_count
             )

@@ -225,6 +225,9 @@ async def test_fetch_timeout_and_isolation(mock_process, mock_get_provider, orch
     assert summary.websites_uncertain == 3
 
     errors = db_session.query(ProcessingError).filter_by(discovery_job_id=pending_job.id).all()
+    # 1 for timeout (fetch), 1 for crash (fetch), 1 for verification crash (good.com)
+    # Since they all get fallback 'uncertain' verification, traffic lookup is skipped for them,
+    # so we get 0 additional traffic processing errors.
     assert len(errors) == 3
 
     print([e.error_type for e in errors])

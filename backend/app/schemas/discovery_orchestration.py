@@ -13,4 +13,7 @@ class DiscoveryRunSummary(BaseModel):
     websites_verified: int
     websites_uncertain: int
     websites_rejected: int
+    sites_qualified: int = 0
+    sites_upcoming: int = 0
+    sites_traffic_missing: int = 0
     errors_count: int

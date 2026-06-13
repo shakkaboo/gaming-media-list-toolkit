@@ -311,6 +311,12 @@ class DiscoveryPersistenceService:
                     homepage_description=result.metadata.description[:1000] if result.metadata and result.metadata.description else None
                 )
                 self.session.add(verif)
+
+                # Update denormalized fields on the website
+                website.current_verification_status = status
+                website.current_verification_score = result.score
+                website.current_activity_status = "active" if result.is_active else "inactive"
+
                 self.session.flush()
             return verif
         except IntegrityError as exc:
@@ -509,6 +515,29 @@ class DiscoveryPersistenceService:
 
         job.contacts_found = self.session.execute(select(func.count(func.distinct(Contact.id))).where(Contact.discovery_job_id == job_id)).scalar()
         job.errors_count = self.session.execute(select(func.count(ProcessingError.id)).where(ProcessingError.discovery_job_id == job_id)).scalar()
+
+        from app.models.enums import QualificationStatus
+        qual_subq = (
+            select(
+                Website.id,
+                Website.current_qualification_status
+            )
+            .join(DiscoverySource, DiscoverySource.website_id == Website.id)
+            .where(DiscoverySource.discovery_job_id == job_id)
+            .distinct()
+            .subquery()
+        )
+
+        qual_counts_query = (
+            select(qual_subq.c.current_qualification_status, func.count(qual_subq.c.id))
+            .group_by(qual_subq.c.current_qualification_status)
+        )
+
+        qual_counts = dict(self.session.execute(qual_counts_query).all())
+
+        job.sites_qualified = qual_counts.get(QualificationStatus.qualified, qual_counts.get(QualificationStatus.qualified.value, 0))
+        job.sites_upcoming = qual_counts.get(QualificationStatus.upcoming, qual_counts.get(QualificationStatus.upcoming.value, 0))
+        job.sites_traffic_missing = qual_counts.get(QualificationStatus.traffic_missing, qual_counts.get(QualificationStatus.traffic_missing.value, 0))
 
         self.session.commit()
         return job

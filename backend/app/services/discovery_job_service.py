@@ -159,15 +159,37 @@ def get_job_results(
         sources_by_website[ds.website_id].append(ds)
         queries_by_website[ds.website_id].add(qtext)
 
+    from app.models.traffic_metric import TrafficMetric
+
     # Fetch latest verifications for these websites
     verifs_stmt = select(latest_verif).where(latest_verif.c.website_id.in_(website_ids))
     verifs_rows = db.execute(verifs_stmt).all()
     verifs_by_website = {r.website_id: r for r in verifs_rows}
 
+    # Fetch latest traffic metrics for these websites
+    traffic_subq = (
+        select(
+            TrafficMetric.website_id,
+            TrafficMetric.estimated_pageviews,
+            TrafficMetric.provider,
+            TrafficMetric.confidence,
+            func.row_number().over(
+                partition_by=TrafficMetric.website_id,
+                order_by=TrafficMetric.retrieved_at.desc()
+            ).label("rn")
+        )
+        .where(TrafficMetric.website_id.in_(website_ids))
+        .subquery()
+    )
+    latest_traffic_stmt = select(traffic_subq).where(traffic_subq.c.rn == 1)
+    traffic_rows = db.execute(latest_traffic_stmt).all()
+    traffic_by_website = {r.website_id: r for r in traffic_rows}
+
     results = []
     for w in websites:
         v = verifs_by_website.get(w.id)
         q_set = queries_by_website.get(w.id, set())
+        t = traffic_by_website.get(w.id)
 
         v_status = getattr(v.status, "value", str(v.status)) if v and v.status else None
         # Handle enum casting specifically if requested verification_status filter is applied
@@ -187,6 +209,10 @@ def get_job_results(
             "activity_status": "active" if getattr(w, "is_active", True) else "inactive",
             "detected_categories": w.categories or [],
             "classifier_version": v.classifier_version if v else None,
+            "qualification_status": getattr(w.current_qualification_status, "value", str(w.current_qualification_status)) if w.current_qualification_status else None,
+            "estimated_monthly_pageviews": float(t.estimated_pageviews) if t and t.estimated_pageviews is not None else None,
+            "traffic_provider": t.provider if t else None,
+            "traffic_confidence": float(t.confidence) if t and t.confidence is not None else None,
             "source_count": len(sources_by_website.get(w.id, [])),
             "source_queries": sorted(list(q_set)),
             "latest_verified_at": v.verified_at if v else None

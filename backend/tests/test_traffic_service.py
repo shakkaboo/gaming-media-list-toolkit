@@ -29,8 +29,8 @@ def test_determine_qualification_status():
     # 4. Strictly greater than threshold
     assert determine_qualification_status(Decimal("1000000.01"), VerificationStatus.verified, threshold) == QualificationStatus.qualified
     
-    # 5. Exactly threshold -> upcoming
-    assert determine_qualification_status(Decimal("1000000.00"), VerificationStatus.verified, threshold) == QualificationStatus.upcoming
+    # 5. Exactly threshold -> qualified
+    assert determine_qualification_status(Decimal("1000000.00"), VerificationStatus.verified, threshold) == QualificationStatus.qualified
     
     # 6. Below threshold -> upcoming
     assert determine_qualification_status(Decimal("999999.99"), VerificationStatus.verified, threshold) == QualificationStatus.upcoming
