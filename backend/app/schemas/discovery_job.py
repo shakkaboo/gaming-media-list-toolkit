@@ -42,14 +42,17 @@ class DiscoveryJobSummary(BaseModel):
     language: str
     categories: List[str]
     minimum_pageviews: int
+    attempt_number: int
     queries_generated: int
     queries_completed: int
     candidates_found: int
     sites_verified: int
+    websites_uncertain: int
     sites_rejected: int
     sites_qualified: int
     sites_upcoming: int
     sites_traffic_missing: int
+    contacts_found: int
     errors_count: int
     created_at: datetime
     started_at: Optional[datetime] = None

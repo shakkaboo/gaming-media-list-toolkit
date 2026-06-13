@@ -42,11 +42,14 @@ def test_create_job_201(mock_create_job):
         candidates_filtered=0,
         sites_fetched=0,
         sites_verified=0,
+        websites_uncertain=0,
         sites_rejected=0,
         sites_qualified=0,
         sites_upcoming=0,
         sites_traffic_missing=0,
+        contacts_found=0,
         errors_count=0,
+        attempt_number=0,
         created_at=datetime.now(),
         updated_at=datetime.now()
     )
