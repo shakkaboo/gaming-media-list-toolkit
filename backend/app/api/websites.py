@@ -34,7 +34,7 @@ def api_list_websites(
         db, page, page_size, verification_status, qualification_status,
         manual_review_status, country, language, is_active, search, sort_by, sort_order
     )
-    
+
     total_pages = math.ceil(total / page_size) if total > 0 else 0
     pagination = PaginationMeta(
         page=page,
@@ -44,7 +44,7 @@ def api_list_websites(
         has_next=page < total_pages,
         has_previous=page > 1
     )
-    
+
     return WebsiteListResponse(items=items, pagination=pagination)
 
 @router.get("/{website_id}", response_model=WebsiteDetail)
@@ -57,12 +57,12 @@ def api_update_review(website_id: UUID, payload: WebsiteReviewUpdate, db: Sessio
     summary = update_manual_review(db, website_id, payload)
     return summary
 
-@router.post("/{website_id}/traffic", response_model=TrafficMetricResponse, status_code=status.HTTP_201_CREATED)
-def api_add_traffic(
-    website_id: UUID, 
-    payload: ManualTrafficCreate, 
-    minimum_pageviews: Optional[Decimal] = Query(None, ge=0),
+@router.post("/{website_id}/traffic-evidence", response_model=TrafficMetricResponse, status_code=status.HTTP_201_CREATED)
+def api_add_traffic_evidence(
+    website_id: UUID,
+    payload: ManualTrafficCreate,
+    discovery_job_id: Optional[UUID] = Query(None),
     db: Session = Depends(get_db)
 ):
-    metric = add_manual_traffic(db, website_id, payload, minimum_pageviews)
+    metric = add_manual_traffic(db, website_id, payload, discovery_job_id)
     return TrafficMetricResponse.model_validate(metric)

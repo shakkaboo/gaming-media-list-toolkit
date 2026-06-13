@@ -46,27 +46,57 @@ def add_manual_traffic(
     db: Session,
     website_id: UUID,
     payload: ManualTrafficCreate,
+    job_id: Optional[UUID] = None,
     minimum_pageviews: Optional[Decimal] = None
 ) -> TrafficMetric:
+    from app.services.discovery_persistence import DiscoveryPersistenceService
+
     website = db.query(Website).filter(Website.id == website_id).first()
     if not website:
         raise ResourceNotFoundError("Website not found")
 
-    try:
-        estimated_pageviews = calculate_estimated_pageviews(payload.monthly_visits, payload.pages_per_visit)
-    except ValueError as e:
-        raise InvalidOperationError(str(e))
+    job = None
+    if job_id:
+        job = db.query(DiscoveryJob).filter(DiscoveryJob.id == job_id).first()
+        if not job:
+            raise ResourceNotFoundError("Discovery job not found")
+
+        # Validate that the website actually belongs to the job
+        from app.models.discovery_source import DiscoverySource
+        association = db.query(DiscoverySource).filter(
+            DiscoverySource.website_id == website_id,
+            DiscoverySource.discovery_job_id == job_id
+        ).first()
+
+        if not association:
+            raise ResourceNotFoundError("Website does not belong to the specified discovery job")
+
+        if minimum_pageviews is None:
+            minimum_pageviews = job.minimum_pageviews
+
+    estimated_pageviews = None
+    if payload.metric_type == 'estimated_monthly_pageviews':
+        try:
+            estimated_pageviews = calculate_estimated_pageviews(payload.monthly_visits, payload.pages_per_visit)
+        except ValueError as e:
+            raise InvalidOperationError(str(e))
+    elif payload.metric_type == 'monthly_pageviews':
+        estimated_pageviews = payload.monthly_pageviews
 
     metric = TrafficMetric(
         website_id=website.id,
+        discovery_job_id=job_id,
         provider='manual',
+        metric_type=payload.metric_type,
         monthly_visits=payload.monthly_visits,
         pages_per_visit=payload.pages_per_visit,
+        monthly_pageviews=payload.monthly_pageviews,
         estimated_pageviews=estimated_pageviews,
         growth_rate=payload.growth_rate,
         measurement_month=payload.measurement_month,
         confidence=payload.confidence,
         is_manual=True,
+        evidence_url=payload.evidence_url,
         notes=payload.notes
     )
 
@@ -84,6 +114,9 @@ def add_manual_traffic(
 
     try:
         db.commit()
+        if job_id:
+            persistence = DiscoveryPersistenceService(db)
+            persistence.recalculate_job_counters(job_id)
         db.refresh(metric)
         db.refresh(website)
         return metric

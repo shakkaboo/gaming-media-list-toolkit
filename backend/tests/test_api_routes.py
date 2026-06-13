@@ -17,7 +17,7 @@ client_safe = TestClient(app, raise_server_exceptions=False)
 
 def override_get_db():
     yield MagicMock()
-    
+
 from app.database import get_db
 app.dependency_overrides[get_db] = override_get_db
 
@@ -53,13 +53,13 @@ def test_create_job_201(mock_create_job):
         created_at=datetime.now(),
         updated_at=datetime.now()
     )
-    
+
     response = client.post("/api/discovery/jobs", json={
         "target_market": "US",
         "language": "en",
         "categories": ["RPG"]
     })
-    
+
     assert response.status_code == 201
     assert response.json()["target_market"] == "US"
 
@@ -109,20 +109,22 @@ def test_add_manual_traffic_201(mock_add_traffic):
         id=uuid4(),
         website_id=uuid4(),
         provider="manual",
+        metric_type="estimated_monthly_pageviews",
         monthly_visits=Decimal("1000"),
         pages_per_visit=Decimal("2"),
         is_manual=True,
         retrieved_at=datetime.now()
     )
-    
-    response = client.post(f"/api/websites/{uuid4()}/traffic", json={
+
+    response = client.post(f"/api/websites/{uuid4()}/traffic-evidence", json={
+        "metric_type": "estimated_monthly_pageviews",
         "monthly_visits": "1000",
         "pages_per_visit": "2"
     })
     assert response.status_code == 201
 
-def test_add_manual_traffic_invalid_threshold():
-    response = client.post(f"/api/websites/{uuid4()}/traffic?minimum_pageviews=-100", json={
+def test_add_manual_traffic_invalid_data():
+    response = client.post(f"/api/websites/{uuid4()}/traffic-evidence", json={
         "monthly_visits": "1000",
         "pages_per_visit": "2"
     })
