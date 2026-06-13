@@ -217,3 +217,59 @@ async def test_duplicate_results_single_website(mock_process, mock_get_provider,
     assert summary.websites_discovered == 1  # Deduped to 1
     assert db_session.query(Website).count() == 1
     assert db_session.query(DiscoverySource).count() == 10  # 5 queries * 2 candidates
+
+@patch("app.services.discovery_orchestrator.get_search_provider")
+@pytest.mark.asyncio
+async def test_orchestrator_passes_generated_search_query(mock_get_provider, orchestrator, pending_job, db_session):
+    mock_provider = AsyncMock()
+    mock_provider.search.return_value = []
+    mock_get_provider.return_value = mock_provider
+    
+    await orchestrator.run_job(pending_job.id)
+    
+    # Verify the provider received a GeneratedSearchQuery, not a string
+    assert mock_provider.search.call_count == 5
+    first_call_args = mock_provider.search.call_args_list[0][0]
+    provider_query = first_call_args[0]
+    
+    from app.schemas.search import GeneratedSearchQuery
+    assert isinstance(provider_query, GeneratedSearchQuery)
+    assert provider_query.market == "US"
+    assert provider_query.language == "en"
+    assert provider_query.query_text != ""
+    
+    limit = first_call_args[1]
+    assert limit == 10
+
+@patch("app.services.discovery_orchestrator.get_search_provider")
+@pytest.mark.asyncio
+async def test_failed_query_is_retried(mock_get_provider, orchestrator, pending_job, db_session):
+    mock_provider = AsyncMock()
+    # First attempt: search fails
+    mock_provider.search.side_effect = Exception("Provider timeout")
+    mock_get_provider.return_value = mock_provider
+    
+    summary_1 = await orchestrator.run_job(pending_job.id)
+    assert summary_1.final_status == "completed_with_errors"
+    assert summary_1.queries_executed == 5 # Failed counts as executed in attempt
+    
+    queries = db_session.query(SearchQuery).filter_by(discovery_job_id=pending_job.id).all()
+    assert all(q.status == "failed" for q in queries)
+    assert all(q.attempt_count == 1 for q in queries)
+    
+    # Second attempt: search succeeds
+    mock_provider.search.side_effect = None
+    mock_provider.search.return_value = []
+    
+    # We must mark the job back to pending or failed so we can start it again
+    from sqlalchemy import update
+    db_session.execute(update(DiscoveryJob).where(DiscoveryJob.id == pending_job.id).values(status=DiscoveryJobStatus.failed))
+    db_session.commit()
+    
+    summary_2 = await orchestrator.run_job(pending_job.id)
+    # The job had errors on attempt 1, so the final status of the job will be "completed_with_errors"
+    assert summary_2.final_status == "completed_with_errors"
+    
+    queries_after = db_session.query(SearchQuery).filter_by(discovery_job_id=pending_job.id).all()
+    assert all(q.status == "completed" for q in queries_after)
+    assert all(q.attempt_count == 2 for q in queries_after)

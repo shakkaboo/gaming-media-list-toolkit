@@ -11,7 +11,8 @@ from app.config import Settings
 from app.models.enums import DiscoveryJobStatus, ProcessingStage
 from app.schemas.search import (
     NormalizedCandidate,
-    SearchPreviewError
+    SearchPreviewError,
+    GeneratedSearchQuery
 )
 from app.schemas.fetch import FetchRequest, FetchedPage
 from app.schemas.verification import VerificationRequest, VerificationResult
@@ -131,16 +132,32 @@ class DiscoveryOrchestrator:
         with self.session_factory() as session:
             persistence = DiscoveryPersistenceService(session)
             db_queries = persistence.persist_generated_queries(job_id, generated)
-            query_tuples = [(q.id, q.query_text, getattr(q.status, 'value', str(q.status)), q.provider, q.requested_limit) for q in db_queries]
+            query_tuples = [
+                (
+                    q.id, 
+                    q.query_text, 
+                    getattr(q.status, 'value', str(q.status)), 
+                    q.provider, 
+                    q.requested_limit,
+                    q.category or "unknown"
+                ) for q in db_queries
+            ]
 
         websites_to_process = []
-        for q_id, q_text, q_status, q_provider, q_limit in query_tuples:
+        for q_id, q_text, q_status, q_provider, q_limit, q_category in query_tuples:
             if q_status == "completed":
                 continue
 
             provider = get_search_provider(q_provider)
+            provider_query = GeneratedSearchQuery(
+                query_text=q_text,
+                category=q_category,
+                market=market,
+                language=language,
+                template_name="persisted_query"
+            )
             try:
-                results = await provider.search(q_text, q_limit)
+                results = await provider.search(provider_query, q_limit)
                 processing_resp = process_search_results(
                     results=results,
                     market=market,
@@ -289,7 +306,14 @@ class DiscoveryOrchestrator:
             queries_executed = session.execute(
                 select(func.count()).select_from(SearchQuery).where(
                     SearchQuery.discovery_job_id == job_id,
-                    SearchQuery.status == "completed"
+                    SearchQuery.status.in_(["completed", "failed"])
+                )
+            ).scalar() or 0
+            
+            queries_skipped = session.execute(
+                select(func.count()).select_from(SearchQuery).where(
+                    SearchQuery.discovery_job_id == job_id,
+                    SearchQuery.status == "pending"
                 )
             ).scalar() or 0
             
@@ -303,7 +327,7 @@ class DiscoveryOrchestrator:
                 final_status=getattr(job.status, "value", str(job.status)),
                 queries_total=queries_total,
                 queries_executed=queries_executed,
-                queries_skipped=queries_total - queries_executed,
+                queries_skipped=queries_skipped,
                 websites_discovered=job.candidates_found,
                 websites_processed=job.sites_fetched,
                 websites_verified=job.sites_verified,
