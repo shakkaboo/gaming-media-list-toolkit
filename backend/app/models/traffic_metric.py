@@ -13,9 +13,11 @@ class TrafficMetric(Base, UUIDMixin):
     discovery_job_id: Mapped[Optional[uuid.UUID]] = mapped_column(ForeignKey("discovery_jobs.id", ondelete="SET NULL"), nullable=True, index=True)
     
     provider: Mapped[str] = mapped_column(String, nullable=False, index=True)
+    metric_type: Mapped[str] = mapped_column(String, default="estimated_monthly_pageviews", nullable=False)
     
     monthly_visits: Mapped[Optional[float]] = mapped_column(Numeric(20, 2), nullable=True)
     pages_per_visit: Mapped[Optional[float]] = mapped_column(Numeric(10, 4), nullable=True)
+    monthly_pageviews: Mapped[Optional[float]] = mapped_column(Numeric(24, 2), nullable=True)
     estimated_pageviews: Mapped[Optional[float]] = mapped_column(Numeric(24, 2), nullable=True)
     growth_rate: Mapped[Optional[float]] = mapped_column(Numeric(10, 4), nullable=True)
     
@@ -23,6 +25,7 @@ class TrafficMetric(Base, UUIDMixin):
     confidence: Mapped[Optional[float]] = mapped_column(Numeric(5, 4), nullable=True)
     
     is_manual: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+    evidence_url: Mapped[Optional[str]] = mapped_column(String, nullable=True)
     retrieved_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=get_utc_now, nullable=False, index=True)
     
     notes: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
