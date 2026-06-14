@@ -1,5 +1,5 @@
 /* eslint-disable */
-import type { DiscoveryJobCreate, DiscoveryJobDetail, DiscoveryRunSummary, DiscoveryResultsResponse, ManualTrafficCreate, TrafficMetricResponse } from '../types/api';
+import type { DiscoveryJobCreate, DiscoveryJobDetail, DiscoveryRunSummary, DiscoveryResultsResponse, ManualTrafficCreate, TrafficMetricResponse, WebsiteListResponse } from '../types/api';
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000';
 
@@ -53,5 +53,15 @@ export const api = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
-    })
+    }),
+
+  getWebsites: (params: Record<string, string | number | boolean>): Promise<WebsiteListResponse> => {
+    const searchParams = new URLSearchParams();
+    Object.entries(params).forEach(([key, value]) => {
+      if (value !== undefined && value !== null && value !== '') {
+        searchParams.append(key, String(value));
+      }
+    });
+    return request(`/api/websites?${searchParams.toString()}`);
+  }
 };

@@ -29,10 +29,15 @@ class WebsiteSummary(BaseModel):
     updated_at: datetime
 
     # Computed fields not on the base ORM model directly
+    latest_metric_type: Optional[str] = None
     latest_monthly_visits: Optional[Decimal] = None
     latest_pages_per_visit: Optional[Decimal] = None
+    latest_monthly_pageviews: Optional[Decimal] = None
     latest_estimated_pageviews: Optional[Decimal] = None
     latest_growth_rate: Optional[Decimal] = None
+    latest_traffic_provider: Optional[str] = None
+    latest_evidence_url: Optional[str] = None
+    latest_traffic_recorded_at: Optional[datetime] = None
     best_contact_email: Optional[str] = None
     best_contact_type: Optional[ContactType] = None
     effective_review_decision: Optional[str] = None

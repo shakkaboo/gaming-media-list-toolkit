@@ -86,10 +86,15 @@ def build_website_summary(website: Website, latest_traffic: Optional[TrafficMetr
     
     if latest_traffic:
         summary_data.update({
+            "latest_metric_type": latest_traffic.metric_type,
             "latest_monthly_visits": latest_traffic.monthly_visits,
             "latest_pages_per_visit": latest_traffic.pages_per_visit,
+            "latest_monthly_pageviews": latest_traffic.monthly_pageviews,
             "latest_estimated_pageviews": latest_traffic.estimated_pageviews,
             "latest_growth_rate": latest_traffic.growth_rate,
+            "latest_traffic_provider": latest_traffic.provider,
+            "latest_evidence_url": latest_traffic.evidence_url,
+            "latest_traffic_recorded_at": latest_traffic.retrieved_at,
         })
         
     if best_contact:
@@ -157,7 +162,7 @@ def list_websites(
     latest_traffic_map = {}
     for wid, records in traffic_by_website.items():
         if records:
-            records.sort(key=lambda r: r.retrieved_at, reverse=True)
+            records.sort(key=lambda r: (r.retrieved_at, r.id), reverse=True)
             latest_traffic_map[wid] = records[0]
             
     contacts = db.query(Contact).filter(

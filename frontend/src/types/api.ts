@@ -99,6 +99,51 @@ export interface DiscoveryResultsResponse {
   items: DiscoveryWebsiteResult[];
 }
 
+export interface PaginationMeta {
+  page: number;
+  page_size: number;
+  total_items: number;
+  total_pages: number;
+  has_next: boolean;
+  has_previous: boolean;
+}
+
+export interface WebsiteSummary {
+  id: string;
+  domain: string;
+  homepage_url: string;
+  name?: string;
+  country?: string;
+  language?: string;
+  categories?: string[];
+  current_verification_status: string;
+  current_qualification_status: string;
+  manual_review_status: string;
+  is_active: boolean;
+  last_checked_at?: string;
+  created_at: string;
+  updated_at: string;
+
+  latest_metric_type?: string;
+  latest_monthly_visits?: number;
+  latest_pages_per_visit?: number;
+  latest_monthly_pageviews?: number;
+  latest_estimated_pageviews?: number;
+  latest_growth_rate?: number;
+  latest_traffic_provider?: string;
+  latest_evidence_url?: string;
+  latest_traffic_recorded_at?: string;
+
+  best_contact_email?: string;
+  best_contact_type?: string;
+  effective_review_decision?: string;
+}
+
+export interface WebsiteListResponse {
+  items: WebsiteSummary[];
+  pagination: PaginationMeta;
+}
+
 export interface ManualTrafficCreate {
   metric_type: 'monthly_pageviews' | 'monthly_visits' | 'estimated_monthly_pageviews';
   monthly_visits?: number;
