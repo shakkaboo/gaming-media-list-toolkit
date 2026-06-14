@@ -347,3 +347,84 @@ async def test_failed_query_is_retried(mock_get_provider, orchestrator, pending_
     queries_after = db_session.query(SearchQuery).filter_by(discovery_job_id=pending_job.id).all()
     assert all(q.status == "completed" for q in queries_after)
     assert all(q.attempt_count == 2 for q in queries_after)
+
+@patch("app.services.discovery_orchestrator.get_search_provider")
+@patch("app.services.discovery_orchestrator.process_search_results")
+@pytest.mark.asyncio
+async def test_multiple_queries_and_candidates_aggregation(mock_process, mock_get_provider, orchestrator, pending_job, db_session, mock_fetch_service, mock_verification_service):
+    # This test verifies that:
+    # 1. Multiple organic results are extracted and merged across queries
+    # 2. Later query candidates are processed (not overwritten)
+    # 3. One provider failure does not stop later requests
+    # 4. Same-domain article URLs collapse into one canonical website
+    # 5. Duplicate counter is incremented
+    # 6. A rejected website doesn't stop remaining candidates
+    
+    mock_provider = AsyncMock()
+    
+    # We have 5 queries from the pending_job (maximum_queries=5).
+    # Query 1 returns Domain A and Domain B
+    # Query 2 fails (raises Exception)
+    # Query 3 returns Domain A (duplicate) and Domain C
+    # Query 4 returns Domain D (which gets rejected by process_search_results) and Domain E
+    # Query 5 returns Domain F
+    
+    call_counts = {"search": 0}
+    
+    async def mock_search_side_effect(*args, **kwargs):
+        call_counts["search"] += 1
+        c = call_counts["search"]
+        if c == 1:
+            return [SearchResult(url="https://domain-a.com/1", title="A", query_text="q1", provider="mock", position=1), SearchResult(url="https://domain-b.com/1", title="B", query_text="q1", provider="mock", position=2)]
+        elif c == 2:
+            raise Exception("Provider failure on query 2")
+        elif c == 3:
+            return [SearchResult(url="https://domain-a.com/2", title="A2", query_text="q3", provider="mock", position=1), SearchResult(url="https://domain-c.com/1", title="C", query_text="q3", provider="mock", position=2)]
+        elif c == 4:
+            return [SearchResult(url="https://domain-d.com/1", title="D", query_text="q4", provider="mock", position=1), SearchResult(url="https://domain-e.com/1", title="E", query_text="q4", provider="mock", position=2)]
+        elif c == 5:
+            return [SearchResult(url="https://domain-f.com/1", title="F", query_text="q5", provider="mock", position=1)]
+        return []
+        
+    mock_provider.search.side_effect = mock_search_side_effect
+    mock_get_provider.return_value = mock_provider
+    
+    # Mock candidate processing. We must map the inputs correctly.
+    def mock_process_side_effect(*args, **kwargs):
+        results = kwargs.get("results")
+        accepted = []
+        rejected = []
+        for r in results:
+            if "domain-d.com" in r.url:
+                from app.schemas.search import RejectedCandidate
+                rejected.append(RejectedCandidate(original_url=r.url, query_text=r.query_text, provider=r.provider, result_position=r.position, reason_code="blocked", safe_reason="blocked"))
+            else:
+                domain = r.url.split("/")[2]
+                accepted.append(NormalizedCandidate(normalized_url=domain, registered_domain=domain, homepage_url=f"https://{domain}", original_url=r.url, title=r.title, query_text=r.query_text, provider=r.provider, result_position=r.position))
+        return CandidateProcessingResponse(accepted=accepted, rejected=rejected, duplicates=[], accepted_count=len(accepted), rejected_count=len(rejected), duplicate_count=0)
+        
+    mock_process.side_effect = mock_process_side_effect
+    
+    # Mock fetching
+    mock_fetch_service.fetch_pages.return_value = ([
+        FetchedPage(requested_url="https://domain", final_url="https://domain", registered_domain="domain", status_code=200, content_type="text/html", content_length=1000, html="<html></html>", title="Test", fetched_at=datetime.now(timezone.utc), redirect_chain=[], redirect_count=0, elapsed_ms=100, success=True, error_code=None, safe_error=None)
+    ], 0)
+    
+    # Mock verification
+    ver_res = VerificationResult(requested_url="https://domain", final_url="https://domain", registered_domain="domain", score=85, verification_status="verified", confidence=0.9, gaming_relevance_score=80, editorial_structure_score=90, activity_score=80, publication_identity_score=90, negative_penalty=0, activity_status="active", article_count_estimate=10, classifier_version="v1", analysed_at=datetime.now(timezone.utc), fetch_success=True)
+    mock_verification_service._verify_page_sync.return_value = ver_res
+
+    summary = await orchestrator.run_job(pending_job.id)
+    
+    # Valid domains expected: A, B, C, E, F (5 domains)
+    # The duplicate of A should be skipped.
+    assert summary.websites_processed == 5
+    assert summary.websites_discovered == 5
+    assert summary.errors_count == 1 # 1 from search provider failure
+    
+    db_session.expire_all()
+    job_db = db_session.get(DiscoveryJob, pending_job.id)
+    assert job_db.duplicate_candidates_skipped == 1 # A was skipped on query 3
+    assert job_db.candidates_found == 5
+    assert job_db.sites_verified == 5
+    assert job_db.sites_rejected == 0 # Rejected by process_search_results doesn't count towards verification rejected

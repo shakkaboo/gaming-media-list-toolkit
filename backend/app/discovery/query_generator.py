@@ -1,6 +1,44 @@
 from app.schemas.search import GeneratedSearchQuery
-from app.discovery.templates import CATEGORY_TEMPLATES
 from typing import Optional, List
+
+CATEGORY_JA_TERMS = {
+    "gaming news": "ゲームニュース",
+    "video game media": "ゲームメディア",
+    "game reviews": "ゲームレビュー",
+    "esports": "eスポーツ",
+    "indie games": "インディーゲーム",
+    "pc gaming": "PCゲーム",
+    "console gaming": "コンソールゲーム",
+    "mobile gaming": "モバイルゲーム",
+}
+
+NON_JP_TEMPLATES = [
+    "independent {category} publication {market}",
+    "regional {category} news website {market}",
+    "{category} editorial media {market}",
+    "{category} review publication {market}",
+    "{category} magazine {market}",
+    "emerging {category} media outlet {market}",
+    "local {category} news site {market}",
+]
+
+JP_EN_TEMPLATES = [
+    "Japanese {category} news websites",
+    "Japanese {category} media",
+    "Japanese {category} review publications",
+    "Japan {category} news websites",
+    "Japan independent {category} media",
+]
+
+JP_JA_TEMPLATES = [
+    "日本の{category_ja}サイト",
+    "日本の{category_ja}メディア",
+    "日本の{category_ja}レビューサイト",
+    "日本の{category_ja}ニュース",
+    "日本のインディー{category_ja}メディア",
+    "{category_ja}業界ニュース 日本",
+    "{category_ja}雑誌 オンライン",
+]
 
 def generate_search_queries(
     market: str,
@@ -9,16 +47,6 @@ def generate_search_queries(
     keywords: Optional[List[str]],
     maximum_queries: Optional[int],
 ) -> List[GeneratedSearchQuery]:
-    TEMPLATES = [
-        "independent {category} publication {market}",
-        "regional {category} news website {market}",
-        "{category} editorial media {market}",
-        "{category} review publication {market}",
-        "{category} magazine {market}",
-        "emerging {category} media outlet {market}",
-        "local {category} news site {market}",
-    ]
-
     base_queries = []
     seen_texts = set()
 
@@ -33,10 +61,24 @@ def generate_search_queries(
                 "template": template_name
             })
 
+    is_jp = (market.strip().upper() == "JP" or language.strip().lower() == "ja")
+
     for category in categories:
-        for idx, template in enumerate(TEMPLATES):
-            text = template.format(category=category, market=market, language=language)
-            add_base_query(text, category, f"template_{idx}")
+        cat_lower = category.strip().lower()
+        if is_jp:
+            cat_ja = CATEGORY_JA_TERMS.get(cat_lower, "ゲームメディア")
+            
+            for idx, template in enumerate(JP_EN_TEMPLATES):
+                text = template.format(category=category, market=market, language=language)
+                add_base_query(text, category, f"jp_en_template_{idx}")
+                
+            for idx, template in enumerate(JP_JA_TEMPLATES):
+                text = template.format(category_ja=cat_ja, market=market, language=language)
+                add_base_query(text, category, f"jp_ja_template_{idx}")
+        else:
+            for idx, template in enumerate(NON_JP_TEMPLATES):
+                text = template.format(category=category, market=market, language=language)
+                add_base_query(text, category, f"non_jp_template_{idx}")
 
     if keywords:
         for keyword in keywords:

@@ -36,6 +36,7 @@ export const JobStatus: React.FC<Props> = ({ jobId, onRunFinished, triggerRefres
 
   const handleRun = async () => {
     setIsRunning(true);
+    setRunSummary(null);
     setError(null);
     try {
       const summary = await api.runJob(jobId);
