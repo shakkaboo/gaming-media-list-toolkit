@@ -1,0 +1,12 @@
+{
+  "tp": 9,
+  "fp": 0,
+  "fn": 7,
+  "tn": 19,
+  "abstentions": 21,
+  "precision": 1.0,
+  "recall": 0.5625,
+  "f1": 0.72,
+  "coverage": 0.4,
+  "strict_accuracy": 0.8
+}
