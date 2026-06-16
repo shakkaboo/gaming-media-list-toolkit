@@ -1,0 +1,17 @@
+{
+  "classifier_version": "v2_multilingual_explainable",
+  "vocabulary_version": "v2.0",
+  "scoring_rule_hash": "phase5d_relevance_first",
+  "decision_policy_version": "relevance-first v1",
+  "component_weights": "gaming_max:30, media_max:25, market_max:20",
+  "component_caps": "gaming_max:30, media_max:25, market_max:20, activity_max:15, technical_max:15",
+  "high_confidence_negative_identity_shortcut": "enabled",
+  "verified_threshold": 58,
+  "uncertain_threshold": 40,
+  "gaming_minimum": 14,
+  "media_minimum": 10,
+  "technical_minimum": 0,
+  "market_minimum": 0,
+  "evidence_safety_gate": "enabled",
+  "frozen_at": "2026-06-16T20:17:43.740590+00:00"
+}

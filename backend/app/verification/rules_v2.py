@@ -272,7 +272,7 @@ def score_technical(evidence: NormalizedMultilingualEvidence) -> int:
         score += 2
     return min(10, max(0, score))
 
-def compute_deductions_and_hard_rejections(evidence: NormalizedMultilingualEvidence) -> Tuple[int, Optional[str], List[str]]:
+def compute_deductions_and_hard_rejections(evidence: NormalizedMultilingualEvidence) -> Tuple[int, Optional[str], List[str], str]:
     deductions = 0
     hr_rule = None
     hr_evidence = []
@@ -330,4 +330,14 @@ def compute_deductions_and_hard_rejections(evidence: NormalizedMultilingualEvide
     else:
         deductions = min(100, deductions)
         
-    return deductions, hr_rule, hr_evidence
+    total_signals = len(unique_store) + len(unique_dev) + len(unique_casino) + len(unique_hardware)
+    negative_confidence = "low"
+    
+    if hr_rule:
+        negative_confidence = "high"
+    elif has_product_schema or len(unique_store) >= 2 or len(unique_dev) >= 2 or len(unique_hardware) >= 2 or len(unique_casino) >= 2:
+        negative_confidence = "high"
+    elif total_signals > 0:
+        negative_confidence = "medium"
+        
+    return deductions, hr_rule, hr_evidence, negative_confidence

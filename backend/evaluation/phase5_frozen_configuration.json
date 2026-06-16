@@ -1,0 +1,24 @@
+{
+  "classifier_version": "v2_multilingual_explainable",
+  "vocabulary_version": "v2.0",
+  "vocabulary_hash": "ff7dcc58",
+  "signal_weights": "Dynamic via rules_v2.py (normalized evidence)",
+  "contextual_deductions": "store (-40), developer (-40), hardware (-30), casino (-80)",
+  "hard_rejection_definitions": [
+    "dominant_ecommerce_store",
+    "game_developer_corporate_site",
+    "game_publisher_marketing_site",
+    "casino_or_betting_site"
+  ],
+  "verified_threshold": 70,
+  "uncertain_threshold": 50,
+  "component_minimums": {
+    "gaming": 18,
+    "media": 14,
+    "market": 8,
+    "technical": 3
+  },
+  "configuration_hash": "31cca6b6",
+  "frozen_at": "2026-06-16T17:47:09.822774+00:00",
+  "development_selection_objective": "1. Zero FP, 2. Max Recall, 3. F1, 4. Coverage"
+}
