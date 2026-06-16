@@ -225,12 +225,26 @@ def test_12_completed_run_cannot_be_repeated():
 # ── Test 13: Resume works only for an incomplete run ────────────────────────
 
 def test_13_resume_only_for_incomplete():
-    # If lock exists a --resume should still refuse
-    if LOCK_PATH.exists():
-        pytest.skip("Already locked; resume semantics not testable post-completion")
-    # Checkpoint without lock = incomplete run = resume allowed
-    checkpoint = RESULTS_DIR / "phase6_checkpoint.json"
-    assert not checkpoint.exists() or not LOCK_PATH.exists()
+    """A completed lock must refuse re-runs even with resume=True. Uses a temp lock so the
+    test always executes regardless of whether the real Phase 6 lock is present."""
+    import importlib.util, asyncio
+    runner_path = Path("evaluation/run_phase6_protected_test_evaluation.py")
+    spec = importlib.util.spec_from_file_location("phase6_runner", runner_path)
+    runner = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(runner)
+
+    with tempfile.TemporaryDirectory() as td:
+        fake_lock = Path(td) / "phase6_protected_test.lock.json"
+        with open(fake_lock, "w") as f:
+            json.dump({"completed_at": "2026-01-01T00:00:00Z"}, f)
+
+        original = runner.LOCK_PATH
+        runner.LOCK_PATH = fake_lock
+        try:
+            with pytest.raises(RuntimeError, match="Refusing to run again"):
+                asyncio.run(runner.run_protected_evaluation(resume=True))
+        finally:
+            runner.LOCK_PATH = original
 
 # ── Test 14: Strict and review-aware metrics remain separate ─────────────────
 

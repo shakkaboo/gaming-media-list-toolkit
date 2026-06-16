@@ -15,29 +15,29 @@ Strict correctness requires exact matches. Binary metrics exclude `uncertain` ex
 Rules-based heuristic combining gaming, editorial, activity, and identity scores minus a negative penalty.
 
 ## Development Metrics
-- Strict Accuracy: 45.71%
-- Precision: 50.00%
-- Recall: 100.00%
-- F1 Score: 66.67%
-- Coverage: 100.00%
+- Strict Accuracy: 11.43%
+- Precision: 0.00%
+- Recall: 0.00%
+- F1 Score: 0.00%
+- Coverage: 15.62%
 
 ## Test Metrics
-- Strict Accuracy: 26.67%
-- Precision: 44.44%
-- Recall: 100.00%
-- F1 Score: 61.54%
-- Coverage: 100.00%
+- Strict Accuracy: 40.00%
+- Precision: 0.00%
+- Recall: 0.00%
+- F1 Score: 0.00%
+- Coverage: 0.00%
 
 ## Overall Metrics
-- Strict Accuracy: 40.00%
-- Precision: 48.78%
-- Recall: 100.00%
-- F1 Score: 65.57%
-- Coverage: 100.00%
+- Strict Accuracy: 20.00%
+- Precision: 0.00%
+- Recall: 0.00%
+- F1 Score: 0.00%
+- Coverage: 12.20%
 
 ## Abstention and Fetch-Failure Counts
-Total Fetch Failed: 0
-Total Uncertain: 0
+Total Fetch Failed: 44
+Total Uncertain: 1
 
 ## Statement
 No verifier changes were made. This is purely a baseline measurement.

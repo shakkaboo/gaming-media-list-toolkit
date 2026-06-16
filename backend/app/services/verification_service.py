@@ -141,14 +141,17 @@ class VerificationService:
 
                     # Shadow: run v2 (result stored for review, not returned as production)
                     v2_res = None
+                    v2_error = None
                     try:
                         v2_res = await asyncio.wait_for(
                             asyncio.to_thread(
                                 classifier_v2.classify_acquisition, acq, current_time, request),
                             timeout=self.settings.VERIFICATION_TIMEOUT_SECONDS
                         )
-                    except Exception:
-                        pass
+                    except asyncio.TimeoutError:
+                        v2_error = "v2 analysis timed out"
+                    except Exception as exc:
+                        v2_error = f"v2 analysis failed: {type(exc).__name__}"
 
                     if v2_res is not None:
                         b_status = baseline_res.verification_status
@@ -183,6 +186,22 @@ class VerificationService:
                             decision_override=v2_res.decision_override,
                             v2_explanation=v2_res.decision_reason,
                             review_recommendation=rec,
+                        )
+                    elif v2_error is not None:
+                        baseline_res.v2_shadow = V2ShadowResult(
+                            v2_predicted_status="error",
+                            v2_relevance_label="error",
+                            v2_market_status="unknown",
+                            gaming_score=0,
+                            media_score=0,
+                            market_score=0,
+                            activity_score=0,
+                            technical_score=0,
+                            component_sum=0,
+                            contextual_deductions=0,
+                            total_score=0,
+                            v2_explanation=v2_error,
+                            review_recommendation="v2_error",
                         )
 
                     return baseline_res
