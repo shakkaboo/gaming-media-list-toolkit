@@ -1,0 +1,86 @@
+{
+  "gaming_score": {
+    "minimum": 0.0,
+    "maximum": 19.0,
+    "mean": 5.0,
+    "median": 0.0,
+    "25th_percentile": 0.0,
+    "75th_percentile": 11.0,
+    "percentage_zero": 54.285714285714285,
+    "percentage_half_max": 11.428571428571429,
+    "valid_examples_percentage_half_max": 25.0,
+    "utilization_status": "reasonably distributed"
+  },
+  "media_score": {
+    "minimum": 0.0,
+    "maximum": 12.0,
+    "mean": 2.914285714285714,
+    "median": 0.0,
+    "25th_percentile": 0.0,
+    "75th_percentile": 6.0,
+    "percentage_zero": 60.0,
+    "percentage_half_max": 0.0,
+    "valid_examples_percentage_half_max": 0.0,
+    "utilization_status": "under-utilized"
+  },
+  "market_score": {
+    "minimum": 0.0,
+    "maximum": 4.0,
+    "mean": 1.1428571428571428,
+    "median": 0.0,
+    "25th_percentile": 0.0,
+    "75th_percentile": 4.0,
+    "percentage_zero": 71.42857142857143,
+    "percentage_half_max": 0.0,
+    "valid_examples_percentage_half_max": 0.0,
+    "utilization_status": "under-utilized"
+  },
+  "activity_score": {
+    "minimum": 0.0,
+    "maximum": 11.0,
+    "mean": 2.085714285714286,
+    "median": 0.0,
+    "25th_percentile": 0.0,
+    "75th_percentile": 0.0,
+    "percentage_zero": 80.0,
+    "percentage_half_max": 17.142857142857142,
+    "valid_examples_percentage_half_max": 31.25,
+    "utilization_status": "reasonably distributed"
+  },
+  "technical_score": {
+    "minimum": 0.0,
+    "maximum": 3.0,
+    "mean": 1.457142857142857,
+    "median": 0.0,
+    "25th_percentile": 0.0,
+    "75th_percentile": 3.0,
+    "percentage_zero": 51.42857142857142,
+    "percentage_half_max": 0.0,
+    "valid_examples_percentage_half_max": 0.0,
+    "utilization_status": "under-utilized"
+  },
+  "contextual_deductions": {
+    "minimum": 0.0,
+    "maximum": 0.0,
+    "mean": 0.0,
+    "median": 0.0,
+    "25th_percentile": 0.0,
+    "75th_percentile": 0.0,
+    "percentage_zero": 100.0,
+    "percentage_half_max": 0.0,
+    "valid_examples_percentage_half_max": 0.0,
+    "utilization_status": "reasonably distributed"
+  },
+  "total_score": {
+    "minimum": 0.0,
+    "maximum": 49.0,
+    "mean": 12.6,
+    "median": 0.0,
+    "25th_percentile": 0.0,
+    "75th_percentile": 25.0,
+    "percentage_zero": 51.42857142857142,
+    "percentage_half_max": 0.0,
+    "valid_examples_percentage_half_max": 0.0,
+    "utilization_status": "under-utilized"
+  }
+}

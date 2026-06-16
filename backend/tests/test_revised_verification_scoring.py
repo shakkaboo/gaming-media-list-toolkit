@@ -38,14 +38,14 @@ def test_5_gaming_retailer_not_verified():
     signals = ExtractedSiteSignals(headings=["buy now", "cart", "checkout", "prices"], page_title="Games Store")
     ev = normalize_evidence([signals])
     from app.verification.rules_v2 import compute_deductions_and_hard_rejections
-    ded, hr, _ = compute_deductions_and_hard_rejections(ev)
+    ded, hr, _, _ = compute_deductions_and_hard_rejections(ev)
     assert hr == "dominant_ecommerce_store" or ded > 0
 
 def test_6_developer_rejected():
     signals = ExtractedSiteSignals(headings=["our games", "careers in game development", "investor relations"])
     ev = normalize_evidence([signals])
     from app.verification.rules_v2 import compute_deductions_and_hard_rejections
-    ded, hr, _ = compute_deductions_and_hard_rejections(ev)
+    ded, hr, _, _ = compute_deductions_and_hard_rejections(ev)
     assert hr == "game_developer_corporate_site"
 
 def test_7_publisher_mentions_in_article_no_penalty():
@@ -53,14 +53,14 @@ def test_7_publisher_mentions_in_article_no_penalty():
     signals = ExtractedSiteSignals(headings=["Review of new EA game", "Ubisoft releases game"])
     ev = normalize_evidence([signals])
     from app.verification.rules_v2 import compute_deductions_and_hard_rejections
-    ded, hr, _ = compute_deductions_and_hard_rejections(ev)
+    ded, hr, _, _ = compute_deductions_and_hard_rejections(ev)
     assert ded == 0
 
 def test_8_media_site_shop_link():
     signals = ExtractedSiteSignals(navigation_labels=["merchandise"])
     ev = normalize_evidence([signals])
     from app.verification.rules_v2 import compute_deductions_and_hard_rejections
-    ded, hr, _ = compute_deductions_and_hard_rejections(ev)
+    ded, hr, _, _ = compute_deductions_and_hard_rejections(ev)
     assert hr is None
     assert ded == 10
 
@@ -68,14 +68,14 @@ def test_9_tech_pub_hardware_no_reject():
     signals = ExtractedSiteSignals(headings=["New GPU review"])
     ev = normalize_evidence([signals])
     from app.verification.rules_v2 import compute_deductions_and_hard_rejections
-    ded, hr, _ = compute_deductions_and_hard_rejections(ev)
+    ded, hr, _, _ = compute_deductions_and_hard_rejections(ev)
     assert hr is None
 
 def test_10_product_catalogue():
     signals = ExtractedSiteSignals(navigation_labels=["product catalogue", "checkout"])
     ev = normalize_evidence([signals])
     from app.verification.rules_v2 import compute_deductions_and_hard_rejections
-    ded, hr, _ = compute_deductions_and_hard_rejections(ev)
+    ded, hr, _, _ = compute_deductions_and_hard_rejections(ev)
     assert ded > 0
 
 def test_11_low_technical_uncertain():

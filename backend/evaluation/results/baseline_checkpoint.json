@@ -18,41 +18,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.famitsu.com/",
-      "final_url": "https://famitsu.com/",
-      "registered_domain": "famitsu.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:03:41.797572Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:10:51.743545Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "4gamer.net": {
@@ -74,41 +69,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.4gamer.net/",
-      "final_url": "https://4gamer.net/",
-      "registered_domain": "4gamer.net",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:03:43.654396Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:10:52.748511Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "jp.ign.com": {
@@ -130,61 +120,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://jp.ign.com/",
-      "final_url": "https://jp.ign.com/",
-      "registered_domain": "ign.com",
-      "score": 17,
-      "verification_status": "rejected",
-      "confidence": 0.4,
-      "gaming_relevance_score": 5,
-      "editorial_structure_score": 10,
-      "activity_score": 0,
-      "publication_identity_score": 2,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
-      "positive_reasons": [
-        {
-          "code": "platform_nav",
-          "message": "Platform terminology in navigation or headings",
-          "weight": 5,
-          "evidence": [
-            "Platform match"
-          ]
-        },
-        {
-          "code": "article_links",
-          "message": "Article-like links detected",
-          "weight": 10,
-          "evidence": [
-            "Article links"
-          ]
-        },
-        {
-          "code": "og_site_name",
-          "message": "Open Graph site name present",
-          "weight": 2,
-          "evidence": [
-            "IGN Japan"
-          ]
-        }
-      ],
+      "positive_reasons": [],
       "negative_reasons": [],
-      "detected_categories": [
-        "nintendo"
-      ],
-      "activity_status": "unknown",
+      "detected_categories": [],
+      "activity_status": "active",
       "newest_detected_publication_date": null,
-      "article_count_estimate": 6,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:03:44.887030Z",
+      "article_count_estimate": 0,
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:10:53.749903Z",
       "fetch_success": true,
       "fetch_error_code": null,
       "safe_error": null,
       "expected_market": null,
       "expected_language": null,
-      "detected_language": "ja",
-      "market_evidence": [
-        "lang=ja"
-      ]
+      "detected_language": null,
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "automaton-media.com": {
@@ -206,72 +171,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://automaton-media.com/",
-      "final_url": "https://automaton-media.com/",
-      "registered_domain": "automaton-media.com",
-      "score": 36,
-      "verification_status": "rejected",
-      "confidence": 0.6,
-      "gaming_relevance_score": 15,
-      "editorial_structure_score": 0,
-      "activity_score": 15,
-      "publication_identity_score": 6,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
-      "positive_reasons": [
-        {
-          "code": "platform_nav",
-          "message": "Platform terminology in navigation or headings",
-          "weight": 15,
-          "evidence": [
-            "Platform match"
-          ]
-        },
-        {
-          "code": "active_recently",
-          "message": "Publication within 90 days",
-          "weight": 15,
-          "evidence": [
-            "2026-04-28T10:52:07+00:00"
-          ]
-        },
-        {
-          "code": "og_site_name",
-          "message": "Open Graph site name present",
-          "weight": 2,
-          "evidence": [
-            "AUTOMATON"
-          ]
-        },
-        {
-          "code": "author_links",
-          "message": "Author/Byline links detected",
-          "weight": 4,
-          "evidence": [
-            "Authors"
-          ]
-        }
-      ],
+      "positive_reasons": [],
       "negative_reasons": [],
-      "detected_categories": [
-        "pc_gaming",
-        "nintendo",
-        "playstation",
-        "xbox"
-      ],
-      "activity_status": "active_recently",
-      "newest_detected_publication_date": "2026-04-28T10:52:07+00:00",
+      "detected_categories": [],
+      "activity_status": "active",
+      "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:03:46.517960Z",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:10:54.751932Z",
       "fetch_success": true,
       "fetch_error_code": null,
       "safe_error": null,
       "expected_market": null,
       "expected_language": null,
-      "detected_language": "ja",
-      "market_evidence": [
-        "lang=ja"
-      ]
+      "detected_language": null,
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "dengekionline.com": {
@@ -293,70 +222,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://dengekionline.com/",
-      "final_url": "https://dengekionline.com/",
-      "registered_domain": "dengekionline.com",
-      "score": 37,
-      "verification_status": "rejected",
-      "confidence": 0.45,
-      "gaming_relevance_score": 10,
-      "editorial_structure_score": 10,
-      "activity_score": 15,
-      "publication_identity_score": 2,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
-      "positive_reasons": [
-        {
-          "code": "platform_nav",
-          "message": "Platform terminology in navigation or headings",
-          "weight": 10,
-          "evidence": [
-            "Platform match"
-          ]
-        },
-        {
-          "code": "article_links",
-          "message": "Article-like links detected",
-          "weight": 10,
-          "evidence": [
-            "Article links"
-          ]
-        },
-        {
-          "code": "active_recently",
-          "message": "Publication within 90 days",
-          "weight": 15,
-          "evidence": [
-            "2026-06-16T21:00:00+00:00"
-          ]
-        },
-        {
-          "code": "og_site_name",
-          "message": "Open Graph site name present",
-          "weight": 2,
-          "evidence": [
-            "\u96fb\u6483\u30aa\u30f3\u30e9\u30a4\u30f3"
-          ]
-        }
-      ],
+      "positive_reasons": [],
       "negative_reasons": [],
-      "detected_categories": [
-        "pc_gaming",
-        "nintendo"
-      ],
-      "activity_status": "active_recently",
-      "newest_detected_publication_date": "2026-06-16T21:00:00+00:00",
-      "article_count_estimate": 87,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:03:47.831303Z",
+      "detected_categories": [],
+      "activity_status": "active",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:10:55.752244Z",
       "fetch_success": true,
       "fetch_error_code": null,
       "safe_error": null,
       "expected_market": null,
       "expected_language": null,
-      "detected_language": "ja",
-      "market_evidence": [
-        "lang=ja"
-      ]
+      "detected_language": null,
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "gamespark.jp": {
@@ -378,41 +273,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.gamespark.jp/",
-      "final_url": "https://gamespark.jp/",
-      "registered_domain": "gamespark.jp",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:03:49.399783Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:10:56.755708Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "gematsu.com": {
@@ -434,41 +324,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.gematsu.com/",
-      "final_url": "https://gematsu.com/",
-      "registered_domain": "gematsu.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:03:50.679789Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:10:57.757021Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "inside-games.jp": {
@@ -490,41 +375,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.inside-games.jp/",
-      "final_url": "https://inside-games.jp/",
-      "registered_domain": "inside-games.jp",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:03:52.137402Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:10:58.758731Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "destructoid.com": {
@@ -546,41 +426,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.destructoid.com/",
-      "final_url": "https://destructoid.com/",
-      "registered_domain": "destructoid.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:03:53.222852Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:10:59.760258Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "cgmagonline.com": {
@@ -602,41 +477,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.cgmagonline.com/",
-      "final_url": "https://cgmagonline.com/",
-      "registered_domain": "cgmagonline.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:03:54.353458Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:00.762245Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "thegamer.com": {
@@ -658,41 +528,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.thegamer.com/",
-      "final_url": "https://thegamer.com/",
-      "registered_domain": "thegamer.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:03:56.253520Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:01.763724Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "canadiangamingnews.com": {
@@ -714,32 +579,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://canadiangamingnews.com/",
-      "final_url": "https://canadiangamingnews.com/",
-      "registered_domain": "canadiangamingnews.com",
-      "score": 0,
-      "verification_status": "rejected",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
       "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:03:57.401848Z",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:02.764881Z",
       "fetch_success": true,
       "fetch_error_code": null,
       "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "gamecanucks.com": {
@@ -761,41 +630,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://gamecanucks.com/",
-      "final_url": "https://gamecanucks.com/",
-      "registered_domain": "gamecanucks.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "dns_failed"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:03:58.425702Z",
-      "fetch_success": false,
-      "fetch_error_code": "dns_failed",
-      "safe_error": "DNS resolution failed: [Errno 11001] getaddrinfo failed",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:03.766239Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "canadianonlinegamers.com": {
@@ -817,41 +681,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://canadianonlinegamers.com/",
-      "final_url": "https://canadianonlinegamers.com/",
-      "registered_domain": "canadianonlinegamers.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "connection_error"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:02.870514Z",
-      "fetch_success": false,
-      "fetch_error_code": "connection_error",
-      "safe_error": "Connection error",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:04.768298Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "ign.com": {
@@ -873,41 +732,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.ign.com/",
-      "final_url": "https://ign.com/",
-      "registered_domain": "ign.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:03.913317Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:05.771110Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "gamespot.com": {
@@ -929,41 +783,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.gamespot.com/",
-      "final_url": "https://gamespot.com/",
-      "registered_domain": "gamespot.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:04.988286Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:06.774118Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "kotaku.com": {
@@ -985,117 +834,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://kotaku.com/",
-      "final_url": "https://kotaku.com/",
-      "registered_domain": "kotaku.com",
-      "score": 49,
-      "verification_status": "uncertain",
-      "confidence": 0.65,
-      "gaming_relevance_score": 25,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
       "editorial_structure_score": 30,
-      "activity_score": 15,
-      "publication_identity_score": 4,
-      "negative_penalty": 25,
-      "positive_reasons": [
-        {
-          "code": "gaming_meta",
-          "message": "Gaming terminology in metadata",
-          "weight": 10,
-          "evidence": [
-            "Metadata match"
-          ]
-        },
-        {
-          "code": "platform_nav",
-          "message": "Platform terminology in navigation or headings",
-          "weight": 15,
-          "evidence": [
-            "Platform match"
-          ]
-        },
-        {
-          "code": "editorial_nav",
-          "message": "Editorial navigation labels",
-          "weight": 20,
-          "evidence": [
-            "Editorial nav"
-          ]
-        },
-        {
-          "code": "editorial_schema",
-          "message": "Editorial JSON-LD schema",
-          "weight": 10,
-          "evidence": [
-            "Article"
-          ]
-        },
-        {
-          "code": "active_recently",
-          "message": "Publication within 90 days",
-          "weight": 15,
-          "evidence": [
-            "2026-06-15T20:28:44+00:00"
-          ]
-        },
-        {
-          "code": "og_site_name",
-          "message": "Open Graph site name present",
-          "weight": 2,
-          "evidence": [
-            "Kotaku"
-          ]
-        },
-        {
-          "code": "author_links",
-          "message": "Author/Byline links detected",
-          "weight": 2,
-          "evidence": [
-            "Authors"
-          ]
-        }
-      ],
-      "negative_reasons": [
-        {
-          "code": "store_signals",
-          "message": "E-commerce or store signals detected",
-          "weight": -10,
-          "evidence": [
-            "Store evidence"
-          ]
-        },
-        {
-          "code": "developer_signals",
-          "message": "Developer or publisher signals detected",
-          "weight": -15,
-          "evidence": [
-            "Dev evidence"
-          ]
-        }
-      ],
-      "detected_categories": [
-        "pc_gaming",
-        "nintendo",
-        "xbox",
-        "reviews",
-        "guides",
-        "playstation",
-        "mobile_gaming",
-        "gaming_news"
-      ],
-      "activity_status": "active_recently",
-      "newest_detected_publication_date": "2026-06-15T20:28:44+00:00",
+      "activity_score": 20,
+      "publication_identity_score": 10,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [],
+      "detected_categories": [],
+      "activity_status": "active",
+      "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:07.135058Z",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:07.775954Z",
       "fetch_success": true,
       "fetch_error_code": null,
       "safe_error": null,
       "expected_market": null,
       "expected_language": null,
-      "detected_language": "en-US",
-      "market_evidence": [
-        "lang=en-US"
-      ]
+      "detected_language": null,
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "polygon.com": {
@@ -1117,41 +885,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.polygon.com/",
-      "final_url": "https://polygon.com/",
-      "registered_domain": "polygon.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:08.900781Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:08.778012Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "pcgamer.com": {
@@ -1173,41 +936,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.pcgamer.com/",
-      "final_url": "https://pcgamer.com/",
-      "registered_domain": "pcgamer.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:09.974192Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:09.780393Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "rockpapershotgun.com": {
@@ -1229,41 +987,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.rockpapershotgun.com/",
-      "final_url": "https://rockpapershotgun.com/",
-      "registered_domain": "rockpapershotgun.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:11.206727Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:10.782336Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "news.yahoo.co.jp": {
@@ -1285,41 +1038,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://news.yahoo.co.jp/categories/it/gaming",
-      "final_url": "https://news.yahoo.co.jp/categories/it/gaming",
-      "registered_domain": "yahoo.co.jp",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "http_client_error"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:12.697591Z",
-      "fetch_success": false,
-      "fetch_error_code": "http_client_error",
-      "safe_error": "HTTP 404",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:11.783890Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "oricon.co.jp": {
@@ -1341,41 +1089,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.oricon.co.jp/game/",
-      "final_url": "https://oricon.co.jp/game/",
-      "registered_domain": "oricon.co.jp",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:13.938452Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:12.787472Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "itmedia.co.jp": {
@@ -1397,41 +1140,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.itmedia.co.jp/news/subtop/game/",
-      "final_url": "https://itmedia.co.jp/news/subtop/game/",
-      "registered_domain": "itmedia.co.jp",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:15.899498Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:13.789996Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "asahi.com": {
@@ -1453,41 +1191,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.asahi.com/games/",
-      "final_url": "https://asahi.com/games/",
-      "registered_domain": "asahi.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:17.014278Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:14.793211Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "lapresse.ca": {
@@ -1509,41 +1242,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.lapresse.ca/jeux",
-      "final_url": "https://lapresse.ca/jeux",
-      "registered_domain": "lapresse.ca",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:18.955219Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:15.796218Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "journaldemontreal.com": {
@@ -1565,41 +1293,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.journaldemontreal.com/jeux",
-      "final_url": "https://journaldemontreal.com/jeux",
-      "registered_domain": "journaldemontreal.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:20.122715Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:16.798468Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "theglobeandmail.com": {
@@ -1621,41 +1344,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.theglobeandmail.com/technology/gaming/",
-      "final_url": "https://theglobeandmail.com/technology/gaming/",
-      "registered_domain": "theglobeandmail.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:21.804659Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:17.800889Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "cbc.ca": {
@@ -1677,41 +1395,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.cbc.ca/news/entertainment/games",
-      "final_url": "https://www.cbc.ca/news/entertainment/games",
-      "registered_domain": "cbc.ca",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "total_timeout"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:42.818273Z",
-      "fetch_success": false,
-      "fetch_error_code": "total_timeout",
-      "safe_error": "Fetch exceeded total timeout limit",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:18.804314Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "bbc.com": {
@@ -1733,41 +1446,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.bbc.com/news/technology/gaming",
-      "final_url": "https://bbc.com/news/technology/gaming",
-      "registered_domain": "bbc.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:43.959908Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:19.807110Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "theverge.com": {
@@ -1789,41 +1497,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.theverge.com/games",
-      "final_url": "https://theverge.com/games",
-      "registered_domain": "theverge.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:45.040301Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:20.809566Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "nintendo.co.jp": {
@@ -1845,41 +1548,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.nintendo.co.jp/",
-      "final_url": "https://nintendo.co.jp/",
-      "registered_domain": "nintendo.co.jp",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:46.576418Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:21.812083Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "square-enix.com": {
@@ -1901,41 +1599,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.square-enix.com/jp/",
-      "final_url": "https://square-enix.com/jp/",
-      "registered_domain": "square-enix.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "https_downgrade"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:48.173894Z",
-      "fetch_success": false,
-      "fetch_error_code": "https_downgrade",
-      "safe_error": "HTTPS downgrade rejected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:22.815066Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "bioware.com": {
@@ -1957,41 +1650,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.bioware.com/",
-      "final_url": "https://bioware.com/",
-      "registered_domain": "bioware.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:49.557407Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:23.818683Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "ubisoft.com": {
@@ -2013,41 +1701,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.ubisoft.com/en-ca/",
-      "final_url": "https://ubisoft.com/en-ca/",
-      "registered_domain": "ubisoft.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:51.147300Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:24.822593Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "ea.com": {
@@ -2069,41 +1752,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.ea.com/en-ca",
-      "final_url": "https://ea.com/en-ca",
-      "registered_domain": "ea.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:52.261678Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:25.825539Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "yodobashi.com": {
@@ -2125,41 +1803,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.yodobashi.com/category/140007/",
-      "final_url": "https://yodobashi.com/category/140007/",
-      "registered_domain": "yodobashi.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:54.318718Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:26.829304Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "suruga-ya.jp": {
@@ -2181,41 +1854,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.suruga-ya.jp/",
-      "final_url": "https://suruga-ya.jp/",
-      "registered_domain": "suruga-ya.jp",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:04:55.769331Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:27.834211Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "biccamera.com": {
@@ -2237,41 +1905,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.biccamera.com/bc/category/001/100/",
-      "final_url": "https://biccamera.com/bc/category/001/100/",
-      "registered_domain": "biccamera.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "connection_timeout"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:05:13.408996Z",
-      "fetch_success": false,
-      "fetch_error_code": "connection_timeout",
-      "safe_error": "Connect timeout",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:28.838472Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "gamestop.ca": {
@@ -2293,41 +1956,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.gamestop.ca/",
-      "final_url": "https://gamestop.ca/",
-      "registered_domain": "gamestop.ca",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:05:15.488404Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:29.841866Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "bestbuy.ca": {
@@ -2349,41 +2007,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.bestbuy.ca/en-ca/category/video-games/20001",
-      "final_url": "https://bestbuy.ca/en-ca/category/video-games/20001",
-      "registered_domain": "bestbuy.ca",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:05:16.613299Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:30.845756Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "5ch.net": {
@@ -2405,45 +2058,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://5ch.net/game",
-      "final_url": "https://egg.5ch.net/game/",
-      "registered_domain": "5ch.net",
-      "score": 10,
-      "verification_status": "rejected",
-      "confidence": 0.15,
-      "gaming_relevance_score": 10,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
-      "positive_reasons": [
-        {
-          "code": "platform_nav",
-          "message": "Platform terminology in navigation or headings",
-          "weight": 10,
-          "evidence": [
-            "Platform match"
-          ]
-        }
-      ],
+      "positive_reasons": [],
       "negative_reasons": [],
-      "detected_categories": [
-        "pc_gaming"
-      ],
-      "activity_status": "unknown",
+      "detected_categories": [],
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:05:19.448834Z",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:31.849096Z",
       "fetch_success": true,
       "fetch_error_code": null,
       "safe_error": null,
       "expected_market": null,
       "expected_language": null,
-      "detected_language": "ja",
-      "market_evidence": [
-        "lang=ja"
-      ]
+      "detected_language": null,
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "streetfighter.com": {
@@ -2465,41 +2109,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.streetfighter.com/",
-      "final_url": "https://streetfighter.com/",
-      "registered_domain": "streetfighter.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "http_client_error"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:05:20.683026Z",
-      "fetch_success": false,
-      "fetch_error_code": "http_client_error",
-      "safe_error": "HTTP 403",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:32.852564Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "thescoreesports.com": {
@@ -2521,41 +2160,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.thescoreesports.com/",
-      "final_url": "https://thescoreesports.com/",
-      "registered_domain": "thescoreesports.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:05:21.834364Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:33.857208Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "razer.com": {
@@ -2577,41 +2211,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.razer.com/ca-en",
-      "final_url": "https://razer.com/ca-en",
-      "registered_domain": "razer.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:05:23.876685Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:34.860477Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "twitch.tv": {
@@ -2633,41 +2262,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://www.twitch.tv/shroud",
-      "final_url": "https://twitch.tv/shroud",
-      "registered_domain": "twitch.tv",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "redirect_loop"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:05:24.919883Z",
-      "fetch_success": false,
-      "fetch_error_code": "redirect_loop",
-      "safe_error": "Redirect loop detected",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:35.864569Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "vr-zone.com": {
@@ -2689,41 +2313,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://vr-zone.com/",
-      "final_url": "https://vr-zone.com/",
-      "registered_domain": "vr-zone.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "unexpected_fetch_error"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:05:26.204280Z",
-      "fetch_success": false,
-      "fetch_error_code": "unexpected_fetch_error",
-      "safe_error": "HTTP 520",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:36.868857Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "1up.com": {
@@ -2745,41 +2364,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://1up.com/",
-      "final_url": "https://1up.com/",
-      "registered_domain": "1up.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "dns_failed"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:05:27.249167Z",
-      "fetch_success": false,
-      "fetch_error_code": "dns_failed",
-      "safe_error": "DNS resolution failed: [Errno 11001] getaddrinfo failed",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:37.872735Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "n4g.com": {
@@ -2801,41 +2415,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://n4g.com/",
-      "final_url": "https://n4g.com/",
-      "registered_domain": "n4g.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "http_client_error"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:05:28.346013Z",
-      "fetch_success": false,
-      "fetch_error_code": "http_client_error",
-      "safe_error": "HTTP 403",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:38.877004Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "dmm.com": {
@@ -2857,41 +2466,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://games.dmm.com/",
-      "final_url": "https://games.dmm.com/",
-      "registered_domain": "dmm.com",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "http_client_error"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:05:30.282449Z",
-      "fetch_success": false,
-      "fetch_error_code": "http_client_error",
-      "safe_error": "HTTP 404",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:39.881432Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   },
   "gamewith.jp": {
@@ -2913,41 +2517,36 @@
       "review_method": "manual_public_web_review"
     },
     "result": {
-      "requested_url": "https://gamewith.jp/",
-      "final_url": "https://gamewith.jp/",
-      "registered_domain": "gamewith.jp",
-      "score": 0,
-      "verification_status": "fetch_failed",
-      "confidence": 0.0,
-      "gaming_relevance_score": 0,
-      "editorial_structure_score": 0,
-      "activity_score": 0,
-      "publication_identity_score": 0,
+      "requested_url": "http://test.com",
+      "final_url": "http://test.com",
+      "registered_domain": "test.com",
+      "score": 80,
+      "verification_status": "verified",
+      "confidence": 1.0,
+      "gaming_relevance_score": 30,
+      "editorial_structure_score": 30,
+      "activity_score": 20,
+      "publication_identity_score": 10,
       "negative_penalty": 0,
       "positive_reasons": [],
-      "negative_reasons": [
-        {
-          "code": "fetch_failed",
-          "message": "Could not fetch the page",
-          "weight": -100,
-          "evidence": [
-            "response_too_large"
-          ]
-        }
-      ],
+      "negative_reasons": [],
       "detected_categories": [],
-      "activity_status": "unknown",
+      "activity_status": "active",
       "newest_detected_publication_date": null,
       "article_count_estimate": 0,
-      "classifier_version": "rule_based_v1",
-      "analysed_at": "2026-06-16T12:05:32.861481Z",
-      "fetch_success": false,
-      "fetch_error_code": "response_too_large",
-      "safe_error": "Streamed body too large",
+      "classifier_version": "test",
+      "analysed_at": "2026-06-16T21:11:40.886289Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
       "expected_market": null,
       "expected_language": null,
       "detected_language": null,
-      "market_evidence": []
+      "market_evidence": [],
+      "predicted_status": null,
+      "relevance_label": null,
+      "market_status": null,
+      "v2_shadow": null
     }
   }
 }

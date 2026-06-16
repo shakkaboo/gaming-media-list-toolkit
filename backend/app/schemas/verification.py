@@ -43,6 +43,26 @@ class ExtractedSiteSignals(BaseModel):
     challenge_indicators: List[str] = Field(default_factory=list)
     parking_indicators: List[str] = Field(default_factory=list)
 
+class V2ShadowResult(BaseModel):
+    """Shadow result from v2 classifier — for review only, does not affect production decision."""
+    v2_predicted_status: str
+    v2_relevance_label: str
+    v2_market_status: str
+    gaming_score: int
+    media_score: int
+    market_score: int
+    activity_score: int
+    technical_score: int
+    component_sum: int
+    contextual_deductions: int
+    total_score: int
+    hard_rejection_rule: Optional[str] = None
+    hard_rejection_evidence: List[str] = Field(default_factory=list)
+    decision_override: Optional[str] = None
+    v2_explanation: str
+    review_recommendation: str  # "agree" | "v2_abstained" | "review_v2_positive" | "review_v2_negative" | "review"
+
+
 class VerificationResult(BaseModel):
     requested_url: str
     final_url: str
@@ -80,6 +100,7 @@ class VerificationResult(BaseModel):
     predicted_status: Optional[str] = None
     relevance_label: Optional[str] = None
     market_status: Optional[str] = None
+    v2_shadow: Optional[V2ShadowResult] = None
 
 from typing import Union
 

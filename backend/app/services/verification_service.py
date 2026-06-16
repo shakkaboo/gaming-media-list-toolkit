@@ -9,7 +9,8 @@ from app.schemas.verification import (
     VerificationRequest,
     VerificationPreviewResponse,
     VerificationResult,
-    VerificationReason
+    VerificationReason,
+    V2ShadowResult,
 )
 from app.services.fetch_service import FetchService
 from app.verification.html_analyzer import HtmlAnalyzer
@@ -97,10 +98,109 @@ class VerificationService:
 
         results: List[VerificationResult] = []
         v2_results = []
-        
-        use_v2 = getattr(request, "classifier_version", "baseline") == "v2_multilingual_explainable"
 
-        if use_v2:
+        classifier_mode = getattr(request, "classifier_version", "baseline")
+        use_v2 = classifier_mode == "v2_multilingual_explainable"
+        use_shadow = classifier_mode == "v2_shadow"
+
+        if use_shadow:
+            from app.verification.classifier_v2 import ClassifierV2
+            classifier_v2 = ClassifierV2(self.settings)
+
+            async def process_shadow(acq):
+                async with self.concurrency_sem:
+                    url = (acq.primary_page.requested_url if acq.primary_page
+                           else f"https://{acq.domain}/")
+
+                    # Production decision: baseline on primary page only
+                    if acq.primary_page:
+                        try:
+                            baseline_res = await asyncio.wait_for(
+                                asyncio.to_thread(
+                                    self._verify_page_sync, acq.primary_page, current_time, request),
+                                timeout=self.settings.VERIFICATION_TIMEOUT_SECONDS
+                            )
+                        except asyncio.TimeoutError:
+                            baseline_res = self._create_error_result(
+                                acq.primary_page, "analysis_timeout",
+                                "Verification exceeded CPU timeout")
+                        except Exception as exc:
+                            baseline_res = self._create_error_result(
+                                acq.primary_page, "analysis_error", str(exc))
+                    else:
+                        from app.schemas.fetch import FetchedPage as _FP
+                        synthetic = _FP(
+                            requested_url=url, final_url=url,
+                            registered_domain=acq.domain,
+                            status_code=0,
+                            fetched_at=datetime.now(timezone.utc),
+                            success=False,
+                            error_code="no_primary_page",
+                        )
+                        baseline_res = self._verify_page_sync(synthetic, current_time, request)
+
+                    # Shadow: run v2 (result stored for review, not returned as production)
+                    v2_res = None
+                    try:
+                        v2_res = await asyncio.wait_for(
+                            asyncio.to_thread(
+                                classifier_v2.classify_acquisition, acq, current_time, request),
+                            timeout=self.settings.VERIFICATION_TIMEOUT_SECONDS
+                        )
+                    except Exception:
+                        pass
+
+                    if v2_res is not None:
+                        b_status = baseline_res.verification_status
+                        v2_status = v2_res.predicted_status
+                        if v2_status == "uncertain":
+                            rec = "v2_abstained"
+                        elif b_status == "verified" and v2_status == "verified":
+                            rec = "agree"
+                        elif b_status == "rejected" and v2_status == "rejected":
+                            rec = "agree"
+                        elif v2_status == "verified":
+                            rec = "review_v2_positive"
+                        elif v2_status == "rejected":
+                            rec = "review_v2_negative"
+                        else:
+                            rec = "review"
+
+                        baseline_res.v2_shadow = V2ShadowResult(
+                            v2_predicted_status=v2_status,
+                            v2_relevance_label=v2_res.relevance_label,
+                            v2_market_status=v2_res.market_status,
+                            gaming_score=v2_res.gaming_score,
+                            media_score=v2_res.media_score,
+                            market_score=v2_res.market_score,
+                            activity_score=v2_res.activity_score,
+                            technical_score=v2_res.technical_score,
+                            component_sum=v2_res.component_sum,
+                            contextual_deductions=v2_res.contextual_deductions,
+                            total_score=v2_res.total_score,
+                            hard_rejection_rule=v2_res.hard_rejection_rule,
+                            hard_rejection_evidence=list(v2_res.hard_rejection_evidence),
+                            decision_override=v2_res.decision_override,
+                            v2_explanation=v2_res.decision_reason,
+                            review_recommendation=rec,
+                        )
+
+                    return baseline_res
+
+            shadow_tasks = [process_shadow(acq) for acq in acq_results]
+            processed_shadow = await asyncio.gather(*shadow_tasks)
+            shadow_results = [r for r in processed_shadow if r is not None]
+
+            return VerificationPreviewResponse(
+                results=shadow_results,
+                verified_count=sum(1 for r in shadow_results if r.verification_status == "verified"),
+                uncertain_count=sum(1 for r in shadow_results if r.verification_status == "uncertain"),
+                rejected_count=sum(1 for r in shadow_results if r.verification_status == "rejected"),
+                failed_count=sum(1 for r in shadow_results if not r.fetch_success),
+                skipped_count=skipped_count,
+            )
+
+        elif use_v2:
             from app.verification.classifier_v2 import ClassifierV2
             classifier_v2 = ClassifierV2(self.settings)
             
