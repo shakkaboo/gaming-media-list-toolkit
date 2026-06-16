@@ -8,17 +8,24 @@ class FetchedPage(BaseModel):
     final_url: str
     registered_domain: str
     status_code: int
-    content_type: Optional[str]
-    content_length: Optional[int]
-    html: Optional[str]
-    title: Optional[str]
+    content_type: Optional[str] = None
+    content_length: Optional[int] = None
+    html: Optional[str] = None
+    title: Optional[str] = None
     fetched_at: datetime
-    redirect_chain: List[str]
-    redirect_count: int
-    elapsed_ms: int
+    redirect_chain: List[str] = []
+    redirect_count: int = 0
+    elapsed_ms: int = 0
     success: bool
-    error_code: Optional[str]
-    safe_error: Optional[str]
+    error_code: Optional[str] = None
+    safe_error: Optional[str] = None
+    fetch_method: str = "http"
+    failure_category: Optional[str] = None
+    failure_reason: Optional[str] = None
+    challenge_detected: bool = False
+    javascript_shell_detected: bool = False
+    robots_disallowed: bool = False
+    attempt_count: int = 1
 
 class PageFetchPreview(BaseModel):
     requested_url: str
