@@ -1,0 +1,39 @@
+{
+  "classifier_version": "v2_multilingual_explainable",
+  "vocabulary_version": "v2.0",
+  "vocabulary_hash": "ff7dcc58",
+  "scoring_rule_hash": "phase5b_updated",
+  "signal_weights": "gaming_max:30, media_max:25, market_max:20",
+  "contextual_deductions": "store max 20, dev max 20, casino max 30, hw max 15",
+  "deduction_caps": "Combined non-hard-rejection deduction cap: 35",
+  "hard_rejection_definitions": [
+    "dominant_ecommerce_store",
+    "game_developer_corporate_site",
+    "casino_or_betting_site",
+    "hardware_manufacturer"
+  ],
+  "verified_threshold": 60,
+  "uncertain_threshold": 35,
+  "component_minimums": {
+    "gaming": 14,
+    "media": 10,
+    "market": 0,
+    "technical": 2
+  },
+  "market_status_policy": "confirmed/probable/unconfirmed/conflicting returned separately",
+  "selection_policy": "1. 0FP/Recall>=50%/Coverage>=60% 2. FP<=1 max recall 3. F1 4. Coverage 5. Simplicity",
+  "development_metrics": {
+    "tp": 9,
+    "fp": 0,
+    "fn": 7,
+    "tn": 19,
+    "abstentions": 21,
+    "precision": 1.0,
+    "recall": 0.5625,
+    "f1": 0.72,
+    "coverage": 0.4,
+    "strict_accuracy": 0.8
+  },
+  "configuration_hash": "04a585ef",
+  "frozen_at": "2026-06-16T18:38:24.074832+00:00"
+}

@@ -1,0 +1,48 @@
+{
+  "development": {
+    "total": 35,
+    "transport_success": 19,
+    "usable_evidence_found": 19,
+    "total_attempts": 71,
+    "failures": {
+      "challenge_page": 1,
+      "dns_failed": 2,
+      "connection_error": 1,
+      "http_403": 5,
+      "http_404": 3,
+      "redirect_failure": 2,
+      "unknown": 1,
+      "timeout": 1
+    }
+  },
+  "test": {
+    "total": 15,
+    "transport_success": 10,
+    "usable_evidence_found": 10,
+    "total_attempts": 23,
+    "failures": {
+      "http_404": 1,
+      "redirect_failure": 1,
+      "unknown": 1,
+      "http_403": 1,
+      "response_too_large": 1
+    }
+  },
+  "overall": {
+    "total": 50,
+    "transport_success": 29,
+    "usable_evidence_found": 29,
+    "total_attempts": 94,
+    "failures": {
+      "challenge_page": 1,
+      "dns_failed": 2,
+      "connection_error": 1,
+      "http_403": 6,
+      "http_404": 4,
+      "redirect_failure": 3,
+      "unknown": 2,
+      "timeout": 1,
+      "response_too_large": 1
+    }
+  }
+}

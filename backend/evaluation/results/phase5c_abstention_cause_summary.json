@@ -1,0 +1,11 @@
+{
+  "uncertain_expected_positives": 6,
+  "uncertain_expected_negatives": 12,
+  "uncertain_expected_uncertain_rows": 3,
+  "causes": {
+    "low technical confidence": 18,
+    "near verified threshold": 1,
+    "other evidence-backed cause": 1,
+    "near rejection threshold": 1
+  }
+}

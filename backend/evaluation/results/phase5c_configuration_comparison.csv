@@ -1,0 +1,11 @@
+ID,Purpose,HighConfNeg,VT,UT,GM,MM,TM,Precision,Decided_Recall,Operational_Recall,F1,FP,FN_Decided,Abstentions,Coverage
+5,"Tech min 0, lower verified",True,58,40,14,10,0,1.000,0.625,0.625,0.769,0,6,1,0.969
+3,Tech min 0,True,60,40,14,10,0,1.000,0.600,0.562,0.750,0,6,2,0.938
+4,"Tech min 0, higher verified",True,62,40,14,10,0,1.000,0.600,0.562,0.750,0,6,2,0.938
+10,"Tech min 0, lower uncertain",True,60,38,14,10,0,1.000,0.600,0.562,0.750,0,6,3,0.906
+7,Lower verified,True,58,40,14,10,2,1.000,0.909,0.625,0.952,0,1,16,0.500
+1,Baseline from 5B,False,60,40,14,10,2,1.000,0.900,0.562,0.947,0,1,17,0.469
+2,Enable high-conf neg,True,60,40,14,10,2,1.000,0.900,0.562,0.947,0,1,17,0.469
+6,Higher technical min,True,60,40,14,10,3,1.000,0.900,0.562,0.947,0,1,17,0.469
+8,Lower uncertain,True,60,38,14,10,2,1.000,0.900,0.562,0.947,0,1,18,0.438
+9,"Higher verified, lower uncertain",True,62,38,14,10,2,1.000,0.900,0.562,0.947,0,1,18,0.438

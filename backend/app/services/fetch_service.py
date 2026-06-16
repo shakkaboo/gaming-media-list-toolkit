@@ -8,8 +8,9 @@ import time
 from app.config import get_settings
 from app.schemas.search import NormalizedCandidate
 from app.schemas.fetch import FetchRequest, FetchedPage, PageFetchPreview, FetchPreviewResponse
+from app.schemas.acquisition import AcquisitionResult
 from app.fetching.dns_resolver import DNSResolver
-from app.fetching.page_fetcher import fetch_page_with_retries
+from app.fetching.fetch_orchestrator import FetchOrchestrator
 
 def _convert_to_preview(page: FetchedPage, include_html: bool, max_chars: int) -> PageFetchPreview:
     html_preview = None
@@ -53,9 +54,8 @@ class FetchService:
         async with self.host_semaphores_lock:
             return self.host_semaphores[host]
 
-    async def fetch_pages(self, request: FetchRequest) -> Tuple[List[FetchedPage], int]:
+    async def acquire_evidence_batch(self, request: FetchRequest) -> Tuple[List[AcquisitionResult], int]:
         settings = self.settings
-        
         candidates = request.candidates
         skipped_count = 0
         if request.maximum_candidates is not None and request.maximum_candidates > 0:
@@ -66,9 +66,8 @@ class FetchService:
         if len(candidates) > settings.MAX_FETCH_CANDIDATES:
             skipped_count += len(candidates) - settings.MAX_FETCH_CANDIDATES
             candidates = candidates[:settings.MAX_FETCH_CANDIDATES]
-            
+
         dns_resolver = DNSResolver()
-        
         transport = httpx.AsyncHTTPTransport(retries=0)
         limits = httpx.Limits(
             max_connections=settings.MAX_FETCH_CONCURRENCY,
@@ -80,98 +79,76 @@ class FetchService:
             write=settings.FETCH_WRITE_TIMEOUT_SECONDS,
             pool=settings.FETCH_POOL_TIMEOUT_SECONDS
         )
-        
-        results: List[FetchedPage] = []
-        
+
+        results: List[AcquisitionResult] = []
+
+        # Add robust user agent and language
+        headers = {
+            "User-Agent": settings.FETCH_USER_AGENT,
+            "Accept": "text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.8,ja;q=0.7,fr;q=0.5"
+        }
+
         async with httpx.AsyncClient(
             transport=transport,
             limits=limits,
             timeout=timeout,
             verify=True,
             follow_redirects=False,
-            headers={"User-Agent": settings.FETCH_USER_AGENT, "Accept": "text/html, application/xhtml+xml"}
+            headers=headers
         ) as client:
             
-            async def fetch_single(candidate: NormalizedCandidate) -> FetchedPage:
-                url = candidate.homepage_url if request.use_homepage_url else candidate.normalized_url
+            orchestrator = FetchOrchestrator(client, dns_resolver, settings)
+            
+            async def fetch_single(candidate: NormalizedCandidate) -> AcquisitionResult:
+                url_to_fetch = candidate.homepage_url if request.use_homepage_url and candidate.homepage_url else candidate.normalized_url
                 reg_domain = candidate.registered_domain
                 
-                start = time.monotonic()
                 host_sem = await self.get_host_semaphore(reg_domain)
                 
                 async def _inner():
                     async with self.global_semaphore:
                         async with host_sem:
-                            act = tuple(request.allowed_content_types) if request.allowed_content_types else None
-                            mrb = request.max_response_bytes
-                            return await fetch_page_with_retries(
-                                url, client, dns_resolver, settings,
-                                allowed_content_types=act,
-                                max_response_bytes=mrb
-                            )
+                            return await orchestrator.acquire_evidence(url_to_fetch, candidate)
                             
                 try:
-                    page = await asyncio.wait_for(_inner(), timeout=settings.FETCH_TOTAL_TIMEOUT_SECONDS)
+                    res = await asyncio.wait_for(_inner(), timeout=settings.FETCH_TOTAL_TIMEOUT_SECONDS * 3) # Allow more time for fallbacks
+                    return res
                 except asyncio.TimeoutError:
-                    elapsed = int((time.monotonic() - start) * 1000)
-                    page = FetchedPage(
-                        requested_url=url,
-                        final_url=url,
-                        registered_domain=reg_domain,
-                        status_code=0,
-                        content_type=None,
-                        content_length=None,
-                        html=None,
-                        title=None,
-                        fetched_at=datetime.now(timezone.utc),
-                        redirect_chain=[],
-                        redirect_count=0,
-                        elapsed_ms=elapsed,
-                        success=False,
-                        error_code="total_timeout",
-                        safe_error="Fetch exceeded total timeout limit"
-                    )
-                except asyncio.CancelledError:
-                    elapsed = int((time.monotonic() - start) * 1000)
-                    page = FetchedPage(
-                        requested_url=url,
-                        final_url=url,
-                        registered_domain=reg_domain,
-                        status_code=0,
-                        content_type=None,
-                        content_length=None,
-                        html=None,
-                        title=None,
-                        fetched_at=datetime.now(timezone.utc),
-                        redirect_chain=[],
-                        redirect_count=0,
-                        elapsed_ms=elapsed,
-                        success=False,
-                        error_code="cancelled",
-                        safe_error="Fetch was cancelled"
+                    return AcquisitionResult(
+                        domain=reg_domain,
+                        transport_success=False,
+                        fetch_attempts=1,
+                        primary_page=FetchedPage(
+                            requested_url=url_to_fetch,
+                            final_url=url_to_fetch,
+                            registered_domain=reg_domain,
+                            status_code=0,
+                            fetched_at=datetime.now(timezone.utc),
+                            success=False,
+                            error_code="total_timeout",
+                            safe_error="Fetch orchestrator exceeded timeout",
+                            attempt_count=1
+                        )
                     )
                 except Exception as e:
-                    elapsed = int((time.monotonic() - start) * 1000)
-                    page = FetchedPage(
-                        requested_url=url,
-                        final_url=url,
-                        registered_domain=reg_domain,
-                        status_code=0,
-                        content_type=None,
-                        content_length=None,
-                        html=None,
-                        title=None,
-                        fetched_at=datetime.now(timezone.utc),
-                        redirect_chain=[],
-                        redirect_count=0,
-                        elapsed_ms=elapsed,
-                        success=False,
-                        error_code="unexpected_fetch_error",
-                        safe_error=f"Unexpected failure: {e}"
+                    return AcquisitionResult(
+                        domain=reg_domain,
+                        transport_success=False,
+                        fetch_attempts=1,
+                        primary_page=FetchedPage(
+                            requested_url=url_to_fetch,
+                            final_url=url_to_fetch,
+                            registered_domain=reg_domain,
+                            status_code=0,
+                            fetched_at=datetime.now(timezone.utc),
+                            success=False,
+                            error_code="unexpected_fetch_error",
+                            safe_error=f"Unexpected orchestrator failure: {e}",
+                            attempt_count=1
+                        )
                     )
-                    
-                return page
-                
+
             tasks = [fetch_single(c) for c in candidates]
             fetched = await asyncio.gather(*tasks, return_exceptions=True)
             
@@ -183,19 +160,28 @@ class FetchService:
                     
         return results, skipped_count
 
+    async def fetch_pages(self, request: FetchRequest) -> Tuple[List[FetchedPage], int]:
+        acquisition_results, skipped_count = await self.acquire_evidence_batch(request)
+        pages = []
+        for acq in acquisition_results:
+            if acq.primary_page:
+                pages.append(acq.primary_page)
+            pages.extend(acq.supporting_pages)
+        return pages, skipped_count
+
     async def fetch_preview(self, request: FetchRequest) -> FetchPreviewResponse:
-        pages, skipped_count = await self.fetch_pages(request)
+        acquisition_results, skipped_count = await self.acquire_evidence_batch(request)
         
-        results = [
-            _convert_to_preview(p, request.include_html_preview, self.settings.FETCH_PREVIEW_MAX_CHARS)
-            for p in pages
-        ]
-        
-        success_count = sum(1 for r in results if r.success)
-        failure_count = len(results) - success_count
+        previews: List[PageFetchPreview] = []
+        for acq in acquisition_results:
+            if acq.primary_page:
+                previews.append(_convert_to_preview(acq.primary_page, request.include_html_preview, self.settings.FETCH_PREVIEW_MAX_CHARS))
+                
+        success_count = sum(1 for p in previews if p.success)
+        failure_count = len(previews) - success_count
         
         return FetchPreviewResponse(
-            results=results,
+            results=previews,
             success_count=success_count,
             failure_count=failure_count,
             skipped_count=skipped_count

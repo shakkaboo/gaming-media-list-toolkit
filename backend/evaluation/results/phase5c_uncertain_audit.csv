@@ -1,0 +1,22 @@
+domain,expected_label,website_type,gaming_score,media_score,market_score,activity_score,technical_score,component_sum,contextual_deductions,total_score,hard_rejection_rule,hard_rejection_evidence,unmet_component_minimums,distance_from_verified_threshold,distance_from_rejected_threshold,market_status,technical_confidence,reason_for_uncertainty
+automaton-media.com,gaming_media,gaming_publication,0,0,0,0,0,0,0,0,,,"gaming,media,technical",60,-40,unconfirmed,low,low technical confidence
+thegamer.com,gaming_media,gaming_publication,25,15,15,0,3,58,0,58,,,,2,18,confirmed,adequate,near verified threshold
+canadiangamingnews.com,gaming_media,gaming_publication,0,0,0,0,0,0,0,0,,,"gaming,media,technical",60,-40,unconfirmed,low,low technical confidence
+gamecanucks.com,gaming_media,gaming_publication,0,0,0,0,0,0,0,0,,,"gaming,media,technical",60,-40,unconfirmed,low,low technical confidence
+canadianonlinegamers.com,gaming_media,gaming_publication,0,0,0,0,0,0,0,0,,,"gaming,media,technical",60,-40,unconfirmed,low,low technical confidence
+gamespot.com,gaming_media,gaming_publication,0,0,0,0,0,0,0,0,,,"gaming,media,technical",60,-40,unconfirmed,low,low technical confidence
+oricon.co.jp,not_gaming_media,general_media_gaming_section,0,0,0,0,0,0,0,0,,,"gaming,media,technical",60,-40,unconfirmed,low,low technical confidence
+asahi.com,not_gaming_media,general_media_gaming_section,0,0,0,0,0,0,0,0,,,"gaming,media,technical",60,-40,unconfirmed,low,low technical confidence
+journaldemontreal.com,not_gaming_media,general_media_gaming_section,0,0,0,0,0,0,0,0,,,"gaming,media,technical",60,-40,unconfirmed,low,low technical confidence
+theglobeandmail.com,not_gaming_media,general_media_gaming_section,4,6,15,11,3,39,0,39,,,"gaming,media",21,-1,confirmed,adequate,other evidence-backed cause
+cbc.ca,not_gaming_media,general_media_gaming_section,0,0,0,0,0,0,0,0,,,"gaming,media,technical",60,-40,unconfirmed,low,low technical confidence
+bbc.com,not_gaming_media,general_media_gaming_section,0,0,0,0,0,0,0,0,,,"gaming,media,technical",60,-40,unconfirmed,low,low technical confidence
+square-enix.com,not_gaming_media,game_publisher,0,0,0,0,0,0,0,0,,,"gaming,media,technical",60,-40,unconfirmed,low,low technical confidence
+suruga-ya.jp,not_gaming_media,gaming_retailer,0,0,0,0,0,0,0,0,,,"gaming,media,technical",60,-40,unconfirmed,low,low technical confidence
+biccamera.com,not_gaming_media,gaming_retailer,0,0,0,0,0,0,0,0,,,"gaming,media,technical",60,-40,unconfirmed,low,low technical confidence
+bestbuy.ca,not_gaming_media,gaming_retailer,0,0,0,0,0,0,0,0,,,"gaming,media,technical",60,-40,unconfirmed,low,low technical confidence
+5ch.net,not_gaming_media,forum_or_community,20,2,15,0,3,40,0,40,,,media,20,0,confirmed,adequate,near rejection threshold
+streetfighter.com,not_gaming_media,single_game_site,0,0,0,0,0,0,0,0,,,"gaming,media,technical",60,-40,unconfirmed,low,low technical confidence
+vr-zone.com,uncertain,inactive_or_archived_media,0,0,20,0,0,20,0,20,,,"gaming,media,technical",40,-20,confirmed,low,low technical confidence
+1up.com,uncertain,inactive_or_archived_media,0,0,0,0,0,0,0,0,,,"gaming,media,technical",60,-40,unconfirmed,low,low technical confidence
+n4g.com,uncertain,ambiguous,0,0,0,0,0,0,0,0,,,"gaming,media,technical",60,-40,unconfirmed,low,low technical confidence

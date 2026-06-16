@@ -1,0 +1,36 @@
+domain,expected_label,predicted_status,total_score,gaming_score,media_score,market_score,activity_score,technical_score,contextual_deductions,hard_rejection_rule,decision_reason
+famitsu.com,gaming_media,rejected,35,11,10,0,11,3,0,,Total score below uncertain threshold.
+4gamer.net,gaming_media,rejected,14,11,0,0,0,3,0,,Total score below uncertain threshold.
+jp.ign.com,gaming_media,rejected,21,10,8,0,0,3,0,,Total score below uncertain threshold.
+automaton-media.com,gaming_media,uncertain,0,0,0,0,0,0,0,,"Low total score, but technical confidence too low for rejection."
+dengekionline.com,gaming_media,rejected,33,9,10,0,11,3,0,,Total score below uncertain threshold.
+gematsu.com,gaming_media,rejected,39,11,10,4,11,3,0,,Total score below uncertain threshold.
+inside-games.jp,gaming_media,rejected,39,15,10,0,11,3,0,,Total score below uncertain threshold.
+destructoid.com,gaming_media,rejected,41,15,12,4,7,3,0,,Total score below uncertain threshold.
+thegamer.com,gaming_media,rejected,26,11,8,4,0,3,0,,Total score below uncertain threshold.
+canadiangamingnews.com,gaming_media,uncertain,0,0,0,0,0,0,0,,"Low total score, but technical confidence too low for rejection."
+gamecanucks.com,gaming_media,uncertain,0,0,0,0,0,0,0,,"Low total score, but technical confidence too low for rejection."
+canadianonlinegamers.com,gaming_media,uncertain,0,0,0,0,0,0,0,,"Low total score, but technical confidence too low for rejection."
+ign.com,gaming_media,rejected,28,17,4,4,0,3,0,,Total score below uncertain threshold.
+gamespot.com,gaming_media,uncertain,0,0,0,0,0,0,0,,"Low total score, but technical confidence too low for rejection."
+polygon.com,gaming_media,rejected,28,13,8,4,0,3,0,,Total score below uncertain threshold.
+pcgamer.com,gaming_media,rejected,49,19,12,4,11,3,0,,Total score below uncertain threshold.
+oricon.co.jp,not_gaming_media,uncertain,0,0,0,0,0,0,0,,"Low total score, but technical confidence too low for rejection."
+asahi.com,not_gaming_media,uncertain,0,0,0,0,0,0,0,,"Low total score, but technical confidence too low for rejection."
+journaldemontreal.com,not_gaming_media,uncertain,0,0,0,0,0,0,0,,"Low total score, but technical confidence too low for rejection."
+theglobeandmail.com,not_gaming_media,rejected,24,2,4,4,11,3,0,,Total score below uncertain threshold.
+cbc.ca,not_gaming_media,uncertain,0,0,0,0,0,0,0,,"Low total score, but technical confidence too low for rejection."
+bbc.com,not_gaming_media,uncertain,0,0,0,0,0,0,0,,"Low total score, but technical confidence too low for rejection."
+square-enix.com,not_gaming_media,uncertain,0,0,0,0,0,0,0,,"Low total score, but technical confidence too low for rejection."
+bioware.com,not_gaming_media,rejected,12,5,0,4,0,3,0,,Total score below uncertain threshold.
+ubisoft.com,not_gaming_media,rejected,13,4,2,4,0,3,0,,Total score below uncertain threshold.
+suruga-ya.jp,not_gaming_media,uncertain,0,0,0,0,0,0,0,,"Low total score, but technical confidence too low for rejection."
+biccamera.com,not_gaming_media,uncertain,0,0,0,0,0,0,0,,"Low total score, but technical confidence too low for rejection."
+bestbuy.ca,not_gaming_media,uncertain,0,0,0,0,0,0,0,,"Low total score, but technical confidence too low for rejection."
+5ch.net,not_gaming_media,rejected,14,11,0,0,0,3,0,,Total score below uncertain threshold.
+streetfighter.com,not_gaming_media,uncertain,0,0,0,0,0,0,0,,"Low total score, but technical confidence too low for rejection."
+razer.com,not_gaming_media,rejected,20,11,2,4,0,3,0,,Total score below uncertain threshold.
+twitch.tv,not_gaming_media,rejected,5,0,2,0,0,3,0,,Total score below uncertain threshold.
+vr-zone.com,uncertain,uncertain,0,0,0,0,0,0,0,,"Low total score, but technical confidence too low for rejection."
+1up.com,uncertain,uncertain,0,0,0,0,0,0,0,,"Low total score, but technical confidence too low for rejection."
+n4g.com,uncertain,uncertain,0,0,0,0,0,0,0,,"Low total score, but technical confidence too low for rejection."

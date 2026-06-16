@@ -1,0 +1,36 @@
+domain,expected_label,predicted_status,relevance_label,market_status,total_score,gaming_score,media_score,market_score,activity_score,technical_score,component_sum,contextual_deductions,hard_rejection_rule,decision_override,decision_reason
+famitsu.com,gaming_media,verified,gaming_media,confirmed,67,15,23,15,11,3,67,0,None,None,Score meets verified threshold.
+4gamer.net,gaming_media,uncertain,uncertain,confirmed,33,15,0,15,0,3,33,0,None,insufficient_evidence,"Scores were calculated, but minimum evidence required for a resolved relevance decision was not available."
+jp.ign.com,gaming_media,verified,gaming_media,confirmed,62,18,21,20,0,3,62,0,None,None,Score meets verified threshold.
+automaton-media.com,gaming_media,uncertain,uncertain,unconfirmed,0,0,0,0,0,0,0,0,None,None,"Fetch failed, no usable evidence acquired."
+dengekionline.com,gaming_media,verified,gaming_media,confirmed,71,18,24,15,11,3,71,0,None,None,Score meets verified threshold.
+gematsu.com,gaming_media,verified,gaming_media,confirmed,69,20,15,20,11,3,69,0,None,None,Score meets verified threshold.
+inside-games.jp,gaming_media,verified,gaming_media,confirmed,81,28,24,15,11,3,81,0,None,None,Score meets verified threshold.
+destructoid.com,gaming_media,verified,gaming_media,confirmed,80,30,25,15,7,3,80,0,None,None,Score meets verified threshold.
+thegamer.com,gaming_media,verified,gaming_media,confirmed,58,25,15,15,0,3,58,0,None,None,Score meets verified threshold.
+canadiangamingnews.com,gaming_media,uncertain,uncertain,unconfirmed,0,0,0,0,0,0,0,0,None,insufficient_evidence,"Scores were calculated, but minimum evidence required for a resolved relevance decision was not available."
+gamecanucks.com,gaming_media,uncertain,uncertain,unconfirmed,0,0,0,0,0,0,0,0,None,None,"Fetch failed, no usable evidence acquired."
+canadianonlinegamers.com,gaming_media,uncertain,uncertain,unconfirmed,0,0,0,0,0,0,0,0,None,None,"Fetch failed, no usable evidence acquired."
+ign.com,gaming_media,verified,gaming_media,confirmed,67,30,14,20,0,3,67,0,None,None,Score meets verified threshold.
+gamespot.com,gaming_media,uncertain,uncertain,unconfirmed,0,0,0,0,0,0,0,0,None,None,"Fetch failed, no usable evidence acquired."
+polygon.com,gaming_media,verified,gaming_media,confirmed,71,29,19,20,0,3,71,0,None,None,Score meets verified threshold.
+pcgamer.com,gaming_media,verified,gaming_media,confirmed,84,30,25,20,11,3,89,5,None,None,Score meets verified threshold.
+oricon.co.jp,not_gaming_media,uncertain,uncertain,unconfirmed,0,0,0,0,0,0,0,0,None,None,"Fetch failed, no usable evidence acquired."
+asahi.com,not_gaming_media,uncertain,uncertain,unconfirmed,0,0,0,0,0,0,0,0,None,None,"Fetch failed, no usable evidence acquired."
+journaldemontreal.com,not_gaming_media,uncertain,uncertain,unconfirmed,0,0,0,0,0,0,0,0,None,None,"Fetch failed, no usable evidence acquired."
+theglobeandmail.com,not_gaming_media,uncertain,uncertain,confirmed,39,4,6,15,11,3,39,0,None,insufficient_evidence,"Scores were calculated, but minimum evidence required for a resolved relevance decision was not available."
+cbc.ca,not_gaming_media,uncertain,uncertain,unconfirmed,0,0,0,0,0,0,0,0,None,None,"Fetch failed, no usable evidence acquired."
+bbc.com,not_gaming_media,uncertain,uncertain,unconfirmed,0,0,0,0,0,0,0,0,None,None,"Fetch failed, no usable evidence acquired."
+square-enix.com,not_gaming_media,uncertain,uncertain,unconfirmed,0,0,0,0,0,0,0,0,None,None,"Fetch failed, no usable evidence acquired."
+bioware.com,not_gaming_media,uncertain,uncertain,confirmed,25,15,2,15,0,3,35,10,None,insufficient_evidence,"Scores were calculated, but minimum evidence required for a resolved relevance decision was not available."
+ubisoft.com,not_gaming_media,uncertain,uncertain,confirmed,29,8,3,15,0,3,29,0,None,insufficient_evidence,"Scores were calculated, but minimum evidence required for a resolved relevance decision was not available."
+suruga-ya.jp,not_gaming_media,uncertain,uncertain,unconfirmed,0,0,0,0,0,0,0,0,None,None,"Fetch failed, no usable evidence acquired."
+biccamera.com,not_gaming_media,uncertain,uncertain,unconfirmed,0,0,0,0,0,0,0,0,None,None,"Fetch failed, no usable evidence acquired."
+bestbuy.ca,not_gaming_media,uncertain,uncertain,unconfirmed,0,0,0,0,0,0,0,0,None,None,"Fetch failed, no usable evidence acquired."
+5ch.net,not_gaming_media,uncertain,uncertain,confirmed,40,20,2,15,0,3,40,0,None,None,Score in uncertain range.
+streetfighter.com,not_gaming_media,uncertain,uncertain,unconfirmed,0,0,0,0,0,0,0,0,None,None,"Fetch failed, no usable evidence acquired."
+razer.com,not_gaming_media,uncertain,uncertain,confirmed,31,20,3,15,0,3,41,10,None,insufficient_evidence,"Scores were calculated, but minimum evidence required for a resolved relevance decision was not available."
+twitch.tv,not_gaming_media,uncertain,uncertain,unconfirmed,3,0,0,0,0,3,3,0,None,insufficient_evidence,"Scores were calculated, but minimum evidence required for a resolved relevance decision was not available."
+vr-zone.com,uncertain,uncertain,uncertain,confirmed,20,0,0,20,0,0,20,0,None,insufficient_evidence,"Scores were calculated, but minimum evidence required for a resolved relevance decision was not available."
+1up.com,uncertain,uncertain,uncertain,unconfirmed,0,0,0,0,0,0,0,0,None,None,"Fetch failed, no usable evidence acquired."
+n4g.com,uncertain,uncertain,uncertain,unconfirmed,0,0,0,0,0,0,0,0,None,None,"Fetch failed, no usable evidence acquired."

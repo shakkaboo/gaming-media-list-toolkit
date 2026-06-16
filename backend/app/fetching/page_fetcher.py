@@ -21,8 +21,7 @@ async def _fetch_attempt(
     dns_resolver: DNSResolver,
     settings,
     allowed_content_types: Optional[Tuple[str, ...]] = None,
-    max_response_bytes: Optional[int] = None,
-    timeout_seconds: Optional[int] = None
+    max_response_bytes: Optional[int] = None
 ) -> FetchedPage:
     """
     Executes a single fetch attempt (including redirect following).
@@ -39,30 +38,27 @@ async def _fetch_attempt(
         allowed_content_types = ("text/html", "application/xhtml+xml")
 
     try:
-        while True:
-            try:
-                norm_url, reg_domain = validate_url_safety(current_url)
-            except UnsafeURLError as e:
-                if redirect_count > 0:
-                    raise RedirectError("Unsafe redirect URL", "unsafe_redirect")
-                raise
-                
+        # Initial validation to get the reg_domain
+        try:
+            norm_url, reg_domain = validate_url_safety(current_url)
             current_url = norm_url
             final_reg_domain = reg_domain
-            
+        except UnsafeURLError as e:
+            raise FetchError(e.args[0], e.error_code, is_retryable=False)
+
+        while True:
             if current_url in visited_urls:
-                raise RedirectError("Redirect loop detected", "redirect_loop")
+                raise RedirectError("Redirect loop detected", "redirect_failure")
             visited_urls.add(current_url)
             
             parsed = urlparse(current_url)
             hostname = parsed.hostname
             
-            # DNS resolution & safety check
+            if not hostname:
+                raise RedirectError("Invalid redirect URL", "redirect_failure")
+                
+            # DNS resolution & safety check for every step of the redirect
             await dns_resolver.resolve_and_check(hostname)
-            
-            # NOTE: We pass the URL to HTTPX here. HTTPX will resolve the hostname again.
-            # This creates a TOCTOU (Time-of-Check to Time-of-Use) gap regarding DNS rebinding.
-            # Mitigating this perfectly requires a custom HTTP transport.
             
             req = client.build_request("GET", current_url)
             
@@ -74,16 +70,16 @@ async def _fetch_attempt(
                 await response.aclose()
                 redirect_count += 1
                 if redirect_count > settings.MAX_FETCH_REDIRECTS:
-                    raise RedirectError("Too many redirects", "too_many_redirects")
+                    raise RedirectError("Too many redirects", "redirect_failure")
                     
                 location = response.headers.get("Location")
                 if not location:
-                    raise RedirectError("Redirect missing Location", "unsafe_redirect")
+                    raise RedirectError("Redirect missing Location", "redirect_failure")
                     
                 next_url = urljoin(current_url, location)
                 
                 if current_url.startswith("https://") and next_url.startswith("http://"):
-                    raise RedirectError("HTTPS downgrade rejected", "https_downgrade")
+                    raise RedirectError("HTTPS downgrade rejected", "redirect_failure")
                     
                 redirect_chain.append(next_url)
                 current_url = next_url
@@ -94,34 +90,45 @@ async def _fetch_attempt(
         content_type_header = response.headers.get("Content-Type", "")
         content_length_header = response.headers.get("Content-Length")
         
+        limit_bytes = max_response_bytes or settings.MAX_HTML_RESPONSE_BYTES
+        
         if content_length_header and content_length_header.isdigit():
             content_length = int(content_length_header)
-            if content_length > settings.MAX_HTML_RESPONSE_BYTES:
+            if content_length > limit_bytes:
                 await response.aclose()
                 raise ResponseTooLargeError("Declared Content-Length too large")
                 
         if status_code == 204:
             await response.aclose()
-            raise FetchError("No content", "no_content", is_retryable=False)
+            raise FetchError("No content", "empty_html", is_retryable=False)
         elif status_code == 206:
             await response.aclose()
-            raise FetchError("Unexpected partial content", "unexpected_partial_content", is_retryable=False)
+            raise FetchError("Unexpected partial content", "unknown", is_retryable=False)
+        elif status_code == 401:
+            await response.aclose()
+            raise FetchError("Unauthorized", "http_401", is_retryable=False, status_code=status_code)
+        elif status_code == 403:
+            await response.aclose()
+            raise FetchError("Forbidden", "http_403", is_retryable=False, status_code=status_code)
+        elif status_code == 404:
+            await response.aclose()
+            raise FetchError("Not Found", "http_404", is_retryable=False, status_code=status_code)
         elif status_code == 429:
             await response.aclose()
-            raise FetchError("Rate limited", "rate_limited", is_retryable=False)
-        elif status_code in (400, 401, 403, 404, 410, 451):
+            raise FetchError("Rate limited", "http_429", is_retryable=False, status_code=status_code)
+        elif status_code in (400, 410, 451):
             await response.aclose()
-            raise FetchError(f"HTTP {status_code}", "http_client_error", is_retryable=False, status_code=status_code)
+            raise FetchError(f"HTTP {status_code}", "unknown", is_retryable=False, status_code=status_code)
         elif status_code in (500, 502, 503, 504):
             await response.aclose()
-            raise FetchError(f"HTTP {status_code}", "http_server_error", is_retryable=True, status_code=status_code)
+            raise FetchError(f"HTTP {status_code}", "http_5xx", is_retryable=True, status_code=status_code)
         elif status_code >= 400:
             await response.aclose()
-            raise FetchError(f"HTTP {status_code}", "unexpected_fetch_error", is_retryable=False, status_code=status_code)
+            raise FetchError(f"HTTP {status_code}", "unknown", is_retryable=False, status_code=status_code)
             
         if not content_type_header:
             await response.aclose()
-            raise UnsupportedContentTypeError("Missing Content-Type", "missing_content_type")
+            raise UnsupportedContentTypeError("Missing Content-Type", "unsupported_content_type")
             
         media_type = content_type_header.split(";")[0].strip().lower()
         if allowed_content_types and media_type not in allowed_content_types:
@@ -135,7 +142,7 @@ async def _fetch_attempt(
         try:
             async for chunk in response.aiter_bytes():
                 downloaded_bytes += len(chunk)
-                if downloaded_bytes > settings.MAX_HTML_RESPONSE_BYTES:
+                if downloaded_bytes > limit_bytes:
                     raise ResponseTooLargeError("Streamed body too large")
                 chunks.append(chunk)
         finally:
@@ -147,7 +154,25 @@ async def _fetch_attempt(
         try:
             html = raw_body.decode(charset, errors="replace")
         except Exception:
-            raise FetchError("Decoding error", "decoding_error", is_retryable=False)
+            raise FetchError("Decoding error", "unknown", is_retryable=False)
+            
+        # Challenge detection
+        html_lower = html.lower()
+        challenge_detected = False
+        js_shell_detected = False
+        
+        if status_code == 200:
+            if "cloudflare" in html_lower and ("challenge" in html_lower or "attention required" in html_lower):
+                challenge_detected = True
+            elif "distil_ident_block" in html_lower or "incapsula" in html_lower:
+                challenge_detected = True
+            elif len(html_lower) < 2000 and "<script" in html_lower and "document.cookie" in html_lower:
+                challenge_detected = True
+            elif len(html_lower) < 2000 and "enable javascript" in html_lower:
+                js_shell_detected = True
+                
+        if challenge_detected:
+            raise FetchError("Challenge page detected", "challenge_page", is_retryable=False, status_code=status_code)
             
         title = extract_title(html)
         
@@ -168,21 +193,29 @@ async def _fetch_attempt(
             elapsed_ms=elapsed_ms,
             success=True,
             error_code=None,
-            safe_error=None
+            safe_error=None,
+            failure_category=None,
+            failure_reason=None,
+            challenge_detected=challenge_detected,
+            javascript_shell_detected=js_shell_detected,
+            robots_disallowed=False,
+            attempt_count=1
         )
             
     except FetchError:
         raise
     except httpx.ConnectTimeout:
-        raise FetchError("Connect timeout", "connection_timeout", is_retryable=True)
+        raise FetchError("Connect timeout", "timeout", is_retryable=True)
     except httpx.ReadTimeout:
-        raise FetchError("Read timeout", "read_timeout", is_retryable=True)
+        raise FetchError("Read timeout", "timeout", is_retryable=True)
     except httpx.ConnectError:
         raise FetchError("Connection error", "connection_error", is_retryable=True)
+    except DNSError:
+        raise FetchError("DNS error", "dns_error", is_retryable=True)
     except Exception as e:
         if "ssl" in str(e).lower() or "certificate" in str(e).lower() or "tls" in str(e).lower():
-            raise FetchError("TLS error", "tls_error", is_retryable=False)
-        raise FetchError(f"Unexpected error: {e}", "unexpected_fetch_error", is_retryable=False)
+            raise FetchError("TLS error", "ssl_error", is_retryable=False)
+        raise FetchError(f"Unexpected error: {e}", "unknown", is_retryable=False)
 
 async def fetch_page_with_retries(
     url: str,
@@ -190,8 +223,7 @@ async def fetch_page_with_retries(
     dns_resolver: DNSResolver,
     settings,
     allowed_content_types: Optional[Tuple[str, ...]] = None,
-    max_response_bytes: Optional[int] = None,
-    timeout_seconds: Optional[int] = None
+    max_response_bytes: Optional[int] = None
 ) -> FetchedPage:
     
     start_time = time.monotonic()
@@ -199,16 +231,18 @@ async def fetch_page_with_retries(
     attempts = 0
     max_attempts = settings.FETCH_MAX_RETRIES + 1
     
-    last_error_code = "unexpected_fetch_error"
+    last_failure_category = "unknown"
     last_error_msg = "Unknown error"
     last_status_code = 0
     
     while attempts < max_attempts:
         attempts += 1
         try:
-            return await _fetch_attempt(url, client, dns_resolver, settings, allowed_content_types, max_response_bytes, timeout_seconds)
+            page = await _fetch_attempt(url, client, dns_resolver, settings, allowed_content_types, max_response_bytes)
+            page.attempt_count = attempts
+            return page
         except FetchError as e:
-            last_error_code = e.error_code
+            last_failure_category = e.error_code
             last_error_msg = str(e)
             last_status_code = e.status_code or 0
             
@@ -242,6 +276,12 @@ async def fetch_page_with_retries(
         redirect_count=0,
         elapsed_ms=elapsed_ms,
         success=False,
-        error_code=last_error_code,
-        safe_error=last_error_msg
+        error_code=last_failure_category,
+        safe_error=last_error_msg,
+        failure_category=last_failure_category,
+        failure_reason=last_error_msg,
+        challenge_detected=(last_failure_category == "challenge_page"),
+        javascript_shell_detected=False,
+        robots_disallowed=False,
+        attempt_count=attempts
     )

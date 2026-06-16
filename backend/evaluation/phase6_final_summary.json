@@ -1,0 +1,79 @@
+{
+  "phase": 6,
+  "status": "complete",
+  "phase7_integration": "complete",
+  "lock_verified": true,
+  "lock_path": "backend/evaluation/results/phase6_protected_test.lock.json",
+  "completed_at": "2026-06-16T20:37:34.610696+00:00",
+  "runner_version": "phase6_v1",
+  "classifier": "v2_multilingual_explainable",
+  "evidence_gate": "enabled",
+  "dataset": {
+    "total_rows": 50,
+    "test_rows": 15,
+    "development_rows": 35
+  },
+  "protected_test_results": {
+    "total_test_rows": 15,
+    "transport_success": 15,
+    "usable_evidence": 5,
+    "verified": 5,
+    "rejected": 0,
+    "uncertain": 10,
+    "fetch_failed": 0,
+    "evidence_gate_overrides": 4
+  },
+  "binary_metrics": {
+    "eligible_binary_rows": 9,
+    "true_positives": 3,
+    "false_positives": 1,
+    "true_negatives_decided": 0,
+    "false_negatives_decided": 0,
+    "abstentions": 5,
+    "decision_coverage": 0.4444,
+    "precision": 0.75,
+    "decided_prediction_recall": 1.0,
+    "operational_positive_recall": 0.75,
+    "f1": 0.857,
+    "specificity": 0.0
+  },
+  "accuracy": {
+    "strict_accuracy": 0.5333,
+    "relevance_label_accuracy": 0.75
+  },
+  "errors": {
+    "false_positives": ["ea.com"],
+    "false_negatives_decided": [],
+    "abstained_expected_positives": ["kotaku.com"],
+    "abstained_expected_negatives": [
+      "nintendo.co.jp",
+      "yodobashi.com",
+      "gamestop.ca",
+      "thescoreesports.com"
+    ]
+  },
+  "evidence_gate_blocked": [
+    "itmedia.co.jp",
+    "nintendo.co.jp",
+    "thescoreesports.com",
+    "dmm.com"
+  ],
+  "post_freeze_tuning": false,
+  "production_readiness": {
+    "approved_as_autonomous_production_default": false,
+    "approved_for_shadow_mode": true,
+    "approved_for_human_assisted_review": true,
+    "baseline_remains_default": true,
+    "production_classifier_version": "baseline",
+    "shadow_classifier_version": "v2_multilingual_explainable",
+    "reason": "Decision coverage 44.4% and specificity 0.0% are insufficient for autonomous production. Precision 75.0% and F1 0.857 support shadow/review mode. Future promotion requires new labelled data and a fresh untouched test set."
+  },
+  "hashes": {
+    "phase5d_configuration": "71d69a2c454928b4ea7e1f1e1c0ff5c98e5bd461b6b8f9050f7312118040e9bf",
+    "dataset": "ab160badfdcf2b478450006ae168b020f0aead9194875a579937884f7c2830aa",
+    "test_split": "80863a9abf3524278455ae9b755bda90dfd9857285ee7a8407743358fad96e8a",
+    "prediction_file": "9b84646f0e5f2c31a5543ad1d9c92185f0cdb8a41110ecc624e6ffd6fae38aef",
+    "metrics_file": "5b59c262e43e7d4e4f89b27897d1954b5f61067c398749d72103c9c821ada9fa",
+    "raw_results_file": "6189d7931b3fc098c750dcf6d139f43c2db09c06df06b6901a3a6461f7ceb00c"
+  }
+}

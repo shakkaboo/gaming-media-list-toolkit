@@ -1,0 +1,12 @@
+{
+  "total_domains": 50,
+  "accuracy": 0.0,
+  "confusion_matrix": {
+    "Expected:gaming_media->Predicted:rejected": 10,
+    "Expected:gaming_media->Predicted:uncertain": 8,
+    "Expected:gaming_media->Predicted:verified": 2,
+    "Expected:uncertain->Predicted:rejected": 8,
+    "Expected:not_gaming_media->Predicted:rejected": 21,
+    "Expected:uncertain->Predicted:verified": 1
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "total_records": 50,
+  "label_counts": {
+    "gaming_media": 20,
+    "uncertain": 9,
+    "not_gaming_media": 21
+  },
+  "website_type_counts": {
+    "gaming_publication": 20,
+    "general_media_gaming_section": 10,
+    "game_developer": 2,
+    "game_publisher": 3,
+    "gaming_retailer": 5,
+    "forum_or_community": 1,
+    "single_game_site": 1,
+    "esports_organization": 1,
+    "hardware_or_technology": 1,
+    "creator_or_streaming_profile": 1,
+    "inactive_or_archived_media": 2,
+    "ambiguous": 3
+  },
+  "market_counts": {
+    "Japan": 20,
+    "Global": 12,
+    "Canada": 18
+  },
+  "language_counts": {
+    "ja": 20,
+    "en": 28,
+    "fr": 2
+  },
+  "activity_status_counts": {
+    "active": 47,
+    "inactive": 2,
+    "unknown": 1
+  },
+  "development_test_counts": {
+    "development": 35,
+    "test": 15
+  }
+}

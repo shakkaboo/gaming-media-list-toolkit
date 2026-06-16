@@ -1,0 +1,47 @@
+{
+  "classifier_version": "v2_multilingual_explainable",
+  "vocabulary_version": "v2.0",
+  "vocabulary_hash": "ff7dcc58",
+  "scoring_rule_hash": "phase5c_relevance_first",
+  "decision_policy_version": "relevance-first v1",
+  "component_weights": "gaming_max:30, media_max:25, market_max:20",
+  "component_caps": "gaming_max:30, media_max:25, market_max:20, activity_max:15, technical_max:15",
+  "deduction_values_and_caps": "store max 20, dev max 20, casino max 30, hw max 15. Combined cap: 35",
+  "hard_rejection_definitions": [
+    "dominant_ecommerce_store",
+    "game_developer_corporate_site",
+    "casino_or_betting_site",
+    "hardware_manufacturer"
+  ],
+  "high_confidence_negative_identity_rules": {
+    "enabled": true,
+    "max_gaming_score": 20,
+    "max_media_score": 15
+  },
+  "verified_threshold": 58,
+  "uncertain_threshold": 40,
+  "component_minimums": {
+    "gaming": 14,
+    "media": 10,
+    "market": 0,
+    "technical": 0
+  },
+  "relevance_market_separation_policy": "Relevance verified even if market unconfirmed.",
+  "selection_policy": "1. FP<=1 2. OpRecall>=50% 3. Cov>=60% 4. Min FP 5. Max OpRecall 6. Max Cov 7. Max F1 8. Simplicity",
+  "development_metrics": {
+    "tp": 10,
+    "fp": 0,
+    "fn_decided": 6,
+    "tn_decided": 15,
+    "abstentions": 1,
+    "precision": 1.0,
+    "decided_recall": 0.625,
+    "operational_recall": 0.625,
+    "f1": 0.7692307692307693,
+    "coverage": 0.96875,
+    "strict_accuracy": 0.78125,
+    "specificity": 1.0
+  },
+  "configuration_hash": "086fdb9e",
+  "frozen_at": "2026-06-16T19:09:39.802147+00:00"
+}
