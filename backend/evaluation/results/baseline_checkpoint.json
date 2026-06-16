@@ -1,0 +1,2953 @@
+{
+  "famitsu.com": {
+    "record": {
+      "domain": "famitsu.com",
+      "homepage_url": "https://www.famitsu.com/",
+      "expected_label": "gaming_media",
+      "website_type": "gaming_publication",
+      "target_market": "Japan",
+      "language": "ja",
+      "activity_status": "active",
+      "label_reason": "Primary activity is publishing organized gaming news and reviews for a Japanese audience.",
+      "evidence_summary": "Homepage title '\u30d5\u30a1\u30df\u901a.com', multiple recent articles with publication dates, clear editorial attribution, '\u30b2\u30fc\u30e0' navigation.",
+      "reviewer_notes": "Strong positive gaming media.",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.famitsu.com/",
+      "evidence_url_2": "https://www.famitsu.com/company/",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.famitsu.com/",
+      "final_url": "https://famitsu.com/",
+      "registered_domain": "famitsu.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:03:41.797572Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "4gamer.net": {
+    "record": {
+      "domain": "4gamer.net",
+      "homepage_url": "https://www.4gamer.net/",
+      "expected_label": "gaming_media",
+      "website_type": "gaming_publication",
+      "target_market": "Japan",
+      "language": "ja",
+      "activity_status": "active",
+      "label_reason": "Major gaming news and review site with clear editorial structure.",
+      "evidence_summary": "Extensive archives, 'Review' and 'News' navigation labels, author bylines, daily dates.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.4gamer.net/",
+      "evidence_url_2": "https://www.4gamer.net/about/",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.4gamer.net/",
+      "final_url": "https://4gamer.net/",
+      "registered_domain": "4gamer.net",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:03:43.654396Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "jp.ign.com": {
+    "record": {
+      "domain": "jp.ign.com",
+      "homepage_url": "https://jp.ign.com/",
+      "expected_label": "gaming_media",
+      "website_type": "gaming_publication",
+      "target_market": "Japan",
+      "language": "ja",
+      "activity_status": "active",
+      "label_reason": "Japanese branch of a global gaming media outlet.",
+      "evidence_summary": "Bylines, dates, '\u30cb\u30e5\u30fc\u30b9' and '\u30ec\u30d3\u30e5\u30fc' in primary navigation, daily publishing.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://jp.ign.com/",
+      "evidence_url_2": "https://jp.ign.com/about",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://jp.ign.com/",
+      "final_url": "https://jp.ign.com/",
+      "registered_domain": "ign.com",
+      "score": 17,
+      "verification_status": "rejected",
+      "confidence": 0.4,
+      "gaming_relevance_score": 5,
+      "editorial_structure_score": 10,
+      "activity_score": 0,
+      "publication_identity_score": 2,
+      "negative_penalty": 0,
+      "positive_reasons": [
+        {
+          "code": "platform_nav",
+          "message": "Platform terminology in navigation or headings",
+          "weight": 5,
+          "evidence": [
+            "Platform match"
+          ]
+        },
+        {
+          "code": "article_links",
+          "message": "Article-like links detected",
+          "weight": 10,
+          "evidence": [
+            "Article links"
+          ]
+        },
+        {
+          "code": "og_site_name",
+          "message": "Open Graph site name present",
+          "weight": 2,
+          "evidence": [
+            "IGN Japan"
+          ]
+        }
+      ],
+      "negative_reasons": [],
+      "detected_categories": [
+        "nintendo"
+      ],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 6,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:03:44.887030Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": "ja",
+      "market_evidence": [
+        "lang=ja"
+      ]
+    }
+  },
+  "automaton-media.com": {
+    "record": {
+      "domain": "automaton-media.com",
+      "homepage_url": "https://automaton-media.com/",
+      "expected_label": "gaming_media",
+      "website_type": "gaming_publication",
+      "target_market": "Japan",
+      "language": "ja",
+      "activity_status": "active",
+      "label_reason": "Independent gaming news outlet with recurring publishing.",
+      "evidence_summary": "Homepage lists recent articles with authors and times, 'NEWS' and 'REVIEW' sections.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://automaton-media.com/",
+      "evidence_url_2": "https://automaton-media.com/about/",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://automaton-media.com/",
+      "final_url": "https://automaton-media.com/",
+      "registered_domain": "automaton-media.com",
+      "score": 36,
+      "verification_status": "rejected",
+      "confidence": 0.6,
+      "gaming_relevance_score": 15,
+      "editorial_structure_score": 0,
+      "activity_score": 15,
+      "publication_identity_score": 6,
+      "negative_penalty": 0,
+      "positive_reasons": [
+        {
+          "code": "platform_nav",
+          "message": "Platform terminology in navigation or headings",
+          "weight": 15,
+          "evidence": [
+            "Platform match"
+          ]
+        },
+        {
+          "code": "active_recently",
+          "message": "Publication within 90 days",
+          "weight": 15,
+          "evidence": [
+            "2026-04-28T10:52:07+00:00"
+          ]
+        },
+        {
+          "code": "og_site_name",
+          "message": "Open Graph site name present",
+          "weight": 2,
+          "evidence": [
+            "AUTOMATON"
+          ]
+        },
+        {
+          "code": "author_links",
+          "message": "Author/Byline links detected",
+          "weight": 4,
+          "evidence": [
+            "Authors"
+          ]
+        }
+      ],
+      "negative_reasons": [],
+      "detected_categories": [
+        "pc_gaming",
+        "nintendo",
+        "playstation",
+        "xbox"
+      ],
+      "activity_status": "active_recently",
+      "newest_detected_publication_date": "2026-04-28T10:52:07+00:00",
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:03:46.517960Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": "ja",
+      "market_evidence": [
+        "lang=ja"
+      ]
+    }
+  },
+  "dengekionline.com": {
+    "record": {
+      "domain": "dengekionline.com",
+      "homepage_url": "https://dengekionline.com/",
+      "expected_label": "gaming_media",
+      "website_type": "gaming_publication",
+      "target_market": "Japan",
+      "language": "ja",
+      "activity_status": "active",
+      "label_reason": "Online presence of a major Japanese gaming magazine.",
+      "evidence_summary": "Multiple articles per day, author names, gaming categories like 'PS5', 'Switch'.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://dengekionline.com/",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://dengekionline.com/",
+      "final_url": "https://dengekionline.com/",
+      "registered_domain": "dengekionline.com",
+      "score": 37,
+      "verification_status": "rejected",
+      "confidence": 0.45,
+      "gaming_relevance_score": 10,
+      "editorial_structure_score": 10,
+      "activity_score": 15,
+      "publication_identity_score": 2,
+      "negative_penalty": 0,
+      "positive_reasons": [
+        {
+          "code": "platform_nav",
+          "message": "Platform terminology in navigation or headings",
+          "weight": 10,
+          "evidence": [
+            "Platform match"
+          ]
+        },
+        {
+          "code": "article_links",
+          "message": "Article-like links detected",
+          "weight": 10,
+          "evidence": [
+            "Article links"
+          ]
+        },
+        {
+          "code": "active_recently",
+          "message": "Publication within 90 days",
+          "weight": 15,
+          "evidence": [
+            "2026-06-16T21:00:00+00:00"
+          ]
+        },
+        {
+          "code": "og_site_name",
+          "message": "Open Graph site name present",
+          "weight": 2,
+          "evidence": [
+            "\u96fb\u6483\u30aa\u30f3\u30e9\u30a4\u30f3"
+          ]
+        }
+      ],
+      "negative_reasons": [],
+      "detected_categories": [
+        "pc_gaming",
+        "nintendo"
+      ],
+      "activity_status": "active_recently",
+      "newest_detected_publication_date": "2026-06-16T21:00:00+00:00",
+      "article_count_estimate": 87,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:03:47.831303Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": "ja",
+      "market_evidence": [
+        "lang=ja"
+      ]
+    }
+  },
+  "gamespark.jp": {
+    "record": {
+      "domain": "gamespark.jp",
+      "homepage_url": "https://www.gamespark.jp/",
+      "expected_label": "gaming_media",
+      "website_type": "gaming_publication",
+      "target_market": "Japan",
+      "language": "ja",
+      "activity_status": "active",
+      "label_reason": "Dedicated gaming news site.",
+      "evidence_summary": "Recent articles with today's dates, editorial staff list, gaming navigation.",
+      "reviewer_notes": "",
+      "dataset_split": "test",
+      "evidence_url_1": "https://www.gamespark.jp/",
+      "evidence_url_2": "https://www.gamespark.jp/info/about.html",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.gamespark.jp/",
+      "final_url": "https://gamespark.jp/",
+      "registered_domain": "gamespark.jp",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:03:49.399783Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "gematsu.com": {
+    "record": {
+      "domain": "gematsu.com",
+      "homepage_url": "https://www.gematsu.com/",
+      "expected_label": "gaming_media",
+      "website_type": "gaming_publication",
+      "target_market": "Global",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "Focuses on Japanese games but operates globally in English.",
+      "evidence_summary": "Daily news articles, dates, author is usually 'Sal Romano', categories.",
+      "reviewer_notes": "Market evidence indicates global English audience but JP subject matter. Labeled Global.",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.gematsu.com/",
+      "evidence_url_2": "https://www.gematsu.com/about",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.gematsu.com/",
+      "final_url": "https://gematsu.com/",
+      "registered_domain": "gematsu.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:03:50.679789Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "inside-games.jp": {
+    "record": {
+      "domain": "inside-games.jp",
+      "homepage_url": "https://www.inside-games.jp/",
+      "expected_label": "gaming_media",
+      "website_type": "gaming_publication",
+      "target_market": "Japan",
+      "language": "ja",
+      "activity_status": "active",
+      "label_reason": "Gaming and entertainment site with editorial structure.",
+      "evidence_summary": "Regular articles, '\u30cb\u30e5\u30fc\u30b9' and '\u7279\u96c6' sections, dates present.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.inside-games.jp/",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.inside-games.jp/",
+      "final_url": "https://inside-games.jp/",
+      "registered_domain": "inside-games.jp",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:03:52.137402Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "destructoid.com": {
+    "record": {
+      "domain": "destructoid.com",
+      "homepage_url": "https://www.destructoid.com/",
+      "expected_label": "gaming_media",
+      "website_type": "gaming_publication",
+      "target_market": "Canada",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "Major gaming publication owned by Enthusiast Gaming (Canadian).",
+      "evidence_summary": "Reviews, news, dates, authors, editorial footprints.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.destructoid.com/",
+      "evidence_url_2": "https://www.destructoid.com/about-us/",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.destructoid.com/",
+      "final_url": "https://destructoid.com/",
+      "registered_domain": "destructoid.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:03:53.222852Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "cgmagonline.com": {
+    "record": {
+      "domain": "cgmagonline.com",
+      "homepage_url": "https://www.cgmagonline.com/",
+      "expected_label": "gaming_media",
+      "website_type": "gaming_publication",
+      "target_market": "Canada",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "Canadian Gaming Magazine online.",
+      "evidence_summary": "Clear Canadian publication identity in About page, reviews, news, dates.",
+      "reviewer_notes": "",
+      "dataset_split": "test",
+      "evidence_url_1": "https://www.cgmagonline.com/",
+      "evidence_url_2": "https://www.cgmagonline.com/about/",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.cgmagonline.com/",
+      "final_url": "https://cgmagonline.com/",
+      "registered_domain": "cgmagonline.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:03:54.353458Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "thegamer.com": {
+    "record": {
+      "domain": "thegamer.com",
+      "homepage_url": "https://www.thegamer.com/",
+      "expected_label": "gaming_media",
+      "website_type": "gaming_publication",
+      "target_market": "Canada",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "Gaming site owned by Valnet (based in Montreal).",
+      "evidence_summary": "Large editorial team, daily updates, guides and news sections.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.thegamer.com/",
+      "evidence_url_2": "https://www.thegamer.com/about/",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.thegamer.com/",
+      "final_url": "https://thegamer.com/",
+      "registered_domain": "thegamer.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:03:56.253520Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "canadiangamingnews.com": {
+    "record": {
+      "domain": "canadiangamingnews.com",
+      "homepage_url": "https://canadiangamingnews.com/",
+      "expected_label": "gaming_media",
+      "website_type": "gaming_publication",
+      "target_market": "Canada",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "CA specific gaming news.",
+      "evidence_summary": "Articles focusing on local Canadian gaming industry.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://canadiangamingnews.com/",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://canadiangamingnews.com/",
+      "final_url": "https://canadiangamingnews.com/",
+      "registered_domain": "canadiangamingnews.com",
+      "score": 0,
+      "verification_status": "rejected",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:03:57.401848Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "gamecanucks.com": {
+    "record": {
+      "domain": "gamecanucks.com",
+      "homepage_url": "https://gamecanucks.com/",
+      "expected_label": "gaming_media",
+      "website_type": "gaming_publication",
+      "target_market": "Canada",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "Canadian gaming blog.",
+      "evidence_summary": "News and features, author names, dates.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://gamecanucks.com/",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://gamecanucks.com/",
+      "final_url": "https://gamecanucks.com/",
+      "registered_domain": "gamecanucks.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "dns_failed"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:03:58.425702Z",
+      "fetch_success": false,
+      "fetch_error_code": "dns_failed",
+      "safe_error": "DNS resolution failed: [Errno 11001] getaddrinfo failed",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "canadianonlinegamers.com": {
+    "record": {
+      "domain": "canadianonlinegamers.com",
+      "homepage_url": "https://canadianonlinegamers.com/",
+      "expected_label": "gaming_media",
+      "website_type": "gaming_publication",
+      "target_market": "Canada",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "Canadian gaming reviews site (COGconnected).",
+      "evidence_summary": "Reviews, features, podcasts, editorial structure.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://canadianonlinegamers.com/",
+      "evidence_url_2": "https://cogconnected.com/about/",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://canadianonlinegamers.com/",
+      "final_url": "https://canadianonlinegamers.com/",
+      "registered_domain": "canadianonlinegamers.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "connection_error"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:02.870514Z",
+      "fetch_success": false,
+      "fetch_error_code": "connection_error",
+      "safe_error": "Connection error",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "ign.com": {
+    "record": {
+      "domain": "ign.com",
+      "homepage_url": "https://www.ign.com/",
+      "expected_label": "gaming_media",
+      "website_type": "gaming_publication",
+      "target_market": "Global",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "Global gaming publication.",
+      "evidence_summary": "Clear editorial identity, daily articles, bylines, gaming nav.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.ign.com/",
+      "evidence_url_2": "https://corp.ign.com/",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.ign.com/",
+      "final_url": "https://ign.com/",
+      "registered_domain": "ign.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:03.913317Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "gamespot.com": {
+    "record": {
+      "domain": "gamespot.com",
+      "homepage_url": "https://www.gamespot.com/",
+      "expected_label": "gaming_media",
+      "website_type": "gaming_publication",
+      "target_market": "Global",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "Global gaming publication.",
+      "evidence_summary": "Reviews, news, dates, staff page.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.gamespot.com/",
+      "evidence_url_2": "https://www.gamespot.com/about/",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.gamespot.com/",
+      "final_url": "https://gamespot.com/",
+      "registered_domain": "gamespot.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:04.988286Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "kotaku.com": {
+    "record": {
+      "domain": "kotaku.com",
+      "homepage_url": "https://kotaku.com/",
+      "expected_label": "gaming_media",
+      "website_type": "gaming_publication",
+      "target_market": "Global",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "Global gaming publication.",
+      "evidence_summary": "Bylines, dates, gaming categories.",
+      "reviewer_notes": "",
+      "dataset_split": "test",
+      "evidence_url_1": "https://kotaku.com/",
+      "evidence_url_2": "https://kotaku.com/about",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://kotaku.com/",
+      "final_url": "https://kotaku.com/",
+      "registered_domain": "kotaku.com",
+      "score": 49,
+      "verification_status": "uncertain",
+      "confidence": 0.65,
+      "gaming_relevance_score": 25,
+      "editorial_structure_score": 30,
+      "activity_score": 15,
+      "publication_identity_score": 4,
+      "negative_penalty": 25,
+      "positive_reasons": [
+        {
+          "code": "gaming_meta",
+          "message": "Gaming terminology in metadata",
+          "weight": 10,
+          "evidence": [
+            "Metadata match"
+          ]
+        },
+        {
+          "code": "platform_nav",
+          "message": "Platform terminology in navigation or headings",
+          "weight": 15,
+          "evidence": [
+            "Platform match"
+          ]
+        },
+        {
+          "code": "editorial_nav",
+          "message": "Editorial navigation labels",
+          "weight": 20,
+          "evidence": [
+            "Editorial nav"
+          ]
+        },
+        {
+          "code": "editorial_schema",
+          "message": "Editorial JSON-LD schema",
+          "weight": 10,
+          "evidence": [
+            "Article"
+          ]
+        },
+        {
+          "code": "active_recently",
+          "message": "Publication within 90 days",
+          "weight": 15,
+          "evidence": [
+            "2026-06-15T20:28:44+00:00"
+          ]
+        },
+        {
+          "code": "og_site_name",
+          "message": "Open Graph site name present",
+          "weight": 2,
+          "evidence": [
+            "Kotaku"
+          ]
+        },
+        {
+          "code": "author_links",
+          "message": "Author/Byline links detected",
+          "weight": 2,
+          "evidence": [
+            "Authors"
+          ]
+        }
+      ],
+      "negative_reasons": [
+        {
+          "code": "store_signals",
+          "message": "E-commerce or store signals detected",
+          "weight": -10,
+          "evidence": [
+            "Store evidence"
+          ]
+        },
+        {
+          "code": "developer_signals",
+          "message": "Developer or publisher signals detected",
+          "weight": -15,
+          "evidence": [
+            "Dev evidence"
+          ]
+        }
+      ],
+      "detected_categories": [
+        "pc_gaming",
+        "nintendo",
+        "xbox",
+        "reviews",
+        "guides",
+        "playstation",
+        "mobile_gaming",
+        "gaming_news"
+      ],
+      "activity_status": "active_recently",
+      "newest_detected_publication_date": "2026-06-15T20:28:44+00:00",
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:07.135058Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": "en-US",
+      "market_evidence": [
+        "lang=en-US"
+      ]
+    }
+  },
+  "polygon.com": {
+    "record": {
+      "domain": "polygon.com",
+      "homepage_url": "https://www.polygon.com/",
+      "expected_label": "gaming_media",
+      "website_type": "gaming_publication",
+      "target_market": "Global",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "Global gaming publication.",
+      "evidence_summary": "Clear editorial identity, features, news.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.polygon.com/",
+      "evidence_url_2": "https://www.polygon.com/about",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.polygon.com/",
+      "final_url": "https://polygon.com/",
+      "registered_domain": "polygon.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:08.900781Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "pcgamer.com": {
+    "record": {
+      "domain": "pcgamer.com",
+      "homepage_url": "https://www.pcgamer.com/",
+      "expected_label": "gaming_media",
+      "website_type": "gaming_publication",
+      "target_market": "Global",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "Global gaming publication focused on PC.",
+      "evidence_summary": "Hardware and games news, bylines, dates.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.pcgamer.com/",
+      "evidence_url_2": "https://www.pcgamer.com/about-pc-gamer/",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.pcgamer.com/",
+      "final_url": "https://pcgamer.com/",
+      "registered_domain": "pcgamer.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:09.974192Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "rockpapershotgun.com": {
+    "record": {
+      "domain": "rockpapershotgun.com",
+      "homepage_url": "https://www.rockpapershotgun.com/",
+      "expected_label": "gaming_media",
+      "website_type": "gaming_publication",
+      "target_market": "Global",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "Global gaming publication.",
+      "evidence_summary": "Daily publishing, reviews, clear publication identity.",
+      "reviewer_notes": "",
+      "dataset_split": "test",
+      "evidence_url_1": "https://www.rockpapershotgun.com/",
+      "evidence_url_2": "https://www.rockpapershotgun.com/about",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.rockpapershotgun.com/",
+      "final_url": "https://rockpapershotgun.com/",
+      "registered_domain": "rockpapershotgun.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:11.206727Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "news.yahoo.co.jp": {
+    "record": {
+      "domain": "news.yahoo.co.jp",
+      "homepage_url": "https://news.yahoo.co.jp/categories/it/gaming",
+      "expected_label": "uncertain",
+      "website_type": "general_media_gaming_section",
+      "target_market": "Japan",
+      "language": "ja",
+      "activity_status": "active",
+      "label_reason": "Aggregated gaming news section of a general portal.",
+      "evidence_summary": "Gaming content is aggregated from other sources rather than originally authored. Ambiguous if it qualifies as an independent gaming publication.",
+      "reviewer_notes": "Reassessed as uncertain due to mixed nature.",
+      "dataset_split": "test",
+      "evidence_url_1": "https://news.yahoo.co.jp/categories/it/gaming",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://news.yahoo.co.jp/categories/it/gaming",
+      "final_url": "https://news.yahoo.co.jp/categories/it/gaming",
+      "registered_domain": "yahoo.co.jp",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "http_client_error"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:12.697591Z",
+      "fetch_success": false,
+      "fetch_error_code": "http_client_error",
+      "safe_error": "HTTP 404",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "oricon.co.jp": {
+    "record": {
+      "domain": "oricon.co.jp",
+      "homepage_url": "https://www.oricon.co.jp/game/",
+      "expected_label": "not_gaming_media",
+      "website_type": "general_media_gaming_section",
+      "target_market": "Japan",
+      "language": "ja",
+      "activity_status": "active",
+      "label_reason": "General entertainment and chart media.",
+      "evidence_summary": "Gaming is a secondary sub-section. Primary focus is music/entertainment.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.oricon.co.jp/game/",
+      "evidence_url_2": "https://www.oricon.co.jp/company/",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.oricon.co.jp/game/",
+      "final_url": "https://oricon.co.jp/game/",
+      "registered_domain": "oricon.co.jp",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:13.938452Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "itmedia.co.jp": {
+    "record": {
+      "domain": "itmedia.co.jp",
+      "homepage_url": "https://www.itmedia.co.jp/news/subtop/game/",
+      "expected_label": "uncertain",
+      "website_type": "general_media_gaming_section",
+      "target_market": "Japan",
+      "language": "ja",
+      "activity_status": "active",
+      "label_reason": "Tech news portal with a gaming subsection.",
+      "evidence_summary": "Mixed focus on tech and gaming. Substantial recurring coverage makes it uncertain rather than a hard negative.",
+      "reviewer_notes": "",
+      "dataset_split": "test",
+      "evidence_url_1": "https://www.itmedia.co.jp/news/subtop/game/",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.itmedia.co.jp/news/subtop/game/",
+      "final_url": "https://itmedia.co.jp/news/subtop/game/",
+      "registered_domain": "itmedia.co.jp",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:15.899498Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "asahi.com": {
+    "record": {
+      "domain": "asahi.com",
+      "homepage_url": "https://www.asahi.com/games/",
+      "expected_label": "not_gaming_media",
+      "website_type": "general_media_gaming_section",
+      "target_market": "Japan",
+      "language": "ja",
+      "activity_status": "active",
+      "label_reason": "General newspaper.",
+      "evidence_summary": "Incidental gaming coverage among broader national news. Primary purpose is general news.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.asahi.com/games/",
+      "evidence_url_2": "https://www.asahi.com/corporate/",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.asahi.com/games/",
+      "final_url": "https://asahi.com/games/",
+      "registered_domain": "asahi.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:17.014278Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "lapresse.ca": {
+    "record": {
+      "domain": "lapresse.ca",
+      "homepage_url": "https://www.lapresse.ca/jeux",
+      "expected_label": "uncertain",
+      "website_type": "general_media_gaming_section",
+      "target_market": "Canada",
+      "language": "fr",
+      "activity_status": "active",
+      "label_reason": "General news site with a dedicated gaming section.",
+      "evidence_summary": "Mixed media. Contains gaming reviews and news but within a broader paper.",
+      "reviewer_notes": "",
+      "dataset_split": "test",
+      "evidence_url_1": "https://www.lapresse.ca/jeux",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.lapresse.ca/jeux",
+      "final_url": "https://lapresse.ca/jeux",
+      "registered_domain": "lapresse.ca",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:18.955219Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "journaldemontreal.com": {
+    "record": {
+      "domain": "journaldemontreal.com",
+      "homepage_url": "https://www.journaldemontreal.com/jeux",
+      "expected_label": "not_gaming_media",
+      "website_type": "general_media_gaming_section",
+      "target_market": "Canada",
+      "language": "fr",
+      "activity_status": "active",
+      "label_reason": "Paper gaming section.",
+      "evidence_summary": "Incidental gaming coverage. Primarily general news.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.journaldemontreal.com/jeux",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.journaldemontreal.com/jeux",
+      "final_url": "https://journaldemontreal.com/jeux",
+      "registered_domain": "journaldemontreal.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:20.122715Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "theglobeandmail.com": {
+    "record": {
+      "domain": "theglobeandmail.com",
+      "homepage_url": "https://www.theglobeandmail.com/technology/gaming/",
+      "expected_label": "not_gaming_media",
+      "website_type": "general_media_gaming_section",
+      "target_market": "Canada",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "National newspaper gaming section.",
+      "evidence_summary": "Gaming is a minor sub-category of Technology.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.theglobeandmail.com/technology/gaming/",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.theglobeandmail.com/technology/gaming/",
+      "final_url": "https://theglobeandmail.com/technology/gaming/",
+      "registered_domain": "theglobeandmail.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:21.804659Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "cbc.ca": {
+    "record": {
+      "domain": "cbc.ca",
+      "homepage_url": "https://www.cbc.ca/news/entertainment/games",
+      "expected_label": "not_gaming_media",
+      "website_type": "general_media_gaming_section",
+      "target_market": "Canada",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "National broadcaster gaming section.",
+      "evidence_summary": "Incidental coverage, not a dedicated gaming media outlet.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.cbc.ca/news/entertainment/games",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.cbc.ca/news/entertainment/games",
+      "final_url": "https://www.cbc.ca/news/entertainment/games",
+      "registered_domain": "cbc.ca",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "total_timeout"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:42.818273Z",
+      "fetch_success": false,
+      "fetch_error_code": "total_timeout",
+      "safe_error": "Fetch exceeded total timeout limit",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "bbc.com": {
+    "record": {
+      "domain": "bbc.com",
+      "homepage_url": "https://www.bbc.com/news/technology/gaming",
+      "expected_label": "not_gaming_media",
+      "website_type": "general_media_gaming_section",
+      "target_market": "Global",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "General news broadcaster.",
+      "evidence_summary": "Primary focus is world news and tech, gaming is a small sub-section.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.bbc.com/news/technology/gaming",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.bbc.com/news/technology/gaming",
+      "final_url": "https://bbc.com/news/technology/gaming",
+      "registered_domain": "bbc.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:43.959908Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "theverge.com": {
+    "record": {
+      "domain": "theverge.com",
+      "homepage_url": "https://www.theverge.com/games",
+      "expected_label": "uncertain",
+      "website_type": "general_media_gaming_section",
+      "target_market": "Global",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "Tech site with a very large gaming section.",
+      "evidence_summary": "Substantial recurring gaming coverage, but primary identity is technology and culture. Ambiguous classification.",
+      "reviewer_notes": "",
+      "dataset_split": "test",
+      "evidence_url_1": "https://www.theverge.com/games",
+      "evidence_url_2": "https://www.theverge.com/about",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.theverge.com/games",
+      "final_url": "https://theverge.com/games",
+      "registered_domain": "theverge.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:45.040301Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "nintendo.co.jp": {
+    "record": {
+      "domain": "nintendo.co.jp",
+      "homepage_url": "https://www.nintendo.co.jp/",
+      "expected_label": "not_gaming_media",
+      "website_type": "game_developer",
+      "target_market": "Japan",
+      "language": "ja",
+      "activity_status": "active",
+      "label_reason": "Official developer and publisher site.",
+      "evidence_summary": "Developer and store signals dominate. No independent editorial publishing.",
+      "reviewer_notes": "",
+      "dataset_split": "test",
+      "evidence_url_1": "https://www.nintendo.co.jp/",
+      "evidence_url_2": "https://www.nintendo.co.jp/corporate/",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.nintendo.co.jp/",
+      "final_url": "https://nintendo.co.jp/",
+      "registered_domain": "nintendo.co.jp",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:46.576418Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "square-enix.com": {
+    "record": {
+      "domain": "square-enix.com",
+      "homepage_url": "https://www.square-enix.com/jp/",
+      "expected_label": "not_gaming_media",
+      "website_type": "game_publisher",
+      "target_market": "Japan",
+      "language": "ja",
+      "activity_status": "active",
+      "label_reason": "Corporate publisher site.",
+      "evidence_summary": "Contains game marketing, company info, not an editorial outlet.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.square-enix.com/jp/",
+      "evidence_url_2": "https://www.jp.square-enix.com/company/",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.square-enix.com/jp/",
+      "final_url": "https://square-enix.com/jp/",
+      "registered_domain": "square-enix.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "https_downgrade"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:48.173894Z",
+      "fetch_success": false,
+      "fetch_error_code": "https_downgrade",
+      "safe_error": "HTTPS downgrade rejected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "bioware.com": {
+    "record": {
+      "domain": "bioware.com",
+      "homepage_url": "https://www.bioware.com/",
+      "expected_label": "not_gaming_media",
+      "website_type": "game_developer",
+      "target_market": "Canada",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "Game developer studio site.",
+      "evidence_summary": "Marketing for their own games. No editorial.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.bioware.com/",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.bioware.com/",
+      "final_url": "https://bioware.com/",
+      "registered_domain": "bioware.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:49.557407Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "ubisoft.com": {
+    "record": {
+      "domain": "ubisoft.com",
+      "homepage_url": "https://www.ubisoft.com/en-ca/",
+      "expected_label": "not_gaming_media",
+      "website_type": "game_publisher",
+      "target_market": "Canada",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "Publisher regional site.",
+      "evidence_summary": "Store and publisher marketing.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.ubisoft.com/en-ca/",
+      "evidence_url_2": "https://www.ubisoft.com/en-ca/company/about-us",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.ubisoft.com/en-ca/",
+      "final_url": "https://ubisoft.com/en-ca/",
+      "registered_domain": "ubisoft.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:51.147300Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "ea.com": {
+    "record": {
+      "domain": "ea.com",
+      "homepage_url": "https://www.ea.com/en-ca",
+      "expected_label": "not_gaming_media",
+      "website_type": "game_publisher",
+      "target_market": "Canada",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "Publisher regional site.",
+      "evidence_summary": "Game catalogues and store features.",
+      "reviewer_notes": "",
+      "dataset_split": "test",
+      "evidence_url_1": "https://www.ea.com/en-ca",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.ea.com/en-ca",
+      "final_url": "https://ea.com/en-ca",
+      "registered_domain": "ea.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:52.261678Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "yodobashi.com": {
+    "record": {
+      "domain": "yodobashi.com",
+      "homepage_url": "https://www.yodobashi.com/category/140007/",
+      "expected_label": "not_gaming_media",
+      "website_type": "gaming_retailer",
+      "target_market": "Japan",
+      "language": "ja",
+      "activity_status": "active",
+      "label_reason": "Retail store category.",
+      "evidence_summary": "Shopping cart, buy buttons, product listings.",
+      "reviewer_notes": "",
+      "dataset_split": "test",
+      "evidence_url_1": "https://www.yodobashi.com/category/140007/",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.yodobashi.com/category/140007/",
+      "final_url": "https://yodobashi.com/category/140007/",
+      "registered_domain": "yodobashi.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:54.318718Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "suruga-ya.jp": {
+    "record": {
+      "domain": "suruga-ya.jp",
+      "homepage_url": "https://www.suruga-ya.jp/",
+      "expected_label": "not_gaming_media",
+      "website_type": "gaming_retailer",
+      "target_market": "Japan",
+      "language": "ja",
+      "activity_status": "active",
+      "label_reason": "Used goods retailer.",
+      "evidence_summary": "Shopping cart, product pages.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.suruga-ya.jp/",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.suruga-ya.jp/",
+      "final_url": "https://suruga-ya.jp/",
+      "registered_domain": "suruga-ya.jp",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:04:55.769331Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "biccamera.com": {
+    "record": {
+      "domain": "biccamera.com",
+      "homepage_url": "https://www.biccamera.com/bc/category/001/100/",
+      "expected_label": "not_gaming_media",
+      "website_type": "gaming_retailer",
+      "target_market": "Japan",
+      "language": "ja",
+      "activity_status": "active",
+      "label_reason": "Retailer section.",
+      "evidence_summary": "Store signals dominate.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.biccamera.com/bc/category/001/100/",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.biccamera.com/bc/category/001/100/",
+      "final_url": "https://biccamera.com/bc/category/001/100/",
+      "registered_domain": "biccamera.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "connection_timeout"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:05:13.408996Z",
+      "fetch_success": false,
+      "fetch_error_code": "connection_timeout",
+      "safe_error": "Connect timeout",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "gamestop.ca": {
+    "record": {
+      "domain": "gamestop.ca",
+      "homepage_url": "https://www.gamestop.ca/",
+      "expected_label": "not_gaming_media",
+      "website_type": "gaming_retailer",
+      "target_market": "Canada",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "Retail store.",
+      "evidence_summary": "Store catalog, prices, add to cart.",
+      "reviewer_notes": "",
+      "dataset_split": "test",
+      "evidence_url_1": "https://www.gamestop.ca/",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.gamestop.ca/",
+      "final_url": "https://gamestop.ca/",
+      "registered_domain": "gamestop.ca",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:05:15.488404Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "bestbuy.ca": {
+    "record": {
+      "domain": "bestbuy.ca",
+      "homepage_url": "https://www.bestbuy.ca/en-ca/category/video-games/20001",
+      "expected_label": "not_gaming_media",
+      "website_type": "gaming_retailer",
+      "target_market": "Canada",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "Retailer gaming section.",
+      "evidence_summary": "Product listings, cart features.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.bestbuy.ca/en-ca/category/video-games/20001",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.bestbuy.ca/en-ca/category/video-games/20001",
+      "final_url": "https://bestbuy.ca/en-ca/category/video-games/20001",
+      "registered_domain": "bestbuy.ca",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:05:16.613299Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "5ch.net": {
+    "record": {
+      "domain": "5ch.net",
+      "homepage_url": "https://5ch.net/game",
+      "expected_label": "not_gaming_media",
+      "website_type": "forum_or_community",
+      "target_market": "Japan",
+      "language": "ja",
+      "activity_status": "active",
+      "label_reason": "Message board forum.",
+      "evidence_summary": "User threads only, no organized editorial publishing.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://5ch.net/game",
+      "evidence_url_2": "https://5ch.net/",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://5ch.net/game",
+      "final_url": "https://egg.5ch.net/game/",
+      "registered_domain": "5ch.net",
+      "score": 10,
+      "verification_status": "rejected",
+      "confidence": 0.15,
+      "gaming_relevance_score": 10,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [
+        {
+          "code": "platform_nav",
+          "message": "Platform terminology in navigation or headings",
+          "weight": 10,
+          "evidence": [
+            "Platform match"
+          ]
+        }
+      ],
+      "negative_reasons": [],
+      "detected_categories": [
+        "pc_gaming"
+      ],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:05:19.448834Z",
+      "fetch_success": true,
+      "fetch_error_code": null,
+      "safe_error": null,
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": "ja",
+      "market_evidence": [
+        "lang=ja"
+      ]
+    }
+  },
+  "streetfighter.com": {
+    "record": {
+      "domain": "streetfighter.com",
+      "homepage_url": "https://www.streetfighter.com/",
+      "expected_label": "not_gaming_media",
+      "website_type": "single_game_site",
+      "target_market": "Japan",
+      "language": "ja",
+      "activity_status": "active",
+      "label_reason": "Single game marketing site.",
+      "evidence_summary": "Marketing for one game franchise, no general gaming news.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.streetfighter.com/",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.streetfighter.com/",
+      "final_url": "https://streetfighter.com/",
+      "registered_domain": "streetfighter.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "http_client_error"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:05:20.683026Z",
+      "fetch_success": false,
+      "fetch_error_code": "http_client_error",
+      "safe_error": "HTTP 403",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "thescoreesports.com": {
+    "record": {
+      "domain": "thescoreesports.com",
+      "homepage_url": "https://www.thescoreesports.com/",
+      "expected_label": "not_gaming_media",
+      "website_type": "esports_organization",
+      "target_market": "Canada",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "Esports coverage/team site.",
+      "evidence_summary": "Focuses on esports scores and rosters rather than broad gaming media reviews.",
+      "reviewer_notes": "",
+      "dataset_split": "test",
+      "evidence_url_1": "https://www.thescoreesports.com/",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.thescoreesports.com/",
+      "final_url": "https://thescoreesports.com/",
+      "registered_domain": "thescoreesports.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:05:21.834364Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "razer.com": {
+    "record": {
+      "domain": "razer.com",
+      "homepage_url": "https://www.razer.com/ca-en",
+      "expected_label": "not_gaming_media",
+      "website_type": "hardware_or_technology",
+      "target_market": "Canada",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "Hardware manufacturer.",
+      "evidence_summary": "Hardware store signals, no editorial articles.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.razer.com/ca-en",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.razer.com/ca-en",
+      "final_url": "https://razer.com/ca-en",
+      "registered_domain": "razer.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:05:23.876685Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "twitch.tv": {
+    "record": {
+      "domain": "twitch.tv",
+      "homepage_url": "https://www.twitch.tv/shroud",
+      "expected_label": "not_gaming_media",
+      "website_type": "creator_or_streaming_profile",
+      "target_market": "Canada",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "Individual streamer profile.",
+      "evidence_summary": "Streaming video only, no text articles or editorial.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://www.twitch.tv/shroud",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://www.twitch.tv/shroud",
+      "final_url": "https://twitch.tv/shroud",
+      "registered_domain": "twitch.tv",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "redirect_loop"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:05:24.919883Z",
+      "fetch_success": false,
+      "fetch_error_code": "redirect_loop",
+      "safe_error": "Redirect loop detected",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "vr-zone.com": {
+    "record": {
+      "domain": "vr-zone.com",
+      "homepage_url": "https://vr-zone.com/",
+      "expected_label": "uncertain",
+      "website_type": "inactive_or_archived_media",
+      "target_market": "Global",
+      "language": "en",
+      "activity_status": "inactive",
+      "label_reason": "Archived/inactive site.",
+      "evidence_summary": "No recent publication dates observed. Site appears abandoned.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://vr-zone.com/",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://vr-zone.com/",
+      "final_url": "https://vr-zone.com/",
+      "registered_domain": "vr-zone.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "unexpected_fetch_error"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:05:26.204280Z",
+      "fetch_success": false,
+      "fetch_error_code": "unexpected_fetch_error",
+      "safe_error": "HTTP 520",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "1up.com": {
+    "record": {
+      "domain": "1up.com",
+      "homepage_url": "https://1up.com/",
+      "expected_label": "uncertain",
+      "website_type": "inactive_or_archived_media",
+      "target_market": "Global",
+      "language": "en",
+      "activity_status": "inactive",
+      "label_reason": "Dead gaming site that redirects.",
+      "evidence_summary": "Original content is inaccessible, domain redirects to another site.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://1up.com/",
+      "evidence_url_2": "https://en.wikipedia.org/wiki/1UP.com",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://1up.com/",
+      "final_url": "https://1up.com/",
+      "registered_domain": "1up.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "dns_failed"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:05:27.249167Z",
+      "fetch_success": false,
+      "fetch_error_code": "dns_failed",
+      "safe_error": "DNS resolution failed: [Errno 11001] getaddrinfo failed",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "n4g.com": {
+    "record": {
+      "domain": "n4g.com",
+      "homepage_url": "https://n4g.com/",
+      "expected_label": "uncertain",
+      "website_type": "ambiguous",
+      "target_market": "Global",
+      "language": "en",
+      "activity_status": "active",
+      "label_reason": "Gaming news aggregator.",
+      "evidence_summary": "Community submitted gaming news links. Ambiguous if it qualifies as an original editorial publisher.",
+      "reviewer_notes": "",
+      "dataset_split": "development",
+      "evidence_url_1": "https://n4g.com/",
+      "evidence_url_2": "",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://n4g.com/",
+      "final_url": "https://n4g.com/",
+      "registered_domain": "n4g.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "http_client_error"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:05:28.346013Z",
+      "fetch_success": false,
+      "fetch_error_code": "http_client_error",
+      "safe_error": "HTTP 403",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "dmm.com": {
+    "record": {
+      "domain": "dmm.com",
+      "homepage_url": "https://games.dmm.com/",
+      "expected_label": "uncertain",
+      "website_type": "ambiguous",
+      "target_market": "Japan",
+      "language": "ja",
+      "activity_status": "unknown",
+      "label_reason": "Publisher/platform with geographical IP blocks.",
+      "evidence_summary": "Access often blocked from non-JP IPs. Mixed publisher and store signals.",
+      "reviewer_notes": "",
+      "dataset_split": "test",
+      "evidence_url_1": "https://games.dmm.com/",
+      "evidence_url_2": "https://dmm.com/",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://games.dmm.com/",
+      "final_url": "https://games.dmm.com/",
+      "registered_domain": "dmm.com",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "http_client_error"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:05:30.282449Z",
+      "fetch_success": false,
+      "fetch_error_code": "http_client_error",
+      "safe_error": "HTTP 404",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  },
+  "gamewith.jp": {
+    "record": {
+      "domain": "gamewith.jp",
+      "homepage_url": "https://gamewith.jp/",
+      "expected_label": "uncertain",
+      "website_type": "ambiguous",
+      "target_market": "Japan",
+      "language": "ja",
+      "activity_status": "active",
+      "label_reason": "Game wiki and guide site.",
+      "evidence_summary": "Highly structured guide site. Ambiguous if it strictly fits the 'editorial news/reviews' definition. Often uses Cloudflare challenges.",
+      "reviewer_notes": "",
+      "dataset_split": "test",
+      "evidence_url_1": "https://gamewith.jp/",
+      "evidence_url_2": "https://gamewith.co.jp/",
+      "reviewed_at": "2026-06-16T12:00:00Z",
+      "review_method": "manual_public_web_review"
+    },
+    "result": {
+      "requested_url": "https://gamewith.jp/",
+      "final_url": "https://gamewith.jp/",
+      "registered_domain": "gamewith.jp",
+      "score": 0,
+      "verification_status": "fetch_failed",
+      "confidence": 0.0,
+      "gaming_relevance_score": 0,
+      "editorial_structure_score": 0,
+      "activity_score": 0,
+      "publication_identity_score": 0,
+      "negative_penalty": 0,
+      "positive_reasons": [],
+      "negative_reasons": [
+        {
+          "code": "fetch_failed",
+          "message": "Could not fetch the page",
+          "weight": -100,
+          "evidence": [
+            "response_too_large"
+          ]
+        }
+      ],
+      "detected_categories": [],
+      "activity_status": "unknown",
+      "newest_detected_publication_date": null,
+      "article_count_estimate": 0,
+      "classifier_version": "rule_based_v1",
+      "analysed_at": "2026-06-16T12:05:32.861481Z",
+      "fetch_success": false,
+      "fetch_error_code": "response_too_large",
+      "safe_error": "Streamed body too large",
+      "expected_market": null,
+      "expected_language": null,
+      "detected_language": null,
+      "market_evidence": []
+    }
+  }
+}
