@@ -1,0 +1,11 @@
+{
+  "completed_at": "2026-06-16T20:37:34.610696+00:00",
+  "Phase 5D configuration hash": "71d69a2c454928b4ea7e1f1e1c0ff5c98e5bd461b6b8f9050f7312118040e9bf",
+  "dataset hash": "ab160badfdcf2b478450006ae168b020f0aead9194875a579937884f7c2830aa",
+  "test split hash": "80863a9abf3524278455ae9b755bda90dfd9857285ee7a8407743358fad96e8a",
+  "test row count": 15,
+  "runner version": "phase6_v1",
+  "prediction file hash": "9b84646f0e5f2c31a5543ad1d9c92185f0cdb8a41110ecc624e6ffd6fae38aef",
+  "metrics file hash": "5b59c262e43e7d4e4f89b27897d1954b5f61067c398749d72103c9c821ada9fa",
+  "raw results file hash": "6189d7931b3fc098c750dcf6d139f43c2db09c06df06b6901a3a6461f7ceb00c"
+}

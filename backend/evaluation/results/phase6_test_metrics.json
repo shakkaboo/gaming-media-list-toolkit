@@ -1,0 +1,30 @@
+{
+  "strict_accuracy": 0.5333333333333333,
+  "binary_metrics": {
+    "eligible_binary_rows": 9,
+    "true_positives": 3,
+    "false_positives": 1,
+    "true_negatives_decided": 0,
+    "false_negatives_decided": 0,
+    "abstentions": 5,
+    "decision_coverage": 0.4444444444444444,
+    "precision": 0.75,
+    "decided_prediction_recall": 1.0,
+    "operational_positive_recall": 0.75,
+    "f1": 0.8571428571428571,
+    "specificity": 0.0
+  },
+  "market_status_distribution": {
+    "confirmed": 9,
+    "unconfirmed": 6
+  },
+  "relevance_label_accuracy": 0.75,
+  "total_test_rows": 15,
+  "transport_success_count": 15,
+  "usable_evidence_count": 5,
+  "verified_count": 5,
+  "rejected_count": 0,
+  "uncertain_count": 10,
+  "fetch_failed_count": 0,
+  "evidence_gate_overrides": 4
+}
