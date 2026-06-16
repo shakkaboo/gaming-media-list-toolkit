@@ -13,3 +13,7 @@
 | evidence_summary | Key evidence found on the site | |
 | reviewer_notes | Additional notes from the reviewer | |
 | dataset_split | Partition for evaluation | `development`, `test` |
+| evidence_url_1 | Primary URL where evidence was found | |
+| evidence_url_2 | Secondary URL where evidence was found (optional) | |
+| reviewed_at | ISO date of manual review | |
+| review_method | Methodology used for review | `manual_public_web_review` |
